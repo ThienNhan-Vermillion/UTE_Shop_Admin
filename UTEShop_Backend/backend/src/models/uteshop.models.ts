@@ -304,41 +304,53 @@ export class UTEShopVoucher extends Model<UTEShopVoucher> {
   @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
   declare id: number;
 
-  @ForeignKey(() => UTEShopUser)
-  @Column({ type: DataType.INTEGER, allowNull: false })
-  declare user_id: number;
-
   @Column({ type: DataType.STRING(32), allowNull: false, unique: true })
   declare code: string;
 
+  @Column({ type: DataType.STRING, allowNull: true })
+  declare name: string;
+
+  @Column({ type: DataType.STRING, allowNull: true })
+  declare description: string;
+
   @Column({
-    type: DataType.ENUM('percent', 'fixed'),
+    type: DataType.ENUM('percentage', 'fixed'),
     allowNull: false,
     defaultValue: 'fixed',
   })
-  declare discount_type: 'percent' | 'fixed';
+  declare discount_type: 'percentage' | 'fixed';
 
   @Column({ type: DataType.DECIMAL(10, 2), allowNull: false })
   declare discount_value: number;
 
   @Column({ type: DataType.DECIMAL(10, 2), allowNull: true })
-  declare min_order_total: number;
+  declare min_order_amount: number;
+
+  @Column({ type: DataType.DECIMAL(10, 2), allowNull: true })
+  declare max_discount_amount: number;
+
+  @Column({ type: DataType.INTEGER, allowNull: true })
+  declare usage_limit: number;
+
+  @Column({ type: DataType.INTEGER, allowNull: true, defaultValue: 0 })
+  declare used_count: number;
 
   @Column({ type: DataType.DATE, allowNull: true })
-  declare expires_at: Date;
+  declare start_date: Date;
 
   @Column({ type: DataType.DATE, allowNull: true })
-  declare used_at: Date;
+  declare end_date: Date;
 
-  @Column({ type: DataType.STRING, allowNull: true })
-  declare description: string;
+  @Column({ 
+    type: DataType.ENUM('active', 'inactive', 'expired'),
+    allowNull: false,
+    defaultValue: 'active'
+  })
+  declare status: 'active' | 'inactive' | 'expired';
 
   @Column({ type: DataType.DATE })
   declare created_at: Date;
 
   @Column({ type: DataType.DATE })
   declare updated_at: Date;
-
-  @BelongsTo(() => UTEShopUser, 'user_id')
-  declare user: UTEShopUser;
 }

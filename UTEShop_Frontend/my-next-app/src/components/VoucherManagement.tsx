@@ -5,19 +5,20 @@ import { getVouchers, updateVoucher, deleteVoucher } from '../services/api.servi
 
 interface Voucher {
   id: number;
-  user_id: number;
   code: string;
-  discount_type: 'percent' | 'fixed';
+  name?: string;
+  description?: string;
+  discount_type: 'percentage' | 'fixed';
   discount_value: number;
-  min_order_total: number;
-  expires_at: string;
-  used_at: string | null;
-  description: string;
-  user: {
-    id: number;
-    fullName: string;
-    email: string;
-  };
+  min_order_amount?: number;
+  max_discount_amount?: number;
+  usage_limit?: number;
+  used_count?: number;
+  start_date?: string;
+  end_date?: string;
+  status: 'active' | 'inactive' | 'expired';
+  created_at: string;
+  updated_at: string;
 }
 
 export default function VoucherManagement() {
@@ -53,11 +54,16 @@ export default function VoucherManagement() {
     setEditingVoucher(voucher);
     setEditForm({
       code: voucher.code,
+      name: voucher.name,
       description: voucher.description,
       discount_type: voucher.discount_type,
       discount_value: voucher.discount_value,
-      min_order_total: voucher.min_order_total,
-      expires_at: voucher.expires_at ? voucher.expires_at.split('T')[0] : '',
+      min_order_amount: voucher.min_order_amount,
+      max_discount_amount: voucher.max_discount_amount,
+      usage_limit: voucher.usage_limit,
+      start_date: voucher.start_date ? voucher.start_date.split('T')[0] : '',
+      end_date: voucher.end_date ? voucher.end_date.split('T')[0] : '',
+      status: voucher.status,
     });
     setShowEditModal(true);
   };
@@ -70,13 +76,20 @@ export default function VoucherManagement() {
       const updateData: any = {};
       
       if (editForm.code !== undefined) updateData.code = editForm.code;
+      if (editForm.name !== undefined) updateData.name = editForm.name;
       if (editForm.description !== undefined) updateData.description = editForm.description;
       if (editForm.discount_type !== undefined) updateData.discount_type = editForm.discount_type;
       if (editForm.discount_value !== undefined) updateData.discount_value = Number(editForm.discount_value);
-      if (editForm.min_order_total !== undefined) updateData.min_order_total = Number(editForm.min_order_total);
-      if (editForm.expires_at !== undefined) {
-        updateData.expires_at = editForm.expires_at ? new Date(editForm.expires_at).toISOString() : null;
+      if (editForm.min_order_amount !== undefined) updateData.min_order_amount = Number(editForm.min_order_amount);
+      if (editForm.max_discount_amount !== undefined) updateData.max_discount_amount = Number(editForm.max_discount_amount);
+      if (editForm.usage_limit !== undefined) updateData.usage_limit = Number(editForm.usage_limit);
+      if (editForm.start_date !== undefined) {
+        updateData.start_date = editForm.start_date ? new Date(editForm.start_date).toISOString() : null;
       }
+      if (editForm.end_date !== undefined) {
+        updateData.end_date = editForm.end_date ? new Date(editForm.end_date).toISOString() : null;
+      }
+      if (editForm.status !== undefined) updateData.status = editForm.status;
 
       console.log('Sending update data:', updateData);
       
@@ -168,16 +181,13 @@ export default function VoucherManagement() {
                   MÃ GIẢM GIÁ
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  MÔ TẢ
+                  TÊN/MÔ TẢ
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  NGƯỜI SỞ HỮU
+                  GIÁ TRỊ GIẢM
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   LOẠI
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  GIÁ TRỊ
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   ĐƠN HÀNG TỐI THIỂU
@@ -194,47 +204,65 @@ export default function VoucherManagement() {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {vouchers.map((voucher) => (
-                <tr key={voucher.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{voucher.code}</div>
+              {loading ? (
+                <tr>
+                  <td colSpan={6} className="px-6 py-4 text-center">
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                      <span className="ml-2">Đang tải...</span>
+                    </div>
                   </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm text-gray-900">{voucher.description || 'Không có mô tả'}</div>
+                </tr>
+              ) : error ? (
+                <tr>
+                  <td colSpan={6} className="px-6 py-4 text-center text-red-600">
+                    {error}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{voucher.user.fullName}</div>
-                    <div className="text-xs text-gray-500">{voucher.user.email}</div>
+                </tr>
+              ) : !vouchers || vouchers.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="px-6 py-4 text-center text-gray-500">
+                    Không có dữ liệu voucher
                   </td>
+                </tr>
+              ) : (
+                vouchers.map((voucher) => (
+                  <tr key={voucher.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm font-medium text-gray-900">{voucher.code}</div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="text-sm text-gray-900">{voucher.name || voucher.description || 'Không có mô tả'}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">{voucher.discount_type === 'percentage' ? `${voucher.discount_value}%` : `${voucher.discount_value.toLocaleString()}đ`}</div>
+                    </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                      voucher.discount_type === 'percent' 
+                      voucher.discount_type === 'percentage' 
                         ? 'bg-blue-100 text-blue-800' 
                         : 'bg-purple-100 text-purple-800'
                     }`}>
-                      {voucher.discount_type === 'percent' ? 'Phần trăm' : 'Số tiền cố định'}
+                      {voucher.discount_type === 'percentage' ? 'Phần trăm' : 'Số tiền cố định'}
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">
-                      {formatValue(voucher.discount_type, voucher.discount_value)}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">
-                      {voucher.min_order_total ? `${voucher.min_order_total.toLocaleString('vi-VN')} VNĐ` : 'Không giới hạn'}
+                      {voucher.min_order_amount ? `${voucher.min_order_amount.toLocaleString('vi-VN')} VNĐ` : 'Không giới hạn'}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{voucher.expires_at ? formatDate(voucher.expires_at) : 'Không giới hạn'}</div>
+                    <div className="text-sm text-gray-900">{voucher.end_date ? formatDate(voucher.end_date) : 'Không giới hạn'}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                      voucher.used_at 
-                        ? 'bg-red-100 text-red-800' 
-                        : 'bg-green-100 text-green-800'
+                      voucher.status === 'active'
+                        ? 'bg-green-100 text-green-800'
+                        : voucher.status === 'inactive'
+                        ? 'bg-gray-100 text-gray-800'
+                        : 'bg-red-100 text-red-800'
                     }`}>
-                      {voucher.used_at ? 'Đã sử dụng' : 'Chưa sử dụng'}
+                      {voucher.status === 'active' ? 'Hoạt động' : voucher.status === 'inactive' ? 'Tạm dừng' : 'Hết hạn'}
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -254,7 +282,8 @@ export default function VoucherManagement() {
                     </div>
                   </td>
                 </tr>
-              ))}
+                ))
+              )}
             </tbody>
           </table>
         </div>

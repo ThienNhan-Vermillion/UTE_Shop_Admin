@@ -1,14 +1,19 @@
 import { IsString, IsNumber, IsEnum, IsOptional, IsDateString, Min } from 'class-validator';
 
 export class CreateVoucherDto {
-  @IsNumber()
-  user_id: number;
-
   @IsString()
   code: string;
 
-  @IsEnum(['percent', 'fixed'])
-  discount_type: 'percent' | 'fixed';
+  @IsOptional()
+  @IsString()
+  name?: string;
+
+  @IsOptional()
+  @IsString()
+  description?: string;
+
+  @IsEnum(['percentage', 'fixed'])
+  discount_type: 'percentage' | 'fixed';
 
   @IsNumber()
   @Min(0)
@@ -17,33 +22,50 @@ export class CreateVoucherDto {
   @IsOptional()
   @IsNumber()
   @Min(0)
-  min_order_total?: number;
+  min_order_amount?: number;
+
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  max_discount_amount?: number;
+
+  @IsOptional()
+  @IsNumber()
+  usage_limit?: number;
+
+  @IsOptional()
+  @IsNumber()
+  used_count?: number;
 
   @IsOptional()
   @IsDateString()
-  expires_at?: string;
+  start_date?: string;
 
   @IsOptional()
   @IsDateString()
-  used_at?: string;
+  end_date?: string;
 
   @IsOptional()
-  @IsString()
-  description?: string;
+  @IsEnum(['active', 'inactive', 'expired'])
+  status?: 'active' | 'inactive' | 'expired';
 }
 
 export class UpdateVoucherDto {
-  @IsOptional()
-  @IsNumber()
-  user_id?: number;
-
   @IsOptional()
   @IsString()
   code?: string;
 
   @IsOptional()
-  @IsEnum(['percent', 'fixed'])
-  discount_type?: 'percent' | 'fixed';
+  @IsString()
+  name?: string;
+
+  @IsOptional()
+  @IsString()
+  description?: string;
+
+  @IsOptional()
+  @IsEnum(['percentage', 'fixed'])
+  discount_type?: 'percentage' | 'fixed';
 
   @IsOptional()
   @IsNumber()
@@ -53,16 +75,30 @@ export class UpdateVoucherDto {
   @IsOptional()
   @IsNumber()
   @Min(0)
-  min_order_total?: number;
+  min_order_amount?: number;
 
   @IsOptional()
-  expires_at?: string | null;
+  @IsNumber()
+  @Min(0)
+  max_discount_amount?: number;
+
+  @IsOptional()
+  @IsNumber()
+  usage_limit?: number;
+
+  @IsOptional()
+  @IsNumber()
+  used_count?: number;
 
   @IsOptional()
   @IsDateString()
-  used_at?: string;
+  start_date?: string;
 
   @IsOptional()
-  @IsString()
-  description?: string;
+  @IsDateString()
+  end_date?: string;
+
+  @IsOptional()
+  @IsEnum(['active', 'inactive', 'expired'])
+  status?: 'active' | 'inactive' | 'expired';
 }

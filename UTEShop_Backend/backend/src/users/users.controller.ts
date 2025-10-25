@@ -11,7 +11,11 @@ export class UsersController {
     const users = await this.usersService.findAll();
     return {
       success: true,
-      data: users,
+      users: users,
+      total: users.length,
+      page: 1,
+      limit: users.length,
+      totalPages: 1,
       message: 'Users retrieved successfully',
     };
   }

@@ -50,12 +50,29 @@ export default function UsersManagement() {
       if (dateFrom) params.dateFrom = dateFrom;
       if (dateTo) params.dateTo = dateTo;
 
-      const response: UsersResponse = await getUsers(params);
-      setUsers(response.users);
-      setTotalPages(response.totalPages);
-      setTotal(response.total);
+      const response = await getUsers(params);
+      
+      // Handle the backend response structure
+      if (response && response.success && response.data) {
+        setUsers(response.data || []);
+        setTotalPages(1); // Since we're not paginating yet
+        setTotal(response.data.length || 0);
+      } else if (response && response.users) {
+        // Handle the expected structure if it exists
+        setUsers(response.users || []);
+        setTotalPages(response.totalPages || 1);
+        setTotal(response.total || 0);
+      } else {
+        setUsers([]);
+        setTotalPages(1);
+        setTotal(0);
+      }
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Có lỗi xảy ra khi tải danh sách khách hàng');
+      console.error('Error fetching users:', err);
+      setError(err.response?.data?.message || err.message || 'Có lỗi xảy ra khi tải danh sách khách hàng');
+      setUsers([]);
+      setTotalPages(1);
+      setTotal(0);
     } finally {
       setLoading(false);
     }
@@ -84,7 +101,7 @@ export default function UsersManagement() {
     try {
       const response = await updateUser(editingUser.id, editForm);
       if (response.success) {
-        setUsers(users.map(u => u.id === editingUser.id ? { ...u, ...editForm } : u));
+        setUsers(prevUsers => prevUsers ? prevUsers.map(u => u.id === editingUser.id ? { ...u, ...editForm } : u) : []);
         setShowEditModal(false);
       } else setError('Không thể cập nhật thông tin người dùng');
     } catch (err: any) {
@@ -97,7 +114,7 @@ export default function UsersManagement() {
     try {
       const response = await updateUser(user.id, { status: newStatus });
       if (response.success) {
-        setUsers(users.map(u => u.id === user.id ? { ...u, status: newStatus } : u));
+        setUsers(prevUsers => prevUsers ? prevUsers.map(u => u.id === user.id ? { ...u, status: newStatus } : u) : []);
       }
     } catch (err: any) {
       setError(err.message || 'Có lỗi xảy ra khi cập nhật trạng thái');
@@ -173,37 +190,60 @@ export default function UsersManagement() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {users.map((u) => (
-              <tr key={u.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4">{u.fullName}</td>
-                <td className="px-6 py-4">{u.email}</td>
-                <td className="px-6 py-4">{u.phone}</td>
-                <td className="px-6 py-4">
-                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${u.status === 'active'
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'}`}>
-                    {u.status === 'active' ? 'Hoạt động' : 'Khóa'}
-                  </span>
-                </td>
-                <td className="px-6 py-4 flex space-x-2">
-                  <button
-                    onClick={() => handleEdit(u)}
-                    className="text-blue-600 hover:text-blue-900"
-                  >
-                    <i className="fas fa-edit mr-1"></i>Sửa
-                  </button>
-                  <button
-                    onClick={() => handleStatusToggle(u)}
-                    className={u.status === 'active'
-                      ? 'text-red-600 hover:text-red-900'
-                      : 'text-green-600 hover:text-green-900'}
-                  >
-                    <i className={`fas ${u.status === 'active' ? 'fa-lock' : 'fa-unlock'} mr-1`}></i>
-                    {u.status === 'active' ? 'Khóa' : 'Mở'}
-                  </button>
+            {loading ? (
+              <tr>
+                <td colSpan={5} className="px-6 py-4 text-center">
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                    <span className="ml-2">Đang tải...</span>
+                  </div>
                 </td>
               </tr>
-            ))}
+            ) : error ? (
+              <tr>
+                <td colSpan={5} className="px-6 py-4 text-center text-red-600">
+                  {error}
+                </td>
+              </tr>
+            ) : !users || users.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="px-6 py-4 text-center text-gray-500">
+                  Không có dữ liệu khách hàng
+                </td>
+              </tr>
+            ) : (
+              users.map((u) => (
+                <tr key={u.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4">{u.fullName}</td>
+                  <td className="px-6 py-4">{u.email}</td>
+                  <td className="px-6 py-4">{u.phone}</td>
+                  <td className="px-6 py-4">
+                    <span className={`px-2 py-1 text-xs font-semibold rounded-full ${u.status === 'active'
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-red-100 text-red-800'}`}>
+                      {u.status === 'active' ? 'Hoạt động' : 'Khóa'}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 flex space-x-2">
+                    <button
+                      onClick={() => handleEdit(u)}
+                      className="text-blue-600 hover:text-blue-900"
+                    >
+                      <i className="fas fa-edit mr-1"></i>Sửa
+                    </button>
+                    <button
+                      onClick={() => handleStatusToggle(u)}
+                      className={u.status === 'active'
+                        ? 'text-red-600 hover:text-red-900'
+                        : 'text-green-600 hover:text-green-900'}
+                    >
+                      <i className={`fas ${u.status === 'active' ? 'fa-lock' : 'fa-unlock'} mr-1`}></i>
+                      {u.status === 'active' ? 'Khóa' : 'Mở'}
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

@@ -837,11 +837,16 @@ function VoucherManagement() {
         setEditingVoucher(voucher);
         setEditForm({
             code: voucher.code,
+            name: voucher.name,
             description: voucher.description,
             discount_type: voucher.discount_type,
             discount_value: voucher.discount_value,
-            min_order_total: voucher.min_order_total,
-            expires_at: voucher.expires_at ? voucher.expires_at.split('T')[0] : ''
+            min_order_amount: voucher.min_order_amount,
+            max_discount_amount: voucher.max_discount_amount,
+            usage_limit: voucher.usage_limit,
+            start_date: voucher.start_date ? voucher.start_date.split('T')[0] : '',
+            end_date: voucher.end_date ? voucher.end_date.split('T')[0] : '',
+            status: voucher.status
         });
         setShowEditModal(true);
     };
@@ -851,13 +856,20 @@ function VoucherManagement() {
             // Chuẩn bị dữ liệu để gửi lên
             const updateData = {};
             if (editForm.code !== undefined) updateData.code = editForm.code;
+            if (editForm.name !== undefined) updateData.name = editForm.name;
             if (editForm.description !== undefined) updateData.description = editForm.description;
             if (editForm.discount_type !== undefined) updateData.discount_type = editForm.discount_type;
             if (editForm.discount_value !== undefined) updateData.discount_value = Number(editForm.discount_value);
-            if (editForm.min_order_total !== undefined) updateData.min_order_total = Number(editForm.min_order_total);
-            if (editForm.expires_at !== undefined) {
-                updateData.expires_at = editForm.expires_at ? new Date(editForm.expires_at).toISOString() : null;
+            if (editForm.min_order_amount !== undefined) updateData.min_order_amount = Number(editForm.min_order_amount);
+            if (editForm.max_discount_amount !== undefined) updateData.max_discount_amount = Number(editForm.max_discount_amount);
+            if (editForm.usage_limit !== undefined) updateData.usage_limit = Number(editForm.usage_limit);
+            if (editForm.start_date !== undefined) {
+                updateData.start_date = editForm.start_date ? new Date(editForm.start_date).toISOString() : null;
             }
+            if (editForm.end_date !== undefined) {
+                updateData.end_date = editForm.end_date ? new Date(editForm.end_date).toISOString() : null;
+            }
+            if (editForm.status !== undefined) updateData.status = editForm.status;
             console.log('Sending update data:', updateData);
             const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["updateVoucher"])(editingVoucher.id, updateData);
             if (response.success) {
@@ -918,7 +930,7 @@ function VoucherManagement() {
                         className: "fas fa-spinner fa-spin text-4xl text-green-600 mb-4"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                        lineNumber: 141,
+                        lineNumber: 154,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -926,18 +938,18 @@ function VoucherManagement() {
                         children: "Đang tải dữ liệu..."
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                        lineNumber: 142,
+                        lineNumber: 155,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                lineNumber: 140,
+                lineNumber: 153,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-            lineNumber: 139,
+            lineNumber: 152,
             columnNumber: 7
         }, this);
     }
@@ -952,7 +964,7 @@ function VoucherManagement() {
                         children: "Quản lý voucher"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                        lineNumber: 151,
+                        lineNumber: 164,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -960,13 +972,13 @@ function VoucherManagement() {
                         children: "Quản lý thông tin và trạng thái của voucher"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                        lineNumber: 152,
+                        lineNumber: 165,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                lineNumber: 150,
+                lineNumber: 163,
                 columnNumber: 7
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -976,14 +988,14 @@ function VoucherManagement() {
                         className: "fas fa-exclamation-triangle mr-2"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                        lineNumber: 157,
+                        lineNumber: 170,
                         columnNumber: 11
                     }, this),
                     error
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                lineNumber: 156,
+                lineNumber: 169,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1002,23 +1014,23 @@ function VoucherManagement() {
                                             children: "MÃ GIẢM GIÁ"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                            lineNumber: 167,
+                                            lineNumber: 180,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                             className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                            children: "MÔ TẢ"
+                                            children: "TÊN/MÔ TẢ"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                            lineNumber: 170,
+                                            lineNumber: 183,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                             className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                            children: "NGƯỜI SỞ HỮU"
+                                            children: "GIÁ TRỊ GIẢM"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                            lineNumber: 173,
+                                            lineNumber: 186,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1026,15 +1038,7 @@ function VoucherManagement() {
                                             children: "LOẠI"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                            lineNumber: 176,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                            className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                            children: "GIÁ TRỊ"
-                                        }, void 0, false, {
-                                            fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 189,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1042,7 +1046,7 @@ function VoucherManagement() {
                                             children: "ĐƠN HÀNG TỐI THIỂU"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                            lineNumber: 182,
+                                            lineNumber: 192,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1050,7 +1054,7 @@ function VoucherManagement() {
                                             children: "NGÀY HẾT HẠN"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 195,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1058,7 +1062,7 @@ function VoucherManagement() {
                                             children: "TRẠNG THÁI"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                            lineNumber: 188,
+                                            lineNumber: 198,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1066,23 +1070,88 @@ function VoucherManagement() {
                                             children: "THAO TÁC"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                            lineNumber: 191,
+                                            lineNumber: 201,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                    lineNumber: 166,
+                                    lineNumber: 179,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                lineNumber: 165,
+                                lineNumber: 178,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                 className: "bg-white divide-y divide-gray-200",
-                                children: vouchers.map((voucher)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                children: loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                        colSpan: 6,
+                                        className: "px-6 py-4 text-center",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center justify-center",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                                    lineNumber: 211,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "ml-2",
+                                                    children: "Đang tải..."
+                                                }, void 0, false, {
+                                                    fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                                    lineNumber: 212,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                            lineNumber: 210,
+                                            columnNumber: 21
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                        lineNumber: 209,
+                                        columnNumber: 19
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                    lineNumber: 208,
+                                    columnNumber: 17
+                                }, this) : error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                        colSpan: 6,
+                                        className: "px-6 py-4 text-center text-red-600",
+                                        children: error
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                        lineNumber: 218,
+                                        columnNumber: 19
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                    lineNumber: 217,
+                                    columnNumber: 17
+                                }, this) : !vouchers || vouchers.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                        colSpan: 6,
+                                        className: "px-6 py-4 text-center text-gray-500",
+                                        children: "Không có dữ liệu voucher"
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                        lineNumber: 224,
+                                        columnNumber: 19
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                    lineNumber: 223,
+                                    columnNumber: 17
+                                }, this) : vouchers.map((voucher)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                         className: "hover:bg-gray-50",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1092,127 +1161,102 @@ function VoucherManagement() {
                                                     children: voucher.code
                                                 }, void 0, false, {
                                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                    lineNumber: 200,
-                                                    columnNumber: 21
+                                                    lineNumber: 232,
+                                                    columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 199,
-                                                columnNumber: 19
+                                                lineNumber: 231,
+                                                columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "px-6 py-4",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-sm text-gray-900",
-                                                    children: voucher.description || 'Không có mô tả'
+                                                    children: voucher.name || voucher.description || 'Không có mô tả'
                                                 }, void 0, false, {
                                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                    lineNumber: 203,
-                                                    columnNumber: 21
+                                                    lineNumber: 235,
+                                                    columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 202,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                className: "px-6 py-4 whitespace-nowrap",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "text-sm text-gray-900",
-                                                        children: voucher.user.fullName
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 206,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "text-xs text-gray-500",
-                                                        children: voucher.user.email
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 207,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 205,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                className: "px-6 py-4 whitespace-nowrap",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: `inline-flex px-2 py-1 text-xs font-semibold rounded-full ${voucher.discount_type === 'percent' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'}`,
-                                                    children: voucher.discount_type === 'percent' ? 'Phần trăm' : 'Số tiền cố định'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                    lineNumber: 210,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 209,
-                                                columnNumber: 19
+                                                lineNumber: 234,
+                                                columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "px-6 py-4 whitespace-nowrap",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-sm font-medium text-gray-900",
-                                                    children: formatValue(voucher.discount_type, voucher.discount_value)
+                                                    className: "text-sm text-gray-900",
+                                                    children: voucher.discount_type === 'percentage' ? `${voucher.discount_value}%` : `${voucher.discount_value.toLocaleString()}đ`
                                                 }, void 0, false, {
                                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                    lineNumber: 219,
+                                                    lineNumber: 238,
+                                                    columnNumber: 23
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                                lineNumber: 237,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                className: "px-6 py-4 whitespace-nowrap",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: `inline-flex px-2 py-1 text-xs font-semibold rounded-full ${voucher.discount_type === 'percentage' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'}`,
+                                                    children: voucher.discount_type === 'percentage' ? 'Phần trăm' : 'Số tiền cố định'
+                                                }, void 0, false, {
+                                                    fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
+                                                    lineNumber: 241,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 218,
+                                                lineNumber: 240,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "px-6 py-4 whitespace-nowrap",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-sm text-gray-900",
-                                                    children: voucher.min_order_total ? `${voucher.min_order_total.toLocaleString('vi-VN')} VNĐ` : 'Không giới hạn'
+                                                    children: voucher.min_order_amount ? `${voucher.min_order_amount.toLocaleString('vi-VN')} VNĐ` : 'Không giới hạn'
                                                 }, void 0, false, {
                                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                    lineNumber: 224,
+                                                    lineNumber: 250,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 223,
+                                                lineNumber: 249,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "px-6 py-4 whitespace-nowrap",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-sm text-gray-900",
-                                                    children: voucher.expires_at ? formatDate(voucher.expires_at) : 'Không giới hạn'
+                                                    children: voucher.end_date ? formatDate(voucher.end_date) : 'Không giới hạn'
                                                 }, void 0, false, {
                                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                    lineNumber: 229,
+                                                    lineNumber: 255,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 228,
+                                                lineNumber: 254,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "px-6 py-4 whitespace-nowrap",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: `inline-flex px-2 py-1 text-xs font-semibold rounded-full ${voucher.used_at ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`,
-                                                    children: voucher.used_at ? 'Đã sử dụng' : 'Chưa sử dụng'
+                                                    className: `inline-flex px-2 py-1 text-xs font-semibold rounded-full ${voucher.status === 'active' ? 'bg-green-100 text-green-800' : voucher.status === 'inactive' ? 'bg-gray-100 text-gray-800' : 'bg-red-100 text-red-800'}`,
+                                                    children: voucher.status === 'active' ? 'Hoạt động' : voucher.status === 'inactive' ? 'Tạm dừng' : 'Hết hạn'
                                                 }, void 0, false, {
                                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                    lineNumber: 232,
+                                                    lineNumber: 258,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 231,
+                                                lineNumber: 257,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1228,14 +1272,14 @@ function VoucherManagement() {
                                                                     className: "fas fa-edit mr-1"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                                    lineNumber: 246,
+                                                                    lineNumber: 274,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 "Sửa"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                            lineNumber: 242,
+                                                            lineNumber: 270,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1246,52 +1290,52 @@ function VoucherManagement() {
                                                                     className: "fas fa-trash mr-1"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                                    lineNumber: 252,
+                                                                    lineNumber: 280,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 "Xóa"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                            lineNumber: 248,
+                                                            lineNumber: 276,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                    lineNumber: 241,
+                                                    lineNumber: 269,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 240,
+                                                lineNumber: 268,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, voucher.id, true, {
                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                        lineNumber: 198,
-                                        columnNumber: 17
+                                        lineNumber: 230,
+                                        columnNumber: 19
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                lineNumber: 196,
+                                lineNumber: 206,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                        lineNumber: 164,
+                        lineNumber: 177,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                    lineNumber: 163,
+                    lineNumber: 176,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                lineNumber: 162,
+                lineNumber: 175,
                 columnNumber: 7
             }, this),
             vouchers.length === 0 && !loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1301,7 +1345,7 @@ function VoucherManagement() {
                         className: "fas fa-tags text-6xl text-gray-300 mb-4"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                        lineNumber: 265,
+                        lineNumber: 294,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1309,7 +1353,7 @@ function VoucherManagement() {
                         children: "Chưa có voucher nào"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                        lineNumber: 266,
+                        lineNumber: 295,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1317,13 +1361,13 @@ function VoucherManagement() {
                         children: "Dữ liệu voucher sẽ hiển thị ở đây khi có."
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                        lineNumber: 267,
+                        lineNumber: 296,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                lineNumber: 264,
+                lineNumber: 293,
                 columnNumber: 9
             }, this),
             showEditModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1339,7 +1383,7 @@ function VoucherManagement() {
                                     children: "Sửa voucher"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                    lineNumber: 277,
+                                    lineNumber: 306,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1349,18 +1393,18 @@ function VoucherManagement() {
                                         className: "fas fa-times text-xl"
                                     }, void 0, false, {
                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                        lineNumber: 282,
+                                        lineNumber: 311,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                    lineNumber: 278,
+                                    lineNumber: 307,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                            lineNumber: 276,
+                            lineNumber: 305,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1378,7 +1422,7 @@ function VoucherManagement() {
                                                         children: "Mã giảm giá"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 292,
+                                                        lineNumber: 321,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1392,13 +1436,13 @@ function VoucherManagement() {
                                                         placeholder: "Nhập mã giảm giá"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 295,
+                                                        lineNumber: 324,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 291,
+                                                lineNumber: 320,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1408,7 +1452,7 @@ function VoucherManagement() {
                                                         children: "Mô tả"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 305,
+                                                        lineNumber: 334,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1422,13 +1466,13 @@ function VoucherManagement() {
                                                         placeholder: "Nhập mô tả voucher"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 308,
+                                                        lineNumber: 337,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 304,
+                                                lineNumber: 333,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1438,7 +1482,7 @@ function VoucherManagement() {
                                                         children: "Loại voucher"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 318,
+                                                        lineNumber: 347,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1454,7 +1498,7 @@ function VoucherManagement() {
                                                                 children: "Phần trăm"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                                lineNumber: 326,
+                                                                lineNumber: 355,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1462,25 +1506,25 @@ function VoucherManagement() {
                                                                 children: "Số tiền cố định"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                                lineNumber: 327,
+                                                                lineNumber: 356,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 321,
+                                                        lineNumber: 350,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 317,
+                                                lineNumber: 346,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                        lineNumber: 290,
+                                        lineNumber: 319,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1493,7 +1537,7 @@ function VoucherManagement() {
                                                         children: "Giá trị"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 335,
+                                                        lineNumber: 364,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1507,13 +1551,13 @@ function VoucherManagement() {
                                                         placeholder: "Nhập giá trị voucher"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 338,
+                                                        lineNumber: 367,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 334,
+                                                lineNumber: 363,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1523,7 +1567,7 @@ function VoucherManagement() {
                                                         children: "Đơn hàng tối thiểu (VNĐ)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 348,
+                                                        lineNumber: 377,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1537,13 +1581,13 @@ function VoucherManagement() {
                                                         placeholder: "Nhập đơn hàng tối thiểu"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 351,
+                                                        lineNumber: 380,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 347,
+                                                lineNumber: 376,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1553,7 +1597,7 @@ function VoucherManagement() {
                                                         children: "Ngày hết hạn"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 361,
+                                                        lineNumber: 390,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1566,30 +1610,30 @@ function VoucherManagement() {
                                                         className: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                        lineNumber: 364,
+                                                        lineNumber: 393,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                                lineNumber: 360,
+                                                lineNumber: 389,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                        lineNumber: 333,
+                                        lineNumber: 362,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                lineNumber: 288,
+                                lineNumber: 317,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                            lineNumber: 287,
+                            lineNumber: 316,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1601,7 +1645,7 @@ function VoucherManagement() {
                                     children: "Hủy"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                    lineNumber: 377,
+                                    lineNumber: 406,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1610,30 +1654,30 @@ function VoucherManagement() {
                                     children: "Cập nhật"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                                    lineNumber: 383,
+                                    lineNumber: 412,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                            lineNumber: 376,
+                            lineNumber: 405,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                    lineNumber: 274,
+                    lineNumber: 303,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-                lineNumber: 273,
+                lineNumber: 302,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/my-next-app/src/components/VoucherManagement.tsx",
-        lineNumber: 149,
+        lineNumber: 162,
         columnNumber: 5
     }, this);
 }
