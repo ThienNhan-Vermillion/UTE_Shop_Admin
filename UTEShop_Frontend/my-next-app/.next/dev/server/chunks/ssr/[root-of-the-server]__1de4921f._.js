@@ -263,10 +263,10 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
             href: '/users'
         },
         {
-            id: 'comments',
-            label: 'Bình luận',
-            icon: 'fas fa-comments',
-            href: '/comments'
+            id: 'reviews',
+            label: 'Đánh giá',
+            icon: 'fas fa-star',
+            href: '/reviews'
         },
         {
             id: 'promotions',
@@ -464,13 +464,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 function OrdersManagement() {
     const [orders, setOrders] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [isSearching, setIsSearching] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false); // ✅ Thêm state riêng cho searching
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [currentPage, setCurrentPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(1);
     const [totalPages, setTotalPages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(1);
     const [statusFilter, setStatusFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('all');
     const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const [dateFrom, setDateFrom] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const [dateTo, setDateTo] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [selectedOrder, setSelectedOrder] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [showOrderModal, setShowOrderModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [showSuccessModal, setShowSuccessModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [successMessage, setSuccessMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const searchInputRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const isFirstLoad = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(true); // ✅ Track lần đầu tiên load
     const statusOptions = [
         {
             value: 'all',
@@ -538,68 +545,57 @@ function OrdersManagement() {
             minute: '2-digit'
         });
     };
+    // ✅ Debounce với setTimeout
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const timeoutId = setTimeout(()=>{
+            fetchOrders();
+        }, 300);
+        return ()=>clearTimeout(timeoutId);
+    }, [
+        currentPage,
+        statusFilter,
+        searchTerm,
+        dateFrom,
+        dateTo
+    ]);
     const fetchOrders = async ()=>{
         try {
-            setLoading(true);
-            const params = new URLSearchParams({
-                page: currentPage.toString(),
-                limit: '10'
-            });
+            // ✅ Chỉ set loading=true lần đầu tiên, sau đó dùng isSearching
+            if (isFirstLoad.current) {
+                setLoading(true);
+                isFirstLoad.current = false;
+            } else {
+                setIsSearching(true);
+            }
+            setError(null);
+            const params = {
+                page: currentPage,
+                limit: 10
+            };
             if (statusFilter !== 'all') {
-                params.append('status', statusFilter);
+                params.status = statusFilter;
             }
-            if (searchTerm) {
-                params.append('search', searchTerm);
+            if (searchTerm.trim()) {
+                params.search = searchTerm.trim();
             }
-            const response = await fetch(`http://localhost:3001/orders?${params}`);
+            if (dateFrom) {
+                params.dateFrom = dateFrom;
+            }
+            if (dateTo) {
+                params.dateTo = dateTo;
+            }
+            const response = await fetch(`http://localhost:3001/orders?${new URLSearchParams(params).toString()}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch orders');
+            }
             const data = await response.json();
             setOrders(data.orders || []);
             setTotalPages(data.totalPages || 1);
         } catch (err) {
-            setError(err.message || 'Lỗi khi tải danh sách đơn hàng');
-            // Fallback data
-            setOrders([
-                {
-                    id: 1,
-                    order_number: 'UTE175836129205875',
-                    user_id: 1,
-                    status: 'confirmed',
-                    payment_method: 'COD',
-                    subtotal: 28000,
-                    shipping_fee: 20000,
-                    total: 46200,
-                    shipping_address: '123 Đường ABC, Quận 1, TP.HCM',
-                    shipping_phone: '0123456789',
-                    notes: '',
-                    created_at: '2024-12-20T16:41:00Z',
-                    updated_at: '2024-12-20T16:41:00Z',
-                    user: {
-                        id: 1,
-                        fullName: 'Nguyễn Văn A',
-                        email: 'nguyenvana@example.com',
-                        phone: '0123456789'
-                    },
-                    orderItems: [
-                        {
-                            id: 1,
-                            drink_id: 1,
-                            quantity: 1,
-                            price: 28000,
-                            size: 'M',
-                            ice_level: 'Normal',
-                            sugar_level: 'Normal',
-                            notes: '',
-                            drink: {
-                                id: 1,
-                                name: 'Trà sữa thái',
-                                image_url: '/images/thai-milk-tea.jpg'
-                            }
-                        }
-                    ]
-                }
-            ]);
+            setError(err.response?.data?.message || 'Có lỗi xảy ra khi tải danh sách đơn hàng');
         } finally{
             setLoading(false);
+            setIsSearching(false);
         }
     };
     const updateOrderStatus = async (orderId, newStatus)=>{
@@ -614,8 +610,9 @@ function OrdersManagement() {
                 })
             });
             if (response.ok) {
-                alert('✅ Cập nhật trạng thái thành công!');
-                fetchOrders(); // Tải lại danh sách đơn hàng để đảm bảo dữ liệu mới nhất
+                setSuccessMessage('Cập nhật trạng thái thành công!');
+                setShowSuccessModal(true);
+                fetchOrders();
             } else {
                 throw new Error('Cập nhật trạng thái thất bại');
             }
@@ -636,7 +633,6 @@ function OrdersManagement() {
             setShowOrderModal(true);
         } catch (err) {
             console.error('❌ Error fetching order details:', err);
-            // Fallback: Tìm đơn hàng trong danh sách hiện tại
             const orderFromList = orders.find((order)=>order.id === orderId);
             if (orderFromList) {
                 console.log('🔄 Using order from current list as fallback');
@@ -647,14 +643,18 @@ function OrdersManagement() {
             }
         }
     };
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        fetchOrders();
-    }, [
-        currentPage,
-        statusFilter,
-        searchTerm
-    ]);
-    if (loading) {
+    const closeSuccessModal = ()=>{
+        setShowSuccessModal(false);
+        setSuccessMessage('');
+    };
+    const handleReset = ()=>{
+        setSearchTerm('');
+        setDateFrom('');
+        setDateTo('');
+        setCurrentPage(1);
+    };
+    // ✅ Chỉ hiện loading spinner lần đầu tiên
+    if (loading && isFirstLoad.current) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex items-center justify-center h-64",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -662,12 +662,12 @@ function OrdersManagement() {
                 children: "Đang tải danh sách đơn hàng..."
             }, void 0, false, {
                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                lineNumber: 227,
+                lineNumber: 231,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/OrdersManagement.tsx",
-            lineNumber: 226,
+            lineNumber: 230,
             columnNumber: 7
         }, this);
     }
@@ -679,64 +679,201 @@ function OrdersManagement() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "px-6 py-4 border-b border-gray-200",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center justify-between",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-lg font-semibold text-gray-900",
-                                    children: "Quản lý đơn hàng"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 237,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex space-x-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center justify-between mb-4",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-lg font-semibold text-gray-900",
+                                        children: "Quản lý đơn hàng"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                                        lineNumber: 241,
+                                        columnNumber: 13
+                                    }, this),
+                                    isSearching && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center text-sm text-gray-500",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "animate-spin rounded-full h-4 w-4 border-b-2 border-green-600 mr-2"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                lineNumber: 245,
+                                                columnNumber: 17
+                                            }, this),
+                                            "Đang tìm kiếm..."
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                                        lineNumber: 244,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                lineNumber: 240,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                className: "block text-sm font-medium text-gray-700 mb-1",
+                                                children: "Tên khách hàng"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                lineNumber: 255,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                ref: searchInputRef,
+                                                type: "text",
+                                                placeholder: "Nhập tên khách hàng...",
+                                                value: searchTerm,
+                                                onChange: (e)=>setSearchTerm(e.target.value),
+                                                className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                lineNumber: 256,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                                        lineNumber: 254,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                className: "block text-sm font-medium text-gray-700 mb-1",
+                                                children: "Trạng thái"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                lineNumber: 268,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                                value: statusFilter,
+                                                onChange: (e)=>setStatusFilter(e.target.value),
+                                                className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600",
+                                                children: statusOptions.map((option)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                        value: option.value,
+                                                        children: option.label
+                                                    }, option.value, false, {
+                                                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                        lineNumber: 275,
+                                                        columnNumber: 19
+                                                    }, this))
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                lineNumber: 269,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                                        lineNumber: 267,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                className: "block text-sm font-medium text-gray-700 mb-1",
+                                                children: "Từ ngày"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                lineNumber: 284,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                type: "date",
+                                                value: dateFrom,
+                                                onChange: (e)=>setDateFrom(e.target.value),
+                                                className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                lineNumber: 285,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                                        lineNumber: 283,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                className: "block text-sm font-medium text-gray-700 mb-1",
+                                                children: "Đến ngày"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                lineNumber: 295,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                type: "date",
+                                                value: dateTo,
+                                                onChange: (e)=>setDateTo(e.target.value),
+                                                className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                                lineNumber: 296,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                                        lineNumber: 294,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                lineNumber: 252,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex space-x-3",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: handleReset,
+                                    className: "px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 flex items-center",
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                            type: "text",
-                                            placeholder: "Tìm kiếm đơn hàng...",
-                                            value: searchTerm,
-                                            onChange: (e)=>setSearchTerm(e.target.value),
-                                            className: "px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                            className: "fas fa-refresh mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 239,
+                                            lineNumber: 311,
                                             columnNumber: 15
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                            value: statusFilter,
-                                            onChange: (e)=>setStatusFilter(e.target.value),
-                                            className: "px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600",
-                                            children: statusOptions.map((option)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                    value: option.value,
-                                                    children: option.label
-                                                }, option.value, false, {
-                                                    fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 252,
-                                                    columnNumber: 19
-                                                }, this))
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 246,
-                                            columnNumber: 15
-                                        }, this)
+                                        "Làm mới"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 307,
                                     columnNumber: 13
                                 }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/OrdersManagement.tsx",
-                            lineNumber: 236,
-                            columnNumber: 11
-                        }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                lineNumber: 306,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                        lineNumber: 239,
+                        columnNumber: 9
+                    }, this),
+                    error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mx-6 mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded",
+                        children: error
                     }, void 0, false, {
                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                        lineNumber: 235,
-                        columnNumber: 9
+                        lineNumber: 319,
+                        columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "overflow-x-auto",
@@ -752,7 +889,7 @@ function OrdersManagement() {
                                                 children: "Mã đơn"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                lineNumber: 265,
+                                                lineNumber: 328,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -760,7 +897,7 @@ function OrdersManagement() {
                                                 children: "Hình ảnh"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                lineNumber: 268,
+                                                lineNumber: 331,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -768,7 +905,7 @@ function OrdersManagement() {
                                                 children: "Khách hàng"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                lineNumber: 271,
+                                                lineNumber: 334,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -776,7 +913,7 @@ function OrdersManagement() {
                                                 children: "Ngày đặt"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                lineNumber: 274,
+                                                lineNumber: 337,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -784,7 +921,7 @@ function OrdersManagement() {
                                                 children: "Tổng tiền"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                lineNumber: 277,
+                                                lineNumber: 340,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -792,7 +929,7 @@ function OrdersManagement() {
                                                 children: "Trạng thái"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                lineNumber: 280,
+                                                lineNumber: 343,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -800,31 +937,46 @@ function OrdersManagement() {
                                                 children: "Thao tác"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                lineNumber: 283,
+                                                lineNumber: 346,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                                        lineNumber: 264,
+                                        lineNumber: 327,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 263,
+                                    lineNumber: 326,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                     className: "bg-white divide-y divide-gray-200",
-                                    children: orders.map((order)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                    children: orders.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            colSpan: 7,
+                                            className: "px-6 py-8 text-center text-gray-500",
+                                            children: "Không tìm thấy đơn hàng nào"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/OrdersManagement.tsx",
+                                            lineNumber: 354,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                                        lineNumber: 353,
+                                        columnNumber: 17
+                                    }, this) : orders.map((order)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                            className: "hover:bg-gray-50",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900",
                                                     children: order.order_number
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 291,
-                                                    columnNumber: 19
+                                                    lineNumber: 361,
+                                                    columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 whitespace-nowrap",
@@ -842,8 +994,8 @@ function OrdersManagement() {
                                                                     }
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                                    lineNumber: 298,
-                                                                    columnNumber: 34
+                                                                    lineNumber: 368,
+                                                                    columnNumber: 29
                                                                 }, this),
                                                                 order.orderItems.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center",
@@ -853,61 +1005,61 @@ function OrdersManagement() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                                    lineNumber: 307,
-                                                                    columnNumber: 36
+                                                                    lineNumber: 377,
+                                                                    columnNumber: 31
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 297,
-                                                            columnNumber: 32
+                                                            lineNumber: 367,
+                                                            columnNumber: 27
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center",
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
                                                                 className: "fas fa-image text-gray-400"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                                lineNumber: 314,
-                                                                columnNumber: 34
+                                                                lineNumber: 384,
+                                                                columnNumber: 29
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 313,
-                                                            columnNumber: 32
+                                                            lineNumber: 383,
+                                                            columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                        lineNumber: 295,
-                                                        columnNumber: 28
+                                                        lineNumber: 365,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 294,
-                                                    columnNumber: 26
+                                                    lineNumber: 364,
+                                                    columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 whitespace-nowrap text-sm text-gray-900",
                                                     children: order.user ? order.user.fullName : `User ID: ${order.user_id}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 319,
-                                                    columnNumber: 19
+                                                    lineNumber: 389,
+                                                    columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 whitespace-nowrap text-sm text-gray-900",
                                                     children: formatDate(order.created_at)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 322,
-                                                    columnNumber: 19
+                                                    lineNumber: 392,
+                                                    columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 whitespace-nowrap text-sm text-gray-900",
                                                     children: formatCurrency(order.total)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 325,
-                                                    columnNumber: 19
+                                                    lineNumber: 395,
+                                                    columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 whitespace-nowrap",
@@ -920,18 +1072,18 @@ function OrdersManagement() {
                                                                 children: option.label
                                                             }, option.value, false, {
                                                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                                lineNumber: 335,
-                                                                columnNumber: 25
+                                                                lineNumber: 405,
+                                                                columnNumber: 27
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                        lineNumber: 329,
-                                                        columnNumber: 21
+                                                        lineNumber: 399,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 328,
-                                                    columnNumber: 19
+                                                    lineNumber: 398,
+                                                    columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 whitespace-nowrap text-sm font-medium",
@@ -941,34 +1093,34 @@ function OrdersManagement() {
                                                         children: "Chi tiết"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                        lineNumber: 342,
-                                                        columnNumber: 28
+                                                        lineNumber: 412,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 341,
-                                                    columnNumber: 19
+                                                    lineNumber: 411,
+                                                    columnNumber: 21
                                                 }, this)
                                             ]
                                         }, order.id, true, {
                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 290,
-                                            columnNumber: 17
+                                            lineNumber: 360,
+                                            columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 288,
+                                    lineNumber: 351,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                            lineNumber: 262,
+                            lineNumber: 325,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                        lineNumber: 261,
+                        lineNumber: 324,
                         columnNumber: 9
                     }, this),
                     totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -986,7 +1138,7 @@ function OrdersManagement() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 359,
+                                    lineNumber: 430,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -999,7 +1151,7 @@ function OrdersManagement() {
                                             children: "Trước"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 363,
+                                            lineNumber: 434,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1009,35 +1161,35 @@ function OrdersManagement() {
                                             children: "Sau"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 370,
+                                            lineNumber: 441,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 362,
+                                    lineNumber: 433,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                            lineNumber: 358,
+                            lineNumber: 429,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                        lineNumber: 357,
+                        lineNumber: 428,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                lineNumber: 234,
+                lineNumber: 238,
                 columnNumber: 7
             }, this),
             showOrderModal && selectedOrder && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[9999]",
-                onClick: (e)=>e.stopPropagation(),
+                onClick: ()=>setShowOrderModal(false),
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "bg-white rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto",
                     onClick: (e)=>e.stopPropagation(),
@@ -1053,7 +1205,7 @@ function OrdersManagement() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 388,
+                                    lineNumber: 459,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1063,18 +1215,18 @@ function OrdersManagement() {
                                         className: "fas fa-times text-xl"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                                        lineNumber: 393,
+                                        lineNumber: 464,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 389,
+                                    lineNumber: 460,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                            lineNumber: 387,
+                            lineNumber: 458,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1087,7 +1239,7 @@ function OrdersManagement() {
                                             children: "Thông tin đơn hàng"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 400,
+                                            lineNumber: 471,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1100,7 +1252,7 @@ function OrdersManagement() {
                                                             children: "Mã đơn:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 402,
+                                                            lineNumber: 473,
                                                             columnNumber: 24
                                                         }, this),
                                                         " ",
@@ -1108,7 +1260,7 @@ function OrdersManagement() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 402,
+                                                    lineNumber: 473,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1118,7 +1270,7 @@ function OrdersManagement() {
                                                             children: "Trạng thái:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 403,
+                                                            lineNumber: 474,
                                                             columnNumber: 24
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1126,13 +1278,13 @@ function OrdersManagement() {
                                                             children: statusOptions.find((s)=>s.value === selectedOrder.status)?.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 404,
+                                                            lineNumber: 475,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 403,
+                                                    lineNumber: 474,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1142,7 +1294,7 @@ function OrdersManagement() {
                                                             children: "Phương thức thanh toán:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 408,
+                                                            lineNumber: 479,
                                                             columnNumber: 24
                                                         }, this),
                                                         " ",
@@ -1150,7 +1302,7 @@ function OrdersManagement() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 408,
+                                                    lineNumber: 479,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1160,7 +1312,7 @@ function OrdersManagement() {
                                                             children: "Ngày đặt:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 409,
+                                                            lineNumber: 480,
                                                             columnNumber: 24
                                                         }, this),
                                                         " ",
@@ -1168,7 +1320,7 @@ function OrdersManagement() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 409,
+                                                    lineNumber: 480,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1178,7 +1330,7 @@ function OrdersManagement() {
                                                             children: "Tổng tiền:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 410,
+                                                            lineNumber: 481,
                                                             columnNumber: 24
                                                         }, this),
                                                         " ",
@@ -1186,19 +1338,19 @@ function OrdersManagement() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 410,
+                                                    lineNumber: 481,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 401,
+                                            lineNumber: 472,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 399,
+                                    lineNumber: 470,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1208,7 +1360,7 @@ function OrdersManagement() {
                                             children: "Thông tin khách hàng"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 416,
+                                            lineNumber: 487,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1221,7 +1373,7 @@ function OrdersManagement() {
                                                             children: "Tên:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 418,
+                                                            lineNumber: 489,
                                                             columnNumber: 24
                                                         }, this),
                                                         " ",
@@ -1229,7 +1381,7 @@ function OrdersManagement() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 418,
+                                                    lineNumber: 489,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1239,7 +1391,7 @@ function OrdersManagement() {
                                                             children: "Email:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 419,
+                                                            lineNumber: 490,
                                                             columnNumber: 24
                                                         }, this),
                                                         " ",
@@ -1247,7 +1399,7 @@ function OrdersManagement() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 419,
+                                                    lineNumber: 490,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1257,7 +1409,7 @@ function OrdersManagement() {
                                                             children: "Số điện thoại:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 420,
+                                                            lineNumber: 491,
                                                             columnNumber: 24
                                                         }, this),
                                                         " ",
@@ -1265,7 +1417,7 @@ function OrdersManagement() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 420,
+                                                    lineNumber: 491,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1275,7 +1427,7 @@ function OrdersManagement() {
                                                             children: "Địa chỉ giao hàng:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 421,
+                                                            lineNumber: 492,
                                                             columnNumber: 24
                                                         }, this),
                                                         " ",
@@ -1283,7 +1435,7 @@ function OrdersManagement() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 421,
+                                                    lineNumber: 492,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1293,7 +1445,7 @@ function OrdersManagement() {
                                                             children: "SĐT giao hàng:"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 422,
+                                                            lineNumber: 493,
                                                             columnNumber: 24
                                                         }, this),
                                                         " ",
@@ -1301,25 +1453,25 @@ function OrdersManagement() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 422,
+                                                    lineNumber: 493,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 417,
+                                            lineNumber: 488,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 415,
+                                    lineNumber: 486,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                            lineNumber: 397,
+                            lineNumber: 468,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1330,7 +1482,7 @@ function OrdersManagement() {
                                     children: "Sản phẩm trong đơn hàng"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 429,
+                                    lineNumber: 500,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1347,7 +1499,7 @@ function OrdersManagement() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 433,
+                                                    lineNumber: 504,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1358,7 +1510,7 @@ function OrdersManagement() {
                                                             children: item.drink?.name || 'Sản phẩm'
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 442,
+                                                            lineNumber: 513,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1374,7 +1526,7 @@ function OrdersManagement() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 443,
+                                                            lineNumber: 514,
                                                             columnNumber: 23
                                                         }, this),
                                                         item.notes && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1385,13 +1537,13 @@ function OrdersManagement() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                            lineNumber: 450,
+                                                            lineNumber: 521,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 441,
+                                                    lineNumber: 512,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1401,29 +1553,29 @@ function OrdersManagement() {
                                                         children: formatCurrency(item.price * item.quantity)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                        lineNumber: 454,
+                                                        lineNumber: 525,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                                    lineNumber: 453,
+                                                    lineNumber: 524,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, index, true, {
                                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                                            lineNumber: 432,
+                                            lineNumber: 503,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                                    lineNumber: 430,
+                                    lineNumber: 501,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                            lineNumber: 428,
+                            lineNumber: 499,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1436,7 +1588,7 @@ function OrdersManagement() {
                                         children: "Tổng cộng:"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                                        lineNumber: 464,
+                                        lineNumber: 535,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1444,18 +1596,18 @@ function OrdersManagement() {
                                         children: formatCurrency(selectedOrder.total)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/OrdersManagement.tsx",
-                                        lineNumber: 465,
+                                        lineNumber: 536,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                lineNumber: 463,
+                                lineNumber: 534,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                            lineNumber: 462,
+                            lineNumber: 533,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1466,29 +1618,100 @@ function OrdersManagement() {
                                 children: "Đóng"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                                lineNumber: 470,
+                                lineNumber: 541,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/OrdersManagement.tsx",
-                            lineNumber: 469,
+                            lineNumber: 540,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/OrdersManagement.tsx",
-                    lineNumber: 386,
+                    lineNumber: 457,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/OrdersManagement.tsx",
-                lineNumber: 385,
+                lineNumber: 456,
+                columnNumber: 9
+            }, this),
+            showSuccessModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[9999]",
+                onClick: closeSuccessModal,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "relative mx-auto p-6 border w-96 shadow-2xl rounded-lg bg-white transform transition-all duration-300 scale-100",
+                    onClick: (e)=>e.stopPropagation(),
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                    className: "fas fa-check text-green-600 text-2xl"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/OrdersManagement.tsx",
+                                    lineNumber: 564,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                lineNumber: 563,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                className: "text-xl font-semibold text-gray-900 mb-2",
+                                children: "Thành công!"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                lineNumber: 566,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "mb-6",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-gray-600",
+                                    children: successMessage
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/OrdersManagement.tsx",
+                                    lineNumber: 568,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                lineNumber: 567,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: closeSuccessModal,
+                                className: "px-6 py-3 bg-green-600 text-white font-medium rounded-lg w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200",
+                                children: "Đóng"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/OrdersManagement.tsx",
+                                lineNumber: 570,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/OrdersManagement.tsx",
+                        lineNumber: 562,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/src/components/OrdersManagement.tsx",
+                    lineNumber: 558,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/OrdersManagement.tsx",
+                lineNumber: 554,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/OrdersManagement.tsx",
-        lineNumber: 233,
+        lineNumber: 237,
         columnNumber: 5
     }, this);
 }

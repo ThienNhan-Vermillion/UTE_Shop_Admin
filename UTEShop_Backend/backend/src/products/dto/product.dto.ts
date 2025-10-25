@@ -1,4 +1,5 @@
-import { IsString, IsNumber, IsOptional, IsBoolean, IsUrl, IsInt, Min } from 'class-validator';
+import { IsString, IsNumber, IsOptional, IsBoolean, IsUrl, IsInt, Min, IsArray } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class CreateProductDto {
   @IsString()
@@ -13,11 +14,13 @@ export class CreateProductDto {
 
   @IsNumber()
   @Min(0)
+  @Transform(({ value }) => parseFloat(value) || 0)
   price: number;
 
   @IsOptional()
   @IsNumber()
   @Min(0)
+  @Transform(({ value }) => parseFloat(value) || 0)
   salePrice?: number;
 
   @IsOptional()
@@ -27,16 +30,19 @@ export class CreateProductDto {
   @IsOptional()
   @IsInt()
   @Min(0)
+  @Transform(({ value }) => parseInt(value) || 0)
   stock?: number;
 
   @IsOptional()
   @IsInt()
   @Min(0)
+  @Transform(({ value }) => parseInt(value) || 0)
   views?: number;
 
   @IsOptional()
   @IsInt()
   @Min(0)
+  @Transform(({ value }) => parseInt(value) || 0)
   sold?: number;
 
   @IsOptional()
@@ -44,6 +50,7 @@ export class CreateProductDto {
   image_url?: string;
 
   @IsNumber()
+  @Transform(({ value }) => parseInt(value) || 1)
   category_id: number;
 
   @IsOptional()
@@ -67,11 +74,13 @@ export class UpdateProductDto {
   @IsOptional()
   @IsNumber()
   @Min(0)
+  @Transform(({ value }) => parseFloat(value) || 0)
   price?: number;
 
   @IsOptional()
   @IsNumber()
   @Min(0)
+  @Transform(({ value }) => parseFloat(value) || 0)
   salePrice?: number;
 
   @IsOptional()
@@ -81,16 +90,19 @@ export class UpdateProductDto {
   @IsOptional()
   @IsInt()
   @Min(0)
+  @Transform(({ value }) => parseInt(value) || 0)
   stock?: number;
 
   @IsOptional()
   @IsInt()
   @Min(0)
+  @Transform(({ value }) => parseInt(value) || 0)
   views?: number;
 
   @IsOptional()
   @IsInt()
   @Min(0)
+  @Transform(({ value }) => parseInt(value) || 0)
   sold?: number;
 
   @IsOptional()
@@ -99,6 +111,7 @@ export class UpdateProductDto {
 
   @IsOptional()
   @IsNumber()
+  @Transform(({ value }) => parseInt(value) || 1)
   category_id?: number;
 
   @IsOptional()

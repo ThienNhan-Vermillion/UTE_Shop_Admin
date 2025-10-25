@@ -5,11 +5,11 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { EmailService } from './services/email.service';
 import { OtpService } from './services/otp.service';
-import { Users } from '../models/user.model';
+import { UTEShopUser } from '../models/uteshop.models';
 
 @Module({
   imports: [
-    SequelizeModule.forFeature([Users]),
+    SequelizeModule.forFeature([UTEShopUser]),
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'dev_jwt_secret_change_me',
       signOptions: { expiresIn: '7d' },

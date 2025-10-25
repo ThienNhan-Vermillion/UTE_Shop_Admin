@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { UTEShopOrder, UTEShopUser, UTEShopOrderItem, UTEShopDrink } from '../models/uteshop.models';
 import { Op, QueryTypes } from 'sequelize';
+import { ActivityService } from '../services/activity.service';
 
 @Injectable()
 export class OrdersService {
@@ -10,11 +11,12 @@ export class OrdersService {
     @InjectModel(UTEShopUser) private userModel: typeof UTEShopUser,
     @InjectModel(UTEShopOrderItem) private orderItemModel: typeof UTEShopOrderItem,
     @InjectModel(UTEShopDrink) private drinkModel: typeof UTEShopDrink,
+    private activityService: ActivityService,
   ) {}
 
-  async getAllOrders(page: number = 1, limit: number = 10, status?: string, search?: string) {
+  async getAllOrders(page: number = 1, limit: number = 10, status?: string, search?: string, dateFrom?: string, dateTo?: string) {
     try {
-      console.log('🔍 OrdersService.getAllOrders called with:', { page, limit, status, search });
+      console.log('🔍 OrdersService.getAllOrders called with:', { page, limit, status, search, dateFrom, dateTo });
       
       // Test database connection first
       console.log('🔍 Testing database connection...');
@@ -49,10 +51,18 @@ export class OrdersService {
         whereClause.status = status;
       }
 
-      if (search) {
-        whereClause[Op.or] = [
-          { order_number: { [Op.like]: `%${search}%` } },
-        ];
+      // Filter theo ngày tháng
+      if (dateFrom || dateTo) {
+        whereClause.created_at = {};
+        if (dateFrom) {
+          whereClause.created_at[Op.gte] = new Date(dateFrom);
+        }
+        if (dateTo) {
+          // Thêm 1 ngày để bao gồm cả ngày cuối
+          const endDate = new Date(dateTo);
+          endDate.setDate(endDate.getDate() + 1);
+          whereClause.created_at[Op.lt] = endDate;
+        }
       }
 
       console.log('🔍 Where clause:', whereClause);
@@ -68,6 +78,12 @@ export class OrdersService {
             model: this.userModel,
             as: 'user',
             attributes: ['id', 'fullName', 'email', 'phone'],
+            // Thêm where clause cho user nếu có search
+            ...(search ? {
+              where: {
+                fullName: { [Op.like]: `%${search}%` }
+              }
+            } : {})
           },
           {
             model: this.orderItemModel,
@@ -83,19 +99,53 @@ export class OrdersService {
         ],
       });
 
-      console.log('🔍 Query result:', { count, ordersCount: orders.length });
-      if (orders.length > 0) {
+      // Nếu có search và không tìm thấy kết quả từ user search, thử search theo order_number
+      let filteredOrders = orders;
+      if (search && orders.length === 0) {
+        console.log('🔍 No results from user search, trying order_number search...');
+        const { rows: orderNumberResults } = await this.orderModel.findAndCountAll({
+          where: {
+            ...whereClause,
+            order_number: { [Op.like]: `%${search}%` }
+          },
+          limit: parseInt(limit.toString()),
+          offset: offset,
+          order: [['created_at', 'DESC']],
+          include: [
+            {
+              model: this.userModel,
+              as: 'user',
+              attributes: ['id', 'fullName', 'email', 'phone'],
+            },
+            {
+              model: this.orderItemModel,
+              as: 'orderItems',
+              include: [
+                {
+                  model: this.drinkModel,
+                  as: 'drink',
+                  attributes: ['id', 'name', 'image_url'],
+                },
+              ],
+            },
+          ],
+        });
+        filteredOrders = orderNumberResults;
+      }
+
+      console.log('🔍 Query result:', { count, ordersCount: filteredOrders.length });
+      if (filteredOrders.length > 0) {
         console.log('🔍 First order sample:', {
-          id: orders[0].id,
-          order_number: orders[0].order_number,
-          status: orders[0].status,
-          user: orders[0].user ? orders[0].user.fullName : 'No user',
-          orderItemsCount: orders[0].orderItems ? orders[0].orderItems.length : 0
+          id: filteredOrders[0].id,
+          order_number: filteredOrders[0].order_number,
+          status: filteredOrders[0].status,
+          user: filteredOrders[0].user ? filteredOrders[0].user.fullName : 'No user',
+          orderItemsCount: filteredOrders[0].orderItems ? filteredOrders[0].orderItems.length : 0
         });
       }
 
       return {
-        orders,
+        orders: filteredOrders,
         total: count,
         page: parseInt(page.toString()),
         limit: parseInt(limit.toString()),
@@ -173,6 +223,12 @@ export class OrdersService {
       // Kiểm tra lại sau khi update
       const updatedOrder = await this.orderModel.findByPk(orderId);
       console.log('✅ Order after update:', { id: updatedOrder?.id, newStatus: updatedOrder?.status });
+      
+      // Log activity với mã đơn hàng thực
+      await this.activityService.logActivity(
+        'order_status_change',
+        `Cập nhật trạng thái đơn hàng ${updatedOrder?.order_number || `#${orderId}`} thành: ${status}`
+      );
       
       return { message: 'Order status updated successfully', order: updatedOrder };
     } catch (error) {

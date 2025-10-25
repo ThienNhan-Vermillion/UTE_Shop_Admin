@@ -301,11 +301,11 @@ var _s = __turbopack_context__.k.signature();
 function AdminLayout(t0) {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(39);
-    if ($[0] !== "c8dbef178b402194ffa75aa29004b6057c411555644831557118d80839234604") {
+    if ($[0] !== "58f4091235eb1e488567448e1abbfab1b2d9433586ea7862359fc0942ea54787") {
         for(let $i = 0; $i < 39; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "c8dbef178b402194ffa75aa29004b6057c411555644831557118d80839234604";
+        $[0] = "58f4091235eb1e488567448e1abbfab1b2d9433586ea7862359fc0942ea54787";
     }
     const { children, currentPage: t1 } = t0;
     const currentPage = t1 === undefined ? "dashboard" : t1;
@@ -358,10 +358,10 @@ function AdminLayout(t0) {
                 href: "/users"
             },
             {
-                id: "comments",
-                label: "B\xECnh lu\u1EADn",
-                icon: "fas fa-comments",
-                href: "/comments"
+                id: "reviews",
+                label: "\u0110\xE1nh gi\xE1",
+                icon: "fas fa-star",
+                href: "/reviews"
             },
             {
                 id: "promotions",
@@ -716,93 +716,297 @@ function AdminDashboard() {
     const [stats, setStats] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [activities, setActivities] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [startDate, setStartDate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [endDate, setEndDate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [showDeleteModal, setShowDeleteModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [deleteType, setDeleteType] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('single');
+    const [deleteId, setDeleteId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "AdminDashboard.useEffect": ()=>{
             fetchDashboardData();
         }
     }["AdminDashboard.useEffect"], []);
-    const fetchDashboardData = async ()=>{
+    // Fonction pour nettoyer les doublons d'activités
+    const removeDuplicateActivities = (activitiesList)=>{
+        const seen = new Map();
+        const filtered = [];
+        activitiesList.forEach((activity)=>{
+            // Clé unique basée sur le message et timestamp (arrondi à la seconde)
+            const timestamp = new Date(activity.timestamp).getTime();
+            const roundedTime = Math.floor(timestamp / 1000) * 1000;
+            // Priorité au message avec code UTE
+            const isUTE = activity.message.includes('UTE');
+            const key = `${activity.type}_${roundedTime}`;
+            if (!seen.has(key)) {
+                seen.set(key, activity);
+                filtered.push(activity);
+            } else {
+                // Remplacer si le nouveau a le code UTE et l'ancien non
+                const existing = seen.get(key);
+                if (isUTE && !existing.message.includes('UTE')) {
+                    const index = filtered.findIndex((a)=>a.id === existing.id);
+                    if (index !== -1) {
+                        filtered[index] = activity;
+                        seen.set(key, activity);
+                    }
+                }
+            }
+        });
+        return filtered;
+    };
+    const fetchDashboardData = async (start, end)=>{
         try {
+            const statsUrl = start && end ? `http://localhost:3001/dashboard/stats?startDate=${start}&endDate=${end}` : 'http://localhost:3001/dashboard/stats';
             const [statsRes, activitiesRes] = await Promise.all([
-                fetch('http://localhost:3001/dashboard/stats'),
+                fetch(statsUrl),
                 fetch('http://localhost:3001/dashboard/activities')
             ]);
             const statsData = await statsRes.json();
             const activitiesData = await activitiesRes.json();
             setStats(statsData);
-            setActivities(Array.isArray(activitiesData) ? activitiesData : []);
+            // Nettoyer les doublons avant d'afficher
+            const cleanedActivities = removeDuplicateActivities(Array.isArray(activitiesData) ? activitiesData : []);
+            setActivities(cleanedActivities);
         } catch (error) {
             console.error('Error fetching dashboard data:', error);
-            // Fallback data nếu API lỗi
-            setStats({
-                ordersThisWeek: 24,
-                weeklyRevenue: 12500000,
-                totalUsers: 8,
-                totalOrders: 156
-            });
-            setActivities([
-                {
-                    id: 1,
-                    type: 'product_added',
-                    message: 'Thêm sản phẩm mới: Trà sữa Matcha',
-                    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
-                    icon: 'plus',
-                    color: 'green'
-                },
-                {
-                    id: 2,
-                    type: 'product_updated',
-                    message: 'Cập nhật giá sản phẩm: Cà phê Americano',
-                    timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000),
-                    icon: 'edit',
-                    color: 'blue'
-                },
-                {
-                    id: 3,
-                    type: 'order_processed',
-                    message: 'Xử lý đơn hàng #12345',
-                    timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000),
-                    icon: 'check',
-                    color: 'yellow'
-                }
-            ]);
+            setStats(null);
+            setActivities([]);
         } finally{
             setLoading(false);
         }
     };
-    const formatTimeAgo = (timestamp)=>{
+    const formatTimeAgo = (timestamp_0)=>{
+        const date = new Date(timestamp_0);
         const now = new Date();
-        const diff = now.getTime() - new Date(timestamp).getTime();
+        const diff = now.getTime() - date.getTime();
         const hours = Math.floor(diff / (1000 * 60 * 60));
-        if (hours < 1) return 'Vừa xong';
-        if (hours === 1) return '1 giờ trước';
-        return `${hours} giờ trước`;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        if (hours < 1) {
+            const minutes = Math.floor(diff / (1000 * 60));
+            if (minutes < 1) return 'Vừa xong';
+            return `${minutes} phút trước`;
+        }
+        if (hours < 24) {
+            return `${hours} giờ trước`;
+        }
+        if (days < 7) {
+            return `${days} ngày trước`;
+        }
+        return date.toLocaleDateString('vi-VN', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    };
+    const handleDateFilter = ()=>{
+        if (startDate && endDate) {
+            setLoading(true);
+            fetchDashboardData(startDate, endDate);
+        }
+    };
+    const resetToCurrentMonth = ()=>{
+        setStartDate('');
+        setEndDate('');
+        setLoading(true);
+        fetchDashboardData();
+    };
+    const showDeleteConfirm = (type, id)=>{
+        setDeleteType(type);
+        setDeleteId(id || null);
+        setShowDeleteModal(true);
+    };
+    const confirmDelete = async ()=>{
+        try {
+            let response;
+            if (deleteType === 'single' && deleteId) {
+                response = await fetch(`http://localhost:3001/dashboard/activities/${deleteId}`, {
+                    method: 'DELETE'
+                });
+            } else {
+                response = await fetch('http://localhost:3001/dashboard/activities', {
+                    method: 'DELETE'
+                });
+            }
+            const result = await response.json();
+            if (result.success) {
+                if (deleteType === 'single') {
+                    setActivities(activities.filter((a_0)=>a_0.id !== deleteId));
+                } else {
+                    setActivities([]);
+                }
+                setShowDeleteModal(false);
+            } else {
+                alert('Không thể xóa hoạt động: ' + result.message);
+            }
+        } catch (error_0) {
+            console.error('Error deleting activity:', error_0);
+            alert('Lỗi khi xóa hoạt động');
+        }
+    };
+    const cancelDelete = ()=>{
+        setShowDeleteModal(false);
+        setDeleteId(null);
     };
     if (loading) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex items-center justify-center h-64",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "text-lg text-gray-600",
-                children: "Đang tải dữ liệu..."
-            }, void 0, false, {
-                fileName: "[project]/src/components/AdminDashboard.tsx",
-                lineNumber: 77,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/AdminDashboard.tsx",
+                    lineNumber: 157,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "ml-4 text-lg text-gray-600",
+                    children: "Đang tải dữ liệu..."
+                }, void 0, false, {
+                    fileName: "[project]/src/components/AdminDashboard.tsx",
+                    lineNumber: 158,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
             fileName: "[project]/src/components/AdminDashboard.tsx",
-            lineNumber: 76,
+            lineNumber: 156,
             columnNumber: 12
         }, this);
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "p-6",
+        className: "p-6 bg-gray-50 min-h-screen",
         children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "bg-white rounded-lg shadow-sm p-4 mb-6",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        className: "text-lg font-semibold text-gray-900 mb-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                className: "fas fa-filter mr-2 text-blue-600"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                lineNumber: 165,
+                                columnNumber: 11
+                            }, this),
+                            "Lọc theo thời gian"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                        lineNumber: 164,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex flex-wrap gap-4 items-end",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                        className: "block text-sm font-medium text-gray-700 mb-1",
+                                        children: "Từ ngày"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                        lineNumber: 170,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        type: "date",
+                                        value: startDate,
+                                        onChange: (e)=>setStartDate(e.target.value),
+                                        className: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                        lineNumber: 171,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                lineNumber: 169,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                        className: "block text-sm font-medium text-gray-700 mb-1",
+                                        children: "Đến ngày"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                        lineNumber: 174,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        type: "date",
+                                        value: endDate,
+                                        onChange: (e_0)=>setEndDate(e_0.target.value),
+                                        className: "border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                        lineNumber: 175,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                lineNumber: 173,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: handleDateFilter,
+                                disabled: !startDate || !endDate,
+                                className: "bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                        className: "fas fa-search mr-2"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                        lineNumber: 178,
+                                        columnNumber: 13
+                                    }, this),
+                                    "Áp dụng"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                lineNumber: 177,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: resetToCurrentMonth,
+                                className: "bg-gray-600 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-700 transition-colors",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                        className: "fas fa-calendar-alt mr-2"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                        lineNumber: 182,
+                                        columnNumber: 13
+                                    }, this),
+                                    "Tháng hiện tại"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                lineNumber: 181,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                        lineNumber: 168,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/AdminDashboard.tsx",
+                lineNumber: 163,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-600",
+                        className: "bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-600 hover:shadow-md transition-shadow",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center justify-between",
                             children: [
@@ -810,53 +1014,53 @@ function AdminDashboard() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "text-sm font-medium text-gray-600",
-                                            children: "Đơn hàng trong tuần"
+                                            children: startDate && endDate ? 'Đơn hàng trong khoảng thời gian' : 'Đơn hàng trong tháng'
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                                            lineNumber: 87,
+                                            lineNumber: 194,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-3xl font-bold text-gray-900",
-                                            children: stats?.ordersThisWeek || 24
+                                            className: "text-3xl font-bold text-gray-900 mt-2",
+                                            children: stats?.ordersInPeriod || 0
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                                            lineNumber: 88,
+                                            lineNumber: 197,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/AdminDashboard.tsx",
-                                    lineNumber: 86,
+                                    lineNumber: 193,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-green-100 p-3 rounded-full",
+                                    className: "bg-green-100 p-4 rounded-full",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                        className: "fas fa-shopping-cart text-green-600 text-xl"
+                                        className: "fas fa-shopping-cart text-green-600 text-2xl"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/AdminDashboard.tsx",
-                                        lineNumber: 91,
+                                        lineNumber: 200,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/AdminDashboard.tsx",
-                                    lineNumber: 90,
+                                    lineNumber: 199,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                            lineNumber: 85,
+                            lineNumber: 192,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/AdminDashboard.tsx",
-                        lineNumber: 84,
+                        lineNumber: 191,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "bg-white rounded-lg shadow-sm p-6 border-l-4 border-yellow-600",
+                        className: "bg-white rounded-lg shadow-sm p-6 border-l-4 border-yellow-600 hover:shadow-md transition-shadow",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center justify-between",
                             children: [
@@ -864,53 +1068,61 @@ function AdminDashboard() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "text-sm font-medium text-gray-600",
-                                            children: "Doanh thu tuần"
+                                            children: startDate && endDate ? 'Doanh thu trong khoảng thời gian' : 'Doanh thu tháng'
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                                            lineNumber: 100,
+                                            lineNumber: 209,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-3xl font-bold text-gray-900",
-                                            children: stats?.weeklyRevenue ? (stats.weeklyRevenue / 1000000).toFixed(1) + 'M' : '12.5M'
+                                            className: "text-2xl font-bold text-gray-900 mt-2",
+                                            children: stats?.periodRevenue ? stats.periodRevenue.toLocaleString('vi-VN') : '0'
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                                            lineNumber: 101,
+                                            lineNumber: 212,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-xs text-gray-500 mt-1",
+                                            children: "VNĐ"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/AdminDashboard.tsx",
+                                            lineNumber: 215,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/AdminDashboard.tsx",
-                                    lineNumber: 99,
+                                    lineNumber: 208,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-yellow-100 p-3 rounded-full",
+                                    className: "bg-yellow-100 p-4 rounded-full",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                        className: "fas fa-chart-line text-yellow-600 text-xl"
+                                        className: "fas fa-chart-line text-yellow-600 text-2xl"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/AdminDashboard.tsx",
-                                        lineNumber: 106,
+                                        lineNumber: 218,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/AdminDashboard.tsx",
-                                    lineNumber: 105,
+                                    lineNumber: 217,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                            lineNumber: 98,
+                            lineNumber: 207,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/AdminDashboard.tsx",
-                        lineNumber: 97,
+                        lineNumber: 206,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "bg-white rounded-lg shadow-sm p-6 border-l-4 border-purple-500",
+                        className: "bg-white rounded-lg shadow-sm p-6 border-l-4 border-purple-500 hover:shadow-md transition-shadow",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center justify-between",
                             children: [
@@ -921,148 +1133,338 @@ function AdminDashboard() {
                                             children: "Người dùng"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                                            lineNumber: 115,
+                                            lineNumber: 227,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-3xl font-bold text-gray-900",
-                                            children: stats?.totalUsers || 8
+                                            className: "text-3xl font-bold text-gray-900 mt-2",
+                                            children: stats?.totalUsers || 0
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                                            lineNumber: 116,
+                                            lineNumber: 228,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/AdminDashboard.tsx",
-                                    lineNumber: 114,
+                                    lineNumber: 226,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-purple-100 p-3 rounded-full",
+                                    className: "bg-purple-100 p-4 rounded-full",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                        className: "fas fa-users text-purple-600 text-xl"
+                                        className: "fas fa-users text-purple-600 text-2xl"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/AdminDashboard.tsx",
-                                        lineNumber: 119,
+                                        lineNumber: 231,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/AdminDashboard.tsx",
-                                    lineNumber: 118,
+                                    lineNumber: 230,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                            lineNumber: 113,
+                            lineNumber: 225,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/AdminDashboard.tsx",
-                        lineNumber: 112,
+                        lineNumber: 224,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/AdminDashboard.tsx",
-                lineNumber: 82,
+                lineNumber: 189,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "bg-white rounded-lg shadow-sm",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "px-6 py-4 border-b border-gray-200",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                            className: "text-lg font-semibold text-gray-900",
-                            children: "Hoạt động gần đây"
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/AdminDashboard.tsx",
-                            lineNumber: 128,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
+                        className: "px-6 py-4 border-b border-gray-200 flex justify-between items-center",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                className: "text-lg font-semibold text-gray-900",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                        className: "fas fa-history mr-2 text-blue-600"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                        lineNumber: 241,
+                                        columnNumber: 13
+                                    }, this),
+                                    "Hoạt động gần đây"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                lineNumber: 240,
+                                columnNumber: 11
+                            }, this),
+                            activities.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>showDeleteConfirm('all'),
+                                className: "text-red-600 hover:text-red-800 text-sm font-medium transition-colors",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                        className: "fas fa-trash mr-1"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                        lineNumber: 245,
+                                        columnNumber: 15
+                                    }, this),
+                                    "Xóa tất cả"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                lineNumber: 244,
+                                columnNumber: 37
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/src/components/AdminDashboard.tsx",
-                        lineNumber: 127,
+                        lineNumber: 239,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "p-6",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "space-y-4",
-                            children: activities.map((activity)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex items-center space-x-4",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: `bg-${activity.color}-100 p-2 rounded-full`,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                className: `fas fa-${activity.icon} text-${activity.color}-600`
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/AdminDashboard.tsx",
-                                                lineNumber: 134,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/AdminDashboard.tsx",
-                                            lineNumber: 133,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex-1",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-sm font-medium text-gray-900",
-                                                    children: activity.message
+                            children: [
+                                activities.map((activity_0)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center space-x-4 group p-3 rounded-lg hover:bg-gray-50 transition-colors",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: `bg-${activity_0.color}-100 p-3 rounded-full flex-shrink-0`,
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                    className: `fas fa-${activity_0.icon} text-${activity_0.color}-600 text-lg`
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/AdminDashboard.tsx",
-                                                    lineNumber: 137,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-xs text-gray-500",
-                                                    children: formatTimeAgo(activity.timestamp)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/AdminDashboard.tsx",
-                                                    lineNumber: 138,
+                                                    lineNumber: 253,
                                                     columnNumber: 19
                                                 }, this)
-                                            ]
-                                        }, void 0, true, {
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                                lineNumber: 252,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex-1 min-w-0",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-sm font-medium text-gray-900 truncate",
+                                                        children: activity_0.message
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                                        lineNumber: 256,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-xs text-gray-500 mt-1",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                                className: "fas fa-clock mr-1"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                                                lineNumber: 258,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            formatTimeAgo(activity_0.timestamp)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                                        lineNumber: 257,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                                lineNumber: 255,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: ()=>showDeleteConfirm('single', activity_0.id),
+                                                className: "opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-50 transition-all flex-shrink-0",
+                                                title: "Xóa hoạt động",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                    className: "fas fa-times"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/AdminDashboard.tsx",
+                                                    lineNumber: 263,
+                                                    columnNumber: 19
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                                lineNumber: 262,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, activity_0.id, true, {
+                                        fileName: "[project]/src/components/AdminDashboard.tsx",
+                                        lineNumber: 251,
+                                        columnNumber: 43
+                                    }, this)),
+                                activities.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "text-center py-12 text-gray-500",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                            className: "fas fa-inbox text-5xl mb-3 text-gray-300"
+                                        }, void 0, false, {
                                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                                            lineNumber: 136,
+                                            lineNumber: 267,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-lg font-medium",
+                                            children: "Chưa có hoạt động nào"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/AdminDashboard.tsx",
+                                            lineNumber: 268,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-sm mt-1",
+                                            children: "Các hoạt động sẽ xuất hiện ở đây"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/AdminDashboard.tsx",
+                                            lineNumber: 269,
                                             columnNumber: 17
                                         }, this)
                                     ]
-                                }, activity.id, true, {
+                                }, void 0, true, {
                                     fileName: "[project]/src/components/AdminDashboard.tsx",
-                                    lineNumber: 132,
+                                    lineNumber: 266,
                                     columnNumber: 41
-                                }, this))
-                        }, void 0, false, {
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/src/components/AdminDashboard.tsx",
-                            lineNumber: 131,
+                            lineNumber: 250,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/AdminDashboard.tsx",
-                        lineNumber: 130,
+                        lineNumber: 249,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/AdminDashboard.tsx",
-                lineNumber: 126,
+                lineNumber: 238,
                 columnNumber: 7
+            }, this),
+            showDeleteModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4",
+                onClick: cancelDelete,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "bg-white rounded-lg shadow-xl max-w-md w-full p-6 transform transition-all",
+                    onClick: (e_1)=>e_1.stopPropagation(),
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex items-center justify-center w-16 h-16 mx-auto bg-red-100 rounded-full mb-4",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                className: "fas fa-exclamation-triangle text-red-600 text-2xl"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/AdminDashboard.tsx",
+                                lineNumber: 279,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/AdminDashboard.tsx",
+                            lineNumber: 278,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "text-center",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                    className: "text-xl font-semibold text-gray-900 mb-2",
+                                    children: deleteType === 'all' ? 'Xóa tất cả hoạt động?' : 'Xóa hoạt động?'
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/AdminDashboard.tsx",
+                                    lineNumber: 282,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-sm text-gray-600 mb-6",
+                                    children: deleteType === 'all' ? 'Bạn có chắc chắn muốn xóa tất cả hoạt động? Hành động này không thể hoàn tác.' : 'Bạn có chắc chắn muốn xóa hoạt động này? Hành động này không thể hoàn tác.'
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/AdminDashboard.tsx",
+                                    lineNumber: 285,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex space-x-3 justify-center",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: cancelDelete,
+                                            className: "px-5 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                    className: "fas fa-times mr-2"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/AdminDashboard.tsx",
+                                                    lineNumber: 290,
+                                                    columnNumber: 19
+                                                }, this),
+                                                "Hủy"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/AdminDashboard.tsx",
+                                            lineNumber: 289,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: confirmDelete,
+                                            className: "px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                    className: "fas fa-trash mr-2"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/AdminDashboard.tsx",
+                                                    lineNumber: 294,
+                                                    columnNumber: 19
+                                                }, this),
+                                                deleteType === 'all' ? 'Xóa tất cả' : 'Xóa'
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/AdminDashboard.tsx",
+                                            lineNumber: 293,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/AdminDashboard.tsx",
+                                    lineNumber: 288,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/AdminDashboard.tsx",
+                            lineNumber: 281,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/AdminDashboard.tsx",
+                    lineNumber: 277,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/AdminDashboard.tsx",
+                lineNumber: 276,
+                columnNumber: 27
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/AdminDashboard.tsx",
-        lineNumber: 80,
+        lineNumber: 161,
         columnNumber: 10
     }, this);
 }
-_s(AdminDashboard, "8eDTMvq+vhptTSM1qRQYp/HaQBs=");
+_s(AdminDashboard, "8Ot+UIVydNA7acmgwzW4meaen68=");
 _c = AdminDashboard;
 var _c;
 __turbopack_context__.k.register(_c, "AdminDashboard");

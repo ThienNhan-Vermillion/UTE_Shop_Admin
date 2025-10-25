@@ -2,7 +2,7 @@ import { Injectable, UnauthorizedException, BadRequestException, ConflictExcepti
 import { InjectModel } from '@nestjs/sequelize';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { Users } from '../models/user.model';
+import { UTEShopUser } from '../models/uteshop.models';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { OtpDto } from './dto/otp.dto';
@@ -13,8 +13,8 @@ import { OtpService } from './services/otp.service';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectModel(Users)
-    private userModel: typeof Users,
+    @InjectModel(UTEShopUser)
+    private userModel: typeof UTEShopUser,
     private jwtService: JwtService,
     private emailService: EmailService,
     private otpService: OtpService,

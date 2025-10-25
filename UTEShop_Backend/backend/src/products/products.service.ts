@@ -45,11 +45,13 @@ async create(createProductDto: CreateProductDto) {
 
   async update(id: number, updateProductDto: UpdateProductDto) {
     console.log('Updating product with id:', id, 'data:', updateProductDto);
+    const updateData: any = {
+      ...updateProductDto,
+      updated_at: new Date(),
+    };
+    
     const [affectedCount] = await this.drinkModel.update(
-      {
-        ...updateProductDto,
-        updated_at: new Date(),
-      },
+      updateData,
       {
         where: { id },
       },

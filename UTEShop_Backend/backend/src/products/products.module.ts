@@ -1,13 +1,14 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { UTEShopDrink } from '../models/uteshop.models';
+import { UTEShopDrink, UTEShopActivity } from '../models/uteshop.models';
 import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
+import { ActivityService } from '../services/activity.service';
 
 @Module({
-  imports: [SequelizeModule.forFeature([UTEShopDrink])],
+  imports: [SequelizeModule.forFeature([UTEShopDrink, UTEShopActivity])],
   controllers: [ProductsController],
-  providers: [ProductsService],
+  providers: [ProductsService, ActivityService],
   exports: [ProductsService],
 })
 export class ProductsModule {}

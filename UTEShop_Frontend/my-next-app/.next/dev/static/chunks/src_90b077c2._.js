@@ -301,11 +301,11 @@ var _s = __turbopack_context__.k.signature();
 function AdminLayout(t0) {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(39);
-    if ($[0] !== "c8dbef178b402194ffa75aa29004b6057c411555644831557118d80839234604") {
+    if ($[0] !== "58f4091235eb1e488567448e1abbfab1b2d9433586ea7862359fc0942ea54787") {
         for(let $i = 0; $i < 39; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "c8dbef178b402194ffa75aa29004b6057c411555644831557118d80839234604";
+        $[0] = "58f4091235eb1e488567448e1abbfab1b2d9433586ea7862359fc0942ea54787";
     }
     const { children, currentPage: t1 } = t0;
     const currentPage = t1 === undefined ? "dashboard" : t1;
@@ -358,10 +358,10 @@ function AdminLayout(t0) {
                 href: "/users"
             },
             {
-                id: "comments",
-                label: "B\xECnh lu\u1EADn",
-                icon: "fas fa-comments",
-                href: "/comments"
+                id: "reviews",
+                label: "\u0110\xE1nh gi\xE1",
+                icon: "fas fa-star",
+                href: "/reviews"
             },
             {
                 id: "promotions",
@@ -708,12 +708,28 @@ __turbopack_context__.s([
     ()=>checkUsernameAvailable,
     "createProduct",
     ()=>createProduct,
+    "createReview",
+    ()=>createReview,
+    "deleteReview",
+    ()=>deleteReview,
     "forgotPassword",
     ()=>forgotPassword,
+    "getDrinkRatingStats",
+    ()=>getDrinkRatingStats,
+    "getOrders",
+    ()=>getOrders,
     "getProduct",
     ()=>getProduct,
     "getProducts",
     ()=>getProducts,
+    "getReview",
+    ()=>getReview,
+    "getReviews",
+    ()=>getReviews,
+    "getReviewsByDrinkId",
+    ()=>getReviewsByDrinkId,
+    "getUsers",
+    ()=>getUsers,
     "hideProduct",
     ()=>hideProduct,
     "login",
@@ -726,8 +742,12 @@ __turbopack_context__.s([
     ()=>resetPassword,
     "showProduct",
     ()=>showProduct,
+    "toggleReviewHidden",
+    ()=>toggleReviewHidden,
     "updateProduct",
     ()=>updateProduct,
+    "updateReview",
+    ()=>updateReview,
     "verifyForgotOtp",
     ()=>verifyForgotOtp
 ]);
@@ -808,9 +828,26 @@ const getProduct = async (id)=>{
         throw error;
     }
 };
-const createProduct = async (productData)=>{
+const createProduct = async (productData, images)=>{
     try {
-        const response = await api.post('/products', productData);
+        const formData = new FormData();
+        // Thêm các field text vào FormData
+        Object.keys(productData).forEach((key)=>{
+            if (productData[key] !== undefined && productData[key] !== null) {
+                formData.append(key, productData[key]);
+            }
+        });
+        // Thêm images vào FormData
+        if (images && images.length > 0) {
+            images.forEach((image)=>{
+                formData.append('images', image);
+            });
+        }
+        const response = await api.post('/products', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
         return response.data;
     } catch (error) {
         console.error('Error creating product:', error);
@@ -819,10 +856,13 @@ const createProduct = async (productData)=>{
 };
 const updateProduct = async (id, productData)=>{
     try {
+        console.log('Updating product:', id, productData);
         const response = await api.patch(`/products/${id}`, productData);
+        console.log('Update response:', response.data);
         return response.data;
     } catch (error) {
         console.error('Error updating product:', error);
+        console.error('Error response:', error.response?.data);
         throw error;
     }
 };
@@ -841,6 +881,104 @@ const showProduct = async (id)=>{
         return response.data;
     } catch (error) {
         console.error('Error showing product:', error);
+        throw error;
+    }
+};
+const getOrders = async (params)=>{
+    try {
+        const response = await api.get('/orders', {
+            params
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching orders:', error);
+        throw error;
+    }
+};
+const getUsers = async (params)=>{
+    try {
+        const response = await api.get('/users', {
+            params
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        throw error;
+    }
+};
+const getReviews = async (params)=>{
+    try {
+        const response = await api.get('/reviews', {
+            params
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching reviews:', error);
+        throw error;
+    }
+};
+const getReview = async (id)=>{
+    try {
+        const response = await api.get(`/reviews/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching review:', error);
+        throw error;
+    }
+};
+const getReviewsByDrinkId = async (drinkId, params)=>{
+    try {
+        const response = await api.get(`/reviews/drink/${drinkId}`, {
+            params
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching reviews by drink:', error);
+        throw error;
+    }
+};
+const getDrinkRatingStats = async (drinkId)=>{
+    try {
+        const response = await api.get(`/reviews/drink/${drinkId}/stats`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching drink rating stats:', error);
+        throw error;
+    }
+};
+const createReview = async (reviewData)=>{
+    try {
+        const response = await api.post('/reviews', reviewData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating review:', error);
+        throw error;
+    }
+};
+const updateReview = async (id, reviewData)=>{
+    try {
+        const response = await api.patch(`/reviews/${id}`, reviewData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating review:', error);
+        throw error;
+    }
+};
+const toggleReviewHidden = async (id)=>{
+    try {
+        const response = await api.patch(`/reviews/${id}/toggle-hidden`);
+        return response.data;
+    } catch (error) {
+        console.error('Error toggling review hidden:', error);
+        throw error;
+    }
+};
+const deleteReview = async (id)=>{
+    try {
+        const response = await api.delete(`/reviews/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting review:', error);
         throw error;
     }
 };
@@ -873,6 +1011,8 @@ const ProductsManagement = ()=>{
     const [showSuccessModal, setShowSuccessModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [successMessage, setSuccessMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [editingProduct, setEditingProduct] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [selectedImages, setSelectedImages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [existingImages, setExistingImages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         name: '',
         slug: '',
@@ -924,12 +1064,43 @@ const ProductsManagement = ()=>{
     };
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        // Validation
+        if (!formData.name.trim()) {
+            alert('Vui lòng nhập tên sản phẩm');
+            return;
+        }
+        if (!formData.slug.trim()) {
+            alert('Vui lòng nhập slug');
+            return;
+        }
+        if (formData.price <= 0) {
+            alert('Vui lòng nhập giá hợp lệ');
+            return;
+        }
+        if (formData.category_id <= 0) {
+            alert('Vui lòng chọn loại sản phẩm');
+            return;
+        }
         try {
+            // Chuẩn bị dữ liệu gửi đi
+            const submitData = {
+                name: formData.name.trim(),
+                slug: formData.slug.trim(),
+                description: formData.description.trim(),
+                price: Number(formData.price),
+                salePrice: formData.salePrice > 0 ? Number(formData.salePrice) : undefined,
+                size: formData.size.trim() || undefined,
+                stock: Number(formData.stock) || 0,
+                views: Number(formData.views) || 0,
+                sold: Number(formData.sold) || 0,
+                image_url: formData.image_url.trim() || undefined,
+                category_id: Number(formData.category_id)
+            };
             let data_0;
             if (editingProduct) {
-                data_0 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["updateProduct"])(editingProduct.id, formData);
+                data_0 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["updateProduct"])(editingProduct.id, submitData);
             } else {
-                data_0 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createProduct"])(formData);
+                data_0 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createProduct"])(submitData, selectedImages);
             }
             if (data_0.success) {
                 setSuccessMessage(editingProduct ? 'Sản phẩm đã được cập nhật thành công!' : 'Sản phẩm đã được thêm thành công!');
@@ -942,7 +1113,13 @@ const ProductsManagement = ()=>{
             }
         } catch (error_0) {
             console.error('Lỗi khi lưu sản phẩm:', error_0);
-            alert('Có lỗi xảy ra khi lưu sản phẩm');
+            if (error_0.response?.data?.message) {
+                alert('Có lỗi xảy ra: ' + error_0.response.data.message);
+            } else if (error_0.response?.data?.error) {
+                alert('Có lỗi xảy ra: ' + error_0.response.data.error);
+            } else {
+                alert('Có lỗi xảy ra khi lưu sản phẩm');
+            }
         }
     };
     const handleEdit = (product)=>{
@@ -951,15 +1128,27 @@ const ProductsManagement = ()=>{
             name: product.name,
             slug: product.slug,
             description: product.description || '',
-            price: product.price,
+            price: product.price || 0,
             salePrice: product.salePrice || 0,
             size: product.size || '',
             stock: product.stock || 0,
             views: product.views || 0,
             sold: product.sold || 0,
             image_url: product.image_url || '',
-            category_id: product.category_id
+            category_id: product.category_id || 1
         });
+        // Xử lý existing images
+        if (product.image_urls) {
+            const images = product.image_urls.split(',').filter((url)=>url.trim());
+            setExistingImages(images);
+        } else if (product.image_url) {
+            setExistingImages([
+                product.image_url
+            ]);
+        } else {
+            setExistingImages([]);
+        }
+        setSelectedImages([]);
         setShowModal(true);
     };
     const handleHide = async (id)=>{
@@ -1017,6 +1206,8 @@ const ProductsManagement = ()=>{
             category_id: 1
         });
         setEditingProduct(null);
+        setSelectedImages([]);
+        setExistingImages([]);
     };
     const openAddModal = ()=>{
         resetForm();
@@ -1036,6 +1227,10 @@ const ProductsManagement = ()=>{
             currency: 'VND'
         }).format(price);
     };
+    const handleRemoveExistingImage = (index)=>{
+        const newExistingImages = existingImages.filter((_, i)=>i !== index);
+        setExistingImages(newExistingImages);
+    };
     const getCategoryName = (categoryId)=>{
         const category = categories.find((cat)=>cat.id === categoryId);
         return category ? category.name : 'Không xác định';
@@ -1053,7 +1248,7 @@ const ProductsManagement = ()=>{
                             children: "Quản lý sản phẩm"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                            lineNumber: 206,
+                            lineNumber: 265,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1064,20 +1259,20 @@ const ProductsManagement = ()=>{
                                     className: "fas fa-plus mr-2"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                    lineNumber: 208,
+                                    lineNumber: 267,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 "Thêm sản phẩm"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                            lineNumber: 207,
+                            lineNumber: 266,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                    lineNumber: 205,
+                    lineNumber: 264,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1086,12 +1281,12 @@ const ProductsManagement = ()=>{
                         className: "animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                        lineNumber: 214,
+                        lineNumber: 273,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                    lineNumber: 213,
+                    lineNumber: 272,
                     columnNumber: 20
                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "bg-white rounded-lg shadow overflow-hidden",
@@ -1107,7 +1302,7 @@ const ProductsManagement = ()=>{
                                             children: "Hình ảnh"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 219,
+                                            lineNumber: 278,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1115,7 +1310,7 @@ const ProductsManagement = ()=>{
                                             children: "Tên sản phẩm"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 222,
+                                            lineNumber: 281,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1123,7 +1318,7 @@ const ProductsManagement = ()=>{
                                             children: "Loại sản phẩm"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 225,
+                                            lineNumber: 284,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1131,7 +1326,7 @@ const ProductsManagement = ()=>{
                                             children: "Giá"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 228,
+                                            lineNumber: 287,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1139,7 +1334,7 @@ const ProductsManagement = ()=>{
                                             children: "Giá KM"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 231,
+                                            lineNumber: 290,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1147,7 +1342,7 @@ const ProductsManagement = ()=>{
                                             children: "Tồn kho"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 234,
+                                            lineNumber: 293,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1155,7 +1350,7 @@ const ProductsManagement = ()=>{
                                             children: "Đã bán"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 237,
+                                            lineNumber: 296,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1163,7 +1358,7 @@ const ProductsManagement = ()=>{
                                             children: "Trạng thái"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 240,
+                                            lineNumber: 299,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1171,18 +1366,18 @@ const ProductsManagement = ()=>{
                                             children: "Thao tác"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 243,
+                                            lineNumber: 302,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                    lineNumber: 218,
+                                    lineNumber: 277,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                lineNumber: 217,
+                                lineNumber: 276,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1199,7 +1394,7 @@ const ProductsManagement = ()=>{
                                                         alt: product_0.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                        lineNumber: 252,
+                                                        lineNumber: 311,
                                                         columnNumber: 48
                                                     }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "h-10 w-10 rounded-lg bg-gray-200 flex items-center justify-center",
@@ -1207,22 +1402,22 @@ const ProductsManagement = ()=>{
                                                             className: "fas fa-image text-gray-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 253,
+                                                            lineNumber: 312,
                                                             columnNumber: 29
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                        lineNumber: 252,
+                                                        lineNumber: 311,
                                                         columnNumber: 151
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 251,
+                                                    lineNumber: 310,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 250,
+                                                lineNumber: 309,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1232,12 +1427,12 @@ const ProductsManagement = ()=>{
                                                     children: product_0.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 258,
+                                                    lineNumber: 317,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 257,
+                                                lineNumber: 316,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1247,12 +1442,12 @@ const ProductsManagement = ()=>{
                                                     children: getCategoryName(product_0.category_id)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 261,
+                                                    lineNumber: 320,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 260,
+                                                lineNumber: 319,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1262,12 +1457,12 @@ const ProductsManagement = ()=>{
                                                     children: formatPrice(product_0.price)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 264,
+                                                    lineNumber: 323,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 263,
+                                                lineNumber: 322,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1277,12 +1472,12 @@ const ProductsManagement = ()=>{
                                                     children: product_0.salePrice && product_0.salePrice > 0 ? formatPrice(product_0.salePrice) : '-'
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 267,
+                                                    lineNumber: 326,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 266,
+                                                lineNumber: 325,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1292,12 +1487,12 @@ const ProductsManagement = ()=>{
                                                     children: product_0.stock || 0
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 272,
+                                                    lineNumber: 331,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 271,
+                                                lineNumber: 330,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1307,12 +1502,12 @@ const ProductsManagement = ()=>{
                                                     children: product_0.sold || 0
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 275,
+                                                    lineNumber: 334,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 274,
+                                                lineNumber: 333,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1322,12 +1517,12 @@ const ProductsManagement = ()=>{
                                                     children: product_0.is_hidden ? 'Đã ẩn' : 'Còn hàng'
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 278,
+                                                    lineNumber: 337,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 277,
+                                                lineNumber: 336,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1339,7 +1534,7 @@ const ProductsManagement = ()=>{
                                                         children: "Sửa"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                        lineNumber: 283,
+                                                        lineNumber: 342,
                                                         columnNumber: 23
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     product_0.is_hidden ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1348,7 +1543,7 @@ const ProductsManagement = ()=>{
                                                         children: "Hiện"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                        lineNumber: 286,
+                                                        lineNumber: 345,
                                                         columnNumber: 46
                                                     }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         onClick: ()=>handleHide(product_0.id),
@@ -1356,35 +1551,35 @@ const ProductsManagement = ()=>{
                                                         children: "Ẩn"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                        lineNumber: 288,
+                                                        lineNumber: 347,
                                                         columnNumber: 37
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 282,
+                                                lineNumber: 341,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, product_0.id, true, {
                                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                                        lineNumber: 249,
+                                        lineNumber: 308,
                                         columnNumber: 44
                                     }, ("TURBOPACK compile-time value", void 0)))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                lineNumber: 248,
+                                lineNumber: 307,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                        lineNumber: 216,
+                        lineNumber: 275,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                    lineNumber: 215,
+                    lineNumber: 274,
                     columnNumber: 20
                 }, ("TURBOPACK compile-time value", void 0)),
                 showModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1404,7 +1599,7 @@ const ProductsManagement = ()=>{
                                             children: editingProduct ? 'Sửa sản phẩm' : 'Thêm sản phẩm mới'
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 302,
+                                            lineNumber: 361,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1414,18 +1609,18 @@ const ProductsManagement = ()=>{
                                                 className: "fas fa-times"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                lineNumber: 306,
+                                                lineNumber: 365,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 305,
+                                            lineNumber: 364,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                    lineNumber: 301,
+                                    lineNumber: 360,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1442,7 +1637,7 @@ const ProductsManagement = ()=>{
                                                             children: "Tên sản phẩm"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 313,
+                                                            lineNumber: 372,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1456,13 +1651,13 @@ const ProductsManagement = ()=>{
                                                             required: true
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 314,
+                                                            lineNumber: 373,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 312,
+                                                    lineNumber: 371,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1472,7 +1667,7 @@ const ProductsManagement = ()=>{
                                                             children: "Slug"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 321,
+                                                            lineNumber: 380,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1486,19 +1681,19 @@ const ProductsManagement = ()=>{
                                                             required: true
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 322,
+                                                            lineNumber: 381,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 320,
+                                                    lineNumber: 379,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 311,
+                                            lineNumber: 370,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1511,7 +1706,7 @@ const ProductsManagement = ()=>{
                                                             children: "Loại sản phẩm"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 331,
+                                                            lineNumber: 390,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1527,18 +1722,18 @@ const ProductsManagement = ()=>{
                                                                     children: category_0.name
                                                                 }, category_0.id, false, {
                                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                                    lineNumber: 336,
+                                                                    lineNumber: 395,
                                                                     columnNumber: 55
                                                                 }, ("TURBOPACK compile-time value", void 0)))
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 332,
+                                                            lineNumber: 391,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 330,
+                                                    lineNumber: 389,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1548,7 +1743,7 @@ const ProductsManagement = ()=>{
                                                             children: "Kích cỡ"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 343,
+                                                            lineNumber: 402,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1564,7 +1759,7 @@ const ProductsManagement = ()=>{
                                                                     children: "Chọn kích cỡ"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                                    lineNumber: 348,
+                                                                    lineNumber: 407,
                                                                     columnNumber: 25
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1572,7 +1767,7 @@ const ProductsManagement = ()=>{
                                                                     children: "S"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                                    lineNumber: 349,
+                                                                    lineNumber: 408,
                                                                     columnNumber: 25
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1580,7 +1775,7 @@ const ProductsManagement = ()=>{
                                                                     children: "M"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                                    lineNumber: 350,
+                                                                    lineNumber: 409,
                                                                     columnNumber: 25
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1588,7 +1783,7 @@ const ProductsManagement = ()=>{
                                                                     children: "L"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                                    lineNumber: 351,
+                                                                    lineNumber: 410,
                                                                     columnNumber: 25
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1596,25 +1791,25 @@ const ProductsManagement = ()=>{
                                                                     children: "XL"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                                    lineNumber: 352,
+                                                                    lineNumber: 411,
                                                                     columnNumber: 25
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 344,
+                                                            lineNumber: 403,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 342,
+                                                    lineNumber: 401,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 329,
+                                            lineNumber: 388,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1627,27 +1822,28 @@ const ProductsManagement = ()=>{
                                                             children: "Giá (VNĐ)"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 359,
+                                                            lineNumber: 418,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "number",
-                                                            value: formData.price,
+                                                            value: formData.price || '',
                                                             onChange: (e_5)=>setFormData({
                                                                     ...formData,
-                                                                    price: parseFloat(e_5.target.value)
+                                                                    price: parseFloat(e_5.target.value) || 0
                                                                 }),
                                                             className: "mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500",
-                                                            required: true
+                                                            required: true,
+                                                            min: "0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 360,
+                                                            lineNumber: 419,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 358,
+                                                    lineNumber: 417,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1657,32 +1853,33 @@ const ProductsManagement = ()=>{
                                                             children: "Giá KM (VNĐ)"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 367,
+                                                            lineNumber: 426,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "number",
-                                                            value: formData.salePrice,
+                                                            value: formData.salePrice || '',
                                                             onChange: (e_6)=>setFormData({
                                                                     ...formData,
-                                                                    salePrice: parseFloat(e_6.target.value)
+                                                                    salePrice: parseFloat(e_6.target.value) || 0
                                                                 }),
-                                                            className: "mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                                                            className: "mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500",
+                                                            min: "0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 368,
+                                                            lineNumber: 427,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 366,
+                                                    lineNumber: 425,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 357,
+                                            lineNumber: 416,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1695,27 +1892,27 @@ const ProductsManagement = ()=>{
                                                             children: "Tồn kho"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 377,
+                                                            lineNumber: 436,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "number",
-                                                            value: formData.stock,
+                                                            value: formData.stock || '',
                                                             onChange: (e_7)=>setFormData({
                                                                     ...formData,
-                                                                    stock: parseInt(e_7.target.value)
+                                                                    stock: parseInt(e_7.target.value) || 0
                                                                 }),
                                                             className: "mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500",
                                                             min: "0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 378,
+                                                            lineNumber: 437,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 376,
+                                                    lineNumber: 435,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1725,27 +1922,27 @@ const ProductsManagement = ()=>{
                                                             children: "Lượt xem"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 385,
+                                                            lineNumber: 444,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "number",
-                                                            value: formData.views,
+                                                            value: formData.views || '',
                                                             onChange: (e_8)=>setFormData({
                                                                     ...formData,
-                                                                    views: parseInt(e_8.target.value)
+                                                                    views: parseInt(e_8.target.value) || 0
                                                                 }),
                                                             className: "mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500",
                                                             min: "0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 386,
+                                                            lineNumber: 445,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 384,
+                                                    lineNumber: 443,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1755,33 +1952,33 @@ const ProductsManagement = ()=>{
                                                             children: "Đã bán"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 393,
+                                                            lineNumber: 452,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "number",
-                                                            value: formData.sold,
+                                                            value: formData.sold || '',
                                                             onChange: (e_9)=>setFormData({
                                                                     ...formData,
-                                                                    sold: parseInt(e_9.target.value)
+                                                                    sold: parseInt(e_9.target.value) || 0
                                                                 }),
                                                             className: "mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500",
                                                             min: "0"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                            lineNumber: 394,
+                                                            lineNumber: 453,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 392,
+                                                    lineNumber: 451,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 375,
+                                            lineNumber: 434,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1791,7 +1988,7 @@ const ProductsManagement = ()=>{
                                                     children: "URL ảnh"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 402,
+                                                    lineNumber: 461,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1805,13 +2002,13 @@ const ProductsManagement = ()=>{
                                                     placeholder: "https://example.com/image.jpg"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 403,
+                                                    lineNumber: 462,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 401,
+                                            lineNumber: 460,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1821,7 +2018,7 @@ const ProductsManagement = ()=>{
                                                     children: "Mô tả"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 410,
+                                                    lineNumber: 469,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1834,13 +2031,13 @@ const ProductsManagement = ()=>{
                                                     className: "mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 411,
+                                                    lineNumber: 470,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 409,
+                                            lineNumber: 468,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1853,7 +2050,7 @@ const ProductsManagement = ()=>{
                                                     children: "Hủy"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 418,
+                                                    lineNumber: 477,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1862,128 +2059,121 @@ const ProductsManagement = ()=>{
                                                     children: editingProduct ? 'Cập nhật' : 'Thêm sản phẩm'
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                                    lineNumber: 421,
+                                                    lineNumber: 480,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                                            lineNumber: 417,
+                                            lineNumber: 476,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                    lineNumber: 310,
+                                    lineNumber: 369,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                            lineNumber: 300,
+                            lineNumber: 359,
                             columnNumber: 15
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                        lineNumber: 299,
+                        lineNumber: 358,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                    lineNumber: 298,
+                    lineNumber: 357,
                     columnNumber: 23
                 }, ("TURBOPACK compile-time value", void 0)),
                 showSuccessModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[9999]",
+                    className: "fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[9999]",
                     onClick: closeSuccessModal,
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "relative mx-auto p-5 border w-96 shadow-lg rounded-md bg-white",
+                        className: "relative mx-auto p-6 border w-96 shadow-2xl rounded-lg bg-white transform transition-all duration-300 scale-100",
                         onClick: (e_12)=>e_12.stopPropagation(),
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mt-3 text-center",
+                            className: "text-center",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100",
+                                    className: "mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                        className: "fas fa-check text-green-600"
+                                        className: "fas fa-check text-green-600 text-2xl"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                                        lineNumber: 435,
+                                        lineNumber: 494,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                    lineNumber: 434,
+                                    lineNumber: 493,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-lg font-medium text-gray-900 mt-4",
+                                    className: "text-xl font-semibold text-gray-900 mb-2",
                                     children: "Thành công!"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                    lineNumber: 437,
+                                    lineNumber: 496,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "mt-2 px-7 py-3",
+                                    className: "mb-6",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-sm text-gray-500",
+                                        className: "text-gray-600",
                                         children: successMessage
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                                        lineNumber: 439,
+                                        lineNumber: 498,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                    lineNumber: 438,
+                                    lineNumber: 497,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "items-center px-4 py-3",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: closeSuccessModal,
-                                        className: "px-4 py-2 bg-green-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300",
-                                        children: "OK"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/ProductsManagement.tsx",
-                                        lineNumber: 442,
-                                        columnNumber: 19
-                                    }, ("TURBOPACK compile-time value", void 0))
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: closeSuccessModal,
+                                    className: "px-6 py-3 bg-green-600 text-white font-medium rounded-lg w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300 transition-colors duration-200",
+                                    children: "Đóng"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                                    lineNumber: 441,
+                                    lineNumber: 500,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ProductsManagement.tsx",
-                            lineNumber: 433,
+                            lineNumber: 492,
                             columnNumber: 15
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/ProductsManagement.tsx",
-                        lineNumber: 432,
+                        lineNumber: 491,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductsManagement.tsx",
-                    lineNumber: 431,
+                    lineNumber: 490,
                     columnNumber: 30
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/ProductsManagement.tsx",
-            lineNumber: 204,
+            lineNumber: 263,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/components/ProductsManagement.tsx",
-        lineNumber: 203,
+        lineNumber: 262,
         columnNumber: 10
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s(ProductsManagement, "/Do/Ic5RlDaSSdJyDkHrB40Gjrg=");
+_s(ProductsManagement, "xXTQOjj035XKtDG1sxnmakjKmpk=");
 _c = ProductsManagement;
 const __TURBOPACK__default__export__ = ProductsManagement;
 var _c;

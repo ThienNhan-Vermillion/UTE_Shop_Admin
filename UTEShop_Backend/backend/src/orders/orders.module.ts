@@ -2,13 +2,14 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { OrdersService } from './orders.service';
 import { OrdersController } from './orders.controller';
-import { UTEShopOrder, UTEShopUser, UTEShopOrderItem, UTEShopDrink } from '../models/uteshop.models';
+import { UTEShopOrder, UTEShopUser, UTEShopOrderItem, UTEShopDrink, UTEShopActivity } from '../models/uteshop.models';
+import { ActivityService } from '../services/activity.service';
 
 @Module({
   imports: [
-    SequelizeModule.forFeature([UTEShopOrder, UTEShopUser, UTEShopOrderItem, UTEShopDrink]),
+    SequelizeModule.forFeature([UTEShopOrder, UTEShopUser, UTEShopOrderItem, UTEShopDrink, UTEShopActivity]),
   ],
-  providers: [OrdersService],
+  providers: [OrdersService, ActivityService],
   controllers: [OrdersController],
 })
 export class OrdersModule {}

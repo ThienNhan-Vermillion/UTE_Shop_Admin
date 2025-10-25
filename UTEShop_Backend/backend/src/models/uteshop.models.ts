@@ -2,6 +2,7 @@ import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from '
 
 @Table({ tableName: 'users', timestamps: false })
 export class UTEShopUser extends Model<UTEShopUser> {
+  @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
   declare id: number;
   
   @Column({ type: DataType.STRING, allowNull: false })
@@ -25,12 +26,17 @@ export class UTEShopUser extends Model<UTEShopUser> {
   @Column({ type: DataType.STRING })
   declare address: string;
   
-  @Column({ type: DataType.INTEGER, defaultValue: 0 })
+  @Column({ 
+    type: DataType.INTEGER, 
+    defaultValue: 0, 
+    comment: 'Tổng số điểm tích lũy xu hiện có'
+  })
   declare loyalty_points: number;
 
   @HasMany(() => UTEShopOrder, 'user_id')
   declare orders: UTEShopOrder[];
 }
+
 
 @Table({ tableName: 'drinks', timestamps: false })
 export class UTEShopDrink extends Model<UTEShopDrink> {
@@ -64,7 +70,7 @@ export class UTEShopDrink extends Model<UTEShopDrink> {
   @Column({ type: DataType.INTEGER, defaultValue: 0 })
   declare sold: number;
   
-  @Column({ type: DataType.STRING })
+  @Column({ type: DataType.TEXT })
   declare image_url: string;
   
   @Column({ type: DataType.INTEGER })
@@ -203,4 +209,68 @@ export class UTEShopOrderItem extends Model<UTEShopOrderItem> {
 
   @BelongsTo(() => UTEShopDrink, 'drink_id')
   declare drink: UTEShopDrink;
+}
+
+@Table({ tableName: 'reviews', timestamps: false })
+export class UTEShopReview extends Model<UTEShopReview> {
+  @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
+  declare id: number;
+  
+  @ForeignKey(() => UTEShopUser)
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  declare user_id: number;
+  
+  @ForeignKey(() => UTEShopDrink)
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  declare drink_id: number;
+  
+  @ForeignKey(() => UTEShopOrder)
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  declare order_id: number;
+  
+  @Column({ 
+    type: DataType.INTEGER, 
+    allowNull: false,
+    validate: {
+      min: 1,
+      max: 5,
+    }
+  })
+  declare rating: number;
+  
+  @Column({ type: DataType.TEXT, allowNull: true })
+  declare comment: string | null;
+  
+  @Column({ type: DataType.BOOLEAN, defaultValue: false })
+  declare is_hidden: boolean;
+  
+  @Column({ type: DataType.DATE })
+  declare created_at: Date;
+  
+  @Column({ type: DataType.DATE })
+  declare updated_at: Date;
+
+  @BelongsTo(() => UTEShopUser, 'user_id')
+  declare user: UTEShopUser;
+
+  @BelongsTo(() => UTEShopDrink, 'drink_id')
+  declare drink: UTEShopDrink;
+
+  @BelongsTo(() => UTEShopOrder, 'order_id')
+  declare order: UTEShopOrder;
+}
+
+@Table({ tableName: 'activities', timestamps: false })
+export class UTEShopActivity extends Model<UTEShopActivity> {
+  @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
+  declare id: number;
+  
+  @Column({ type: DataType.STRING, allowNull: false })
+  declare type: string; // 'product_add', 'product_update', 'product_delete', 'order_status_change', etc.
+  
+  @Column({ type: DataType.STRING, allowNull: false })
+  declare description: string;
+  
+  @Column({ type: DataType.DATE, allowNull: false })
+  declare created_at: Date;
 }

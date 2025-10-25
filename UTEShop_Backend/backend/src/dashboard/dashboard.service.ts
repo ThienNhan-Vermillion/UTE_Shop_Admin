@@ -1,42 +1,55 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Users } from '../models/user.model';
-import { UTEShopOrder, UTEShopUser } from '../models/uteshop.models';
+import { UTEShopOrder, UTEShopUser, UTEShopActivity } from '../models/uteshop.models';
 import { Op } from 'sequelize';
+import { ActivityService } from '../services/activity.service';
 
 @Injectable()
 export class DashboardService {
   constructor(
-    @InjectModel(Users) private userModel: typeof Users,
+    @InjectModel(UTEShopUser) private userModel: typeof UTEShopUser,
     @InjectModel(UTEShopOrder) private orderModel: typeof UTEShopOrder,
-    @InjectModel(UTEShopUser) private uteshopUserModel: typeof UTEShopUser,
+    @InjectModel(UTEShopActivity) private activityModel: typeof UTEShopActivity,
+    private activityService: ActivityService,
   ) {}
 
-  async getDashboardStats() {
+  async getDashboardStats(startDate?: string, endDate?: string) {
     try {
       // Lấy tổng số người dùng từ database admin
       const totalUsers = await this.userModel.count();
 
-      // Tính tuần hiện tại
-      const now = new Date();
-      const startOfWeek = new Date(now);
-      startOfWeek.setDate(now.getDate() - now.getDay()); // Chủ nhật
-      startOfWeek.setHours(0, 0, 0, 0);
+      // Xác định khoảng thời gian
+      let startOfPeriod: Date;
+      let endOfPeriod: Date;
+      
+      if (startDate && endDate) {
+        startOfPeriod = new Date(startDate);
+        endOfPeriod = new Date(endDate);
+      } else {
+        // Mặc định là tháng hiện tại
+        const now = new Date();
+        startOfPeriod = new Date(now.getFullYear(), now.getMonth(), 1); // Ngày đầu tháng
+        startOfPeriod.setHours(0, 0, 0, 0);
+        endOfPeriod = new Date(now.getFullYear(), now.getMonth() + 1, 0); // Ngày cuối tháng
+        endOfPeriod.setHours(23, 59, 59, 999);
+      }
 
-      // Đơn hàng trong tuần từ UTEShop database
-      const ordersThisWeek = await this.orderModel.count({
+      // Đơn hàng trong khoảng thời gian từ UTEShop database
+      const ordersInPeriod = await this.orderModel.count({
         where: {
           created_at: {
-            [Op.gte]: startOfWeek
+            [Op.gte]: startOfPeriod,
+            [Op.lte]: endOfPeriod
           }
         }
       });
 
-      // Doanh thu tuần từ UTEShop database
-      const weeklyRevenueResult = await this.orderModel.sum('total', {
+      // Doanh thu trong khoảng thời gian từ UTEShop database
+      const periodRevenueResult = await this.orderModel.sum('total', {
         where: {
           created_at: {
-            [Op.gte]: startOfWeek
+            [Op.gte]: startOfPeriod,
+            [Op.lte]: endOfPeriod
           },
           status: {
             [Op.notIn]: ['cancelled']
@@ -48,63 +61,72 @@ export class DashboardService {
       const totalOrders = await this.orderModel.count();
 
       return {
-        ordersThisWeek,
-        weeklyRevenue: weeklyRevenueResult || 0,
+        ordersInPeriod,
+        periodRevenue: periodRevenueResult || 0,
         totalUsers: totalUsers,
         totalOrders: totalOrders,
+        startDate: startOfPeriod,
+        endDate: endOfPeriod,
       };
     } catch (error) {
       console.error('Error fetching dashboard stats:', error);
       // Fallback data
       return {
-        ordersThisWeek: 24,
-        weeklyRevenue: 12500000,
+        ordersInPeriod: 24,
+        periodRevenue: 12500000,
         totalUsers: await this.userModel.count(),
         totalOrders: 156,
+        startDate: new Date(),
+        endDate: new Date(),
       };
     }
   }
 
   async getRecentActivities() {
     try {
-      // Lấy hoạt động gần đây từ UTEShop backend
-      const response = await fetch('http://localhost:8080/api/admin/recent-activities');
-      if (response.ok) {
-        return await response.json();
-      }
+      const activities = await this.activityService.getRecentActivities(10);
+      
+      return activities.map(activity => {
+        // Xác định icon và color dựa trên type
+        let icon = 'info';
+        let color = 'gray';
+        
+        switch (activity.type) {
+          case 'product_add':
+            icon = 'plus';
+            color = 'green';
+            break;
+          case 'product_update':
+            icon = 'edit';
+            color = 'blue';
+            break;
+          case 'product_delete':
+            icon = 'trash';
+            color = 'red';
+            break;
+          case 'order_status_change':
+            icon = 'check';
+            color = 'yellow';
+            break;
+          case 'order_processed':
+            icon = 'check';
+            color = 'yellow';
+            break;
+        }
+        
+        return {
+          id: activity.id,
+          type: activity.type,
+          message: activity.description,
+          timestamp: activity.created_at,
+          icon,
+          color,
+        };
+      });
     } catch (error) {
       console.error('Error fetching recent activities:', error);
+      return [];
     }
-
-    // Fallback data
-    const activities = [
-      {
-        id: 1,
-        type: 'product_added',
-        message: 'Thêm sản phẩm mới: Trà sữa Matcha',
-        timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 giờ trước
-        icon: 'plus',
-        color: 'green',
-      },
-      {
-        id: 2,
-        type: 'product_updated',
-        message: 'Cập nhật giá sản phẩm: Cà phê Americano',
-        timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000), // 4 giờ trước
-        icon: 'edit',
-        color: 'blue',
-      },
-      {
-        id: 3,
-        type: 'order_processed',
-        message: 'Xử lý đơn hàng #12345',
-        timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000), // 6 giờ trước
-        icon: 'check',
-        color: 'yellow',
-      },
-    ];
-
-    return activities;
   }
 
   async getTotalUsers() {
@@ -123,5 +145,13 @@ export class DashboardService {
     ];
 
     return months;
+  }
+
+  async deleteActivity(id: number) {
+    return this.activityService.deleteActivity(id);
+  }
+
+  async deleteAllActivities() {
+    return this.activityService.deleteAllActivities();
   }
 }

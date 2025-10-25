@@ -1,21 +1,70 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus, HttpException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus, HttpException, UseInterceptors, UploadedFiles } from '@nestjs/common';
+import { FilesInterceptor } from '@nestjs/platform-express';
 import { ProductsService } from './products.service';
 import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
+import { UploadMiddleware } from '../middleware/upload.middleware';
+import { ActivityService } from '../services/activity.service';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(
+    private readonly productsService: ProductsService,
+    private readonly activityService: ActivityService,
+  ) {}
 
   @Post()
-  async create(@Body() createProductDto: CreateProductDto) {
+  @UseInterceptors(FilesInterceptor('images', 3))
+  async create(@Body() createProductDto: CreateProductDto, @UploadedFiles() files: Express.Multer.File[]) {
     try {
-      const product = await this.productsService.create(createProductDto);
+      console.log('=== CREATE PRODUCT DEBUG ===');
+      console.log('Files received:', files?.length || 0);
+      console.log('Files details:', files?.map(f => ({ filename: f.filename, originalname: f.originalname, size: f.size })));
+      
+      // Xử lý upload files
+      let imageUrls: string[] = [];
+      if (files && files.length > 0) {
+        const baseUrl = process.env.API_BASE_URL || 'http://localhost:3001';
+        console.log('Base URL:', baseUrl);
+        
+        imageUrls = files.map(file => {
+          const url = `${baseUrl}/uploads/${file.filename}`;
+          console.log('Generated URL:', url);
+          return url;
+        });
+      }
+
+      // Nếu có image_url từ form (URL input), thêm vào danh sách
+      if (createProductDto.image_url) {
+        console.log('URL from form:', createProductDto.image_url);
+        imageUrls.unshift(createProductDto.image_url);
+      }
+
+      console.log('Final image URLs:', imageUrls);
+
+      // Cập nhật DTO với danh sách hình ảnh
+      const productData = {
+        ...createProductDto,
+        image_url: imageUrls.join(','), // Lưu tất cả ảnh dưới dạng string phân cách bởi dấu phẩy
+      };
+
+      console.log('Product data to save:', productData);
+
+      const product = await this.productsService.create(productData);
+      console.log('Product created:', product);
+      
+      // Log activity
+      await this.activityService.logActivity(
+        'product_add',
+        `Thêm sản phẩm mới: ${productData.name}`
+      );
+      
       return {
         success: true,
         message: 'Sản phẩm đã được thêm thành công',
         data: product,
       };
     } catch (error) {
+      console.error('Error creating product:', error);
       throw new HttpException(
         {
           success: false,
@@ -100,9 +149,28 @@ export class ProductsController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
+  @UseInterceptors(FilesInterceptor('images', 3))
+  async update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto, @UploadedFiles() files: Express.Multer.File[]) {
     try {
-      const updated = await this.productsService.update(+id, updateProductDto);
+      // Xử lý upload files nếu có
+      let imageUrls: string[] = [];
+      if (files && files.length > 0) {
+        const baseUrl = process.env.API_BASE_URL || 'http://localhost:3001';
+        imageUrls = files.map(file => `${baseUrl}/uploads/${file.filename}`);
+      }
+
+      // Nếu có image_url từ form (URL input), thêm vào danh sách
+      if (updateProductDto.image_url) {
+        imageUrls.unshift(updateProductDto.image_url);
+      }
+
+      // Cập nhật DTO với danh sách hình ảnh
+      const productData = {
+        ...updateProductDto,
+        image_url: imageUrls.length > 0 ? imageUrls.join(',') : updateProductDto.image_url,
+      };
+
+      const updated = await this.productsService.update(+id, productData);
       if (!updated) {
         throw new HttpException(
           {
@@ -112,6 +180,13 @@ export class ProductsController {
           HttpStatus.NOT_FOUND,
         );
       }
+      
+      // Log activity
+      await this.activityService.logActivity(
+        'product_update',
+        `Cập nhật sản phẩm: ${productData.name || 'ID ' + id}`
+      );
+      
       return {
         success: true,
         message: 'Sản phẩm đã được cập nhật thành công',
