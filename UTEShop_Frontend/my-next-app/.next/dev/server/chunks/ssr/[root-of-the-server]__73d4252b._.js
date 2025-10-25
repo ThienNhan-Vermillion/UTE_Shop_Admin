@@ -273,6 +273,18 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
             label: 'Khuyến mãi',
             icon: 'fas fa-tags',
             href: '/promotions'
+        },
+        {
+            id: 'comments',
+            label: 'Bình luận',
+            icon: 'fas fa-comments',
+            href: '/comments'
+        },
+        {
+            id: 'vouchers',
+            label: 'Voucher',
+            icon: 'fas fa-tags',
+            href: '/vouchers'
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -290,7 +302,7 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                     className: "fas fa-coffee text-white text-2xl mr-3"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 42,
+                                    lineNumber: 44,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -298,18 +310,18 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                     children: "UTEShop"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 43,
+                                    lineNumber: 45,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                            lineNumber: 41,
+                            lineNumber: 43,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 40,
+                        lineNumber: 42,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -322,25 +334,25 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                         className: `${item.icon} mr-3`
                                     }, void 0, false, {
                                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                        lineNumber: 56,
+                                        lineNumber: 58,
                                         columnNumber: 15
                                     }, this),
                                     item.label
                                 ]
                             }, item.id, true, {
                                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                lineNumber: 49,
+                                lineNumber: 51,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 47,
+                        lineNumber: 49,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 37,
+                lineNumber: 39,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -361,12 +373,12 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                                 className: "fas fa-bars text-xl"
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                                lineNumber: 73,
+                                                lineNumber: 75,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 69,
+                                            lineNumber: 71,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -374,13 +386,13 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                             children: menuItems.find((item)=>item.id === currentPage)?.label || 'Dashboard'
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 75,
+                                            lineNumber: 77,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 68,
+                                    lineNumber: 70,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -394,29 +406,29 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 81,
+                                            lineNumber: 83,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$LogoutWithConfirmation$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 86,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 80,
+                                    lineNumber: 82,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                            lineNumber: 67,
+                            lineNumber: 69,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 66,
+                        lineNumber: 68,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -424,13 +436,13 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 90,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 64,
+                lineNumber: 66,
                 columnNumber: 7
             }, this),
             sidebarOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -438,13 +450,13 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                 onClick: ()=>setSidebarOpen(false)
             }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 97,
+                lineNumber: 99,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-        lineNumber: 35,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
 }
@@ -541,6 +553,8 @@ __turbopack_context__.s([
     ()=>createReview,
     "deleteReview",
     ()=>deleteReview,
+    "deleteVoucher",
+    ()=>deleteVoucher,
     "forgotPassword",
     ()=>forgotPassword,
     "getDrinkRatingStats",
@@ -559,10 +573,16 @@ __turbopack_context__.s([
     ()=>getReviewsByDrinkId,
     "getUsers",
     ()=>getUsers,
+    "getVoucher",
+    ()=>getVoucher,
+    "getVouchers",
+    ()=>getVouchers,
     "hideProduct",
     ()=>hideProduct,
     "login",
     ()=>login,
+    "markVoucherAsUsed",
+    ()=>markVoucherAsUsed,
     "registerConfirm",
     ()=>registerConfirm,
     "registerRequestOtp",
@@ -577,8 +597,10 @@ __turbopack_context__.s([
     ()=>updateProduct,
     "updateReview",
     ()=>updateReview,
-    "verifyForgotOtp",
-    ()=>verifyForgotOtp
+    "updateUser",
+    ()=>updateUser,
+    "updateVoucher",
+    ()=>updateVoucher
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
 ;
@@ -623,10 +645,6 @@ const forgotPassword = async (email)=>{
     });
     return response.data;
 };
-const verifyForgotOtp = async (email, otp)=>{
-    // Endpoint này không tồn tại trong backend, sẽ được xử lý trong resetPassword
-    throw new Error('Use resetPassword instead');
-};
 const resetPassword = async (email, otp, newPassword, confirmPassword)=>{
     const response = await api.post('/auth/reset-password', {
         email,
@@ -638,9 +656,7 @@ const resetPassword = async (email, otp, newPassword, confirmPassword)=>{
 };
 const getProducts = async ()=>{
     try {
-        console.log('Fetching products from:', API_BASE_URL + '/products');
         const response = await api.get('/products');
-        console.log('Products response:', response.data);
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -648,86 +664,46 @@ const getProducts = async ()=>{
     }
 };
 const getProduct = async (id)=>{
-    try {
-        const response = await api.get(`/products/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching product:', error);
-        throw error;
-    }
+    const response = await api.get(`/products/${id}`);
+    return response.data;
 };
 const createProduct = async (productData, images)=>{
-    try {
-        const formData = new FormData();
-        // Thêm các field text vào FormData
-        Object.keys(productData).forEach((key)=>{
-            if (productData[key] !== undefined && productData[key] !== null) {
-                formData.append(key, productData[key]);
-            }
-        });
-        // Thêm images vào FormData
-        if (images && images.length > 0) {
-            images.forEach((image)=>{
-                formData.append('images', image);
-            });
+    const formData = new FormData();
+    Object.keys(productData).forEach((key)=>{
+        if (productData[key] !== undefined && productData[key] !== null) {
+            formData.append(key, productData[key]);
         }
-        const response = await api.post('/products', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error creating product:', error);
-        throw error;
-    }
+    });
+    if (images?.length) images.forEach((img)=>formData.append('images', img));
+    const response = await api.post('/products', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+    return response.data;
 };
 const updateProduct = async (id, productData, images)=>{
-    try {
-        console.log('Updating product:', id, productData);
-        const formData = new FormData();
-        // Thêm các field text vào FormData
-        Object.keys(productData).forEach((key)=>{
-            if (productData[key] !== undefined && productData[key] !== null) {
-                formData.append(key, productData[key]);
-            }
-        });
-        // Thêm images vào FormData
-        if (images && images.length > 0) {
-            images.forEach((image)=>{
-                formData.append('images', image);
-            });
+    const formData = new FormData();
+    Object.keys(productData).forEach((key)=>{
+        if (productData[key] !== undefined && productData[key] !== null) {
+            formData.append(key, productData[key]);
         }
-        const response = await api.patch(`/products/${id}`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        console.log('Update response:', response.data);
-        return response.data;
-    } catch (error) {
-        console.error('Error updating product:', error);
-        console.error('Error response:', error.response?.data);
-        throw error;
-    }
+    });
+    if (images?.length) images.forEach((img)=>formData.append('images', img));
+    const response = await api.patch(`/products/${id}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+    return response.data;
 };
 const hideProduct = async (id)=>{
-    try {
-        const response = await api.patch(`/products/${id}/hide`);
-        return response.data;
-    } catch (error) {
-        console.error('Error hiding product:', error);
-        throw error;
-    }
+    const response = await api.patch(`/products/${id}/hide`);
+    return response.data;
 };
 const showProduct = async (id)=>{
-    try {
-        const response = await api.patch(`/products/${id}/show`);
-        return response.data;
-    } catch (error) {
-        console.error('Error showing product:', error);
-        throw error;
-    }
+    const response = await api.patch(`/products/${id}/show`);
+    return response.data;
 };
 const getOrders = async (params)=>{
     try {
@@ -751,81 +727,70 @@ const getUsers = async (params)=>{
         throw error;
     }
 };
-const getReviews = async (params)=>{
+const updateUser = async (id, userData)=>{
     try {
-        const response = await api.get('/reviews', {
-            params
-        });
+        const response = await api.put(`/users/${id}`, userData);
         return response.data;
     } catch (error) {
-        console.error('Error fetching reviews:', error);
+        console.error('Error updating user:', error);
         throw error;
     }
+};
+const getReviews = async (params)=>{
+    const response = await api.get('/reviews', {
+        params
+    });
+    return response.data;
 };
 const getReview = async (id)=>{
-    try {
-        const response = await api.get(`/reviews/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching review:', error);
-        throw error;
-    }
+    const response = await api.get(`/reviews/${id}`);
+    return response.data;
 };
 const getReviewsByDrinkId = async (drinkId, params)=>{
-    try {
-        const response = await api.get(`/reviews/drink/${drinkId}`, {
-            params
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching reviews by drink:', error);
-        throw error;
-    }
+    const response = await api.get(`/reviews/drink/${drinkId}`, {
+        params
+    });
+    return response.data;
 };
 const getDrinkRatingStats = async (drinkId)=>{
-    try {
-        const response = await api.get(`/reviews/drink/${drinkId}/stats`);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching drink rating stats:', error);
-        throw error;
-    }
+    const response = await api.get(`/reviews/drink/${drinkId}/stats`);
+    return response.data;
 };
 const createReview = async (reviewData)=>{
-    try {
-        const response = await api.post('/reviews', reviewData);
-        return response.data;
-    } catch (error) {
-        console.error('Error creating review:', error);
-        throw error;
-    }
+    const response = await api.post('/reviews', reviewData);
+    return response.data;
 };
 const updateReview = async (id, reviewData)=>{
-    try {
-        const response = await api.patch(`/reviews/${id}`, reviewData);
-        return response.data;
-    } catch (error) {
-        console.error('Error updating review:', error);
-        throw error;
-    }
+    const response = await api.patch(`/reviews/${id}`, reviewData);
+    return response.data;
 };
 const toggleReviewHidden = async (id)=>{
-    try {
-        const response = await api.patch(`/reviews/${id}/toggle-hidden`);
-        return response.data;
-    } catch (error) {
-        console.error('Error toggling review hidden:', error);
-        throw error;
-    }
+    const response = await api.patch(`/reviews/${id}/toggle-hidden`);
+    return response.data;
 };
 const deleteReview = async (id)=>{
-    try {
-        const response = await api.delete(`/reviews/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error('Error deleting review:', error);
-        throw error;
-    }
+    const response = await api.delete(`/reviews/${id}`);
+    return response.data;
+};
+const getVouchers = async ()=>{
+    const response = await api.get('/vouchers');
+    return response.data;
+};
+const getVoucher = async (id)=>{
+    const response = await api.get(`/vouchers/${id}`);
+    return response.data;
+};
+const updateVoucher = async (id, voucherData)=>{
+    const response = await api.patch(`/vouchers/${id}`, voucherData);
+    return response.data;
+};
+const deleteVoucher = async (id)=>{
+    const response = await api.delete(`/vouchers/${id}`);
+    return response.data;
+};
+const markVoucherAsUsed = async (id)=>{
+    const response = await api.patch(`/vouchers/${id}/mark-used`);
+    return response.data;
 };
 }),
 "[project]/my-next-app/src/components/UsersManagement.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
@@ -833,7 +798,7 @@ const deleteReview = async (id)=>{
 
 __turbopack_context__.s([
     "default",
-    ()=>__TURBOPACK__default__export__
+    ()=>UsersManagement
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
@@ -842,7 +807,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$
 ;
 ;
 ;
-const UsersManagement = ()=>{
+function UsersManagement() {
     const [users, setUsers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
@@ -852,6 +817,9 @@ const UsersManagement = ()=>{
     const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [dateFrom, setDateFrom] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [dateTo, setDateTo] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const [showEditModal, setShowEditModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [editingUser, setEditingUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [editForm, setEditForm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({});
     const limit = 10;
     const fetchUsers = async ()=>{
         try {
@@ -861,15 +829,9 @@ const UsersManagement = ()=>{
                 page: currentPage,
                 limit
             };
-            if (searchTerm.trim()) {
-                params.search = searchTerm.trim();
-            }
-            if (dateFrom) {
-                params.dateFrom = dateFrom;
-            }
-            if (dateTo) {
-                params.dateTo = dateTo;
-            }
+            if (searchTerm.trim()) params.search = searchTerm.trim();
+            if (dateFrom) params.dateFrom = dateFrom;
+            if (dateTo) params.dateTo = dateTo;
             const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getUsers"])(params);
             setUsers(response.users);
             setTotalPages(response.totalPages);
@@ -881,65 +843,83 @@ const UsersManagement = ()=>{
         }
     };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const timeoutId = setTimeout(()=>{
-            fetchUsers();
-        }, 300); // Debounce 300ms
-        return ()=>clearTimeout(timeoutId);
+        const timeout = setTimeout(()=>fetchUsers(), 300);
+        return ()=>clearTimeout(timeout);
     }, [
         currentPage,
         searchTerm,
         dateFrom,
         dateTo
     ]);
+    const handleEdit = (user)=>{
+        setEditingUser(user);
+        setEditForm({
+            fullName: user.fullName,
+            email: user.email,
+            dob: user.dob,
+            phone: user.phone,
+            address: user.address,
+            status: user.status
+        });
+        setShowEditModal(true);
+    };
+    const handleSave = async ()=>{
+        if (!editingUser) return;
+        try {
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["updateUser"])(editingUser.id, editForm);
+            if (response.success) {
+                setUsers(users.map((u)=>u.id === editingUser.id ? {
+                        ...u,
+                        ...editForm
+                    } : u));
+                setShowEditModal(false);
+            } else setError('Không thể cập nhật thông tin người dùng');
+        } catch (err) {
+            setError(err.message || 'Có lỗi xảy ra khi cập nhật');
+        }
+    };
+    const handleStatusToggle = async (user)=>{
+        const newStatus = user.status === 'active' ? 'inactive' : 'active';
+        try {
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["updateUser"])(user.id, {
+                status: newStatus
+            });
+            if (response.success) {
+                setUsers(users.map((u)=>u.id === user.id ? {
+                        ...u,
+                        status: newStatus
+                    } : u));
+            }
+        } catch (err) {
+            setError(err.message || 'Có lỗi xảy ra khi cập nhật trạng thái');
+        }
+    };
+    const formatDate = (date)=>date ? new Date(date).toLocaleDateString('vi-VN') : '';
     const handleReset = ()=>{
         setSearchTerm('');
         setDateFrom('');
         setDateTo('');
         setCurrentPage(1);
     };
-    const formatDate = (dateString)=>{
-        return new Date(dateString).toLocaleDateString('vi-VN', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-    };
-    const formatCurrency = (amount)=>{
-        return new Intl.NumberFormat('vi-VN', {
-            style: 'currency',
-            currency: 'VND'
-        }).format(amount);
-    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "p-6",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "mb-6",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        className: "text-2xl font-bold text-gray-900 mb-2",
-                        children: "Quản lý Khách hàng"
-                    }, void 0, false, {
-                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                        lineNumber: 106,
-                        columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-gray-600",
-                        children: "Quản lý thông tin khách hàng và điểm tích lũy"
-                    }, void 0, false, {
-                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                        lineNumber: 107,
-                        columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0))
-                ]
-            }, void 0, true, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                className: "text-2xl font-bold text-gray-900 mb-2",
+                children: "Quản lý khách hàng"
+            }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 105,
+                lineNumber: 118,
                 columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0)),
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "text-gray-600 mb-6",
+                children: "Tìm kiếm, chỉnh sửa và quản lý khách hàng"
+            }, void 0, false, {
+                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                lineNumber: 119,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "bg-white rounded-lg shadow p-6 mb-6",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -952,26 +932,26 @@ const UsersManagement = ()=>{
                                     children: "Tìm kiếm"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 114,
+                                    lineNumber: 125,
                                     columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0)),
+                                }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     type: "text",
-                                    placeholder: "Tên, email, số điện thoại...",
                                     value: searchTerm,
                                     onChange: (e)=>setSearchTerm(e.target.value),
-                                    className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                    placeholder: "Tên, email, số điện thoại...",
+                                    className: "w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 115,
+                                    lineNumber: 126,
                                     columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0))
+                                }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 113,
+                            lineNumber: 124,
                             columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0)),
+                        }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -979,25 +959,25 @@ const UsersManagement = ()=>{
                                     children: "Từ ngày"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 124,
+                                    lineNumber: 135,
                                     columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0)),
+                                }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     type: "date",
                                     value: dateFrom,
                                     onChange: (e)=>setDateFrom(e.target.value),
-                                    className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                    className: "w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 125,
+                                    lineNumber: 136,
                                     columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0))
+                                }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 123,
+                            lineNumber: 134,
                             columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0)),
+                        }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1005,449 +985,346 @@ const UsersManagement = ()=>{
                                     children: "Đến ngày"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 133,
+                                    lineNumber: 144,
                                     columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0)),
+                                }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     type: "date",
                                     value: dateTo,
                                     onChange: (e)=>setDateTo(e.target.value),
-                                    className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                    className: "w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 134,
+                                    lineNumber: 145,
                                     columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0))
+                                }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 132,
+                            lineNumber: 143,
                             columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0)),
+                        }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-end",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: handleReset,
-                                className: "w-full px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 flex items-center justify-center",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                        className: "fas fa-refresh mr-2"
-                                    }, void 0, false, {
-                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 146,
-                                        columnNumber: 15
-                                    }, ("TURBOPACK compile-time value", void 0)),
-                                    "Làm mới"
-                                ]
-                            }, void 0, true, {
+                                className: "w-full px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600",
+                                children: "Làm mới"
+                            }, void 0, false, {
                                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 142,
+                                lineNumber: 153,
                                 columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0))
+                            }, this)
                         }, void 0, false, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 141,
+                            lineNumber: 152,
                             columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0))
+                        }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                    lineNumber: 112,
+                    lineNumber: 123,
                     columnNumber: 9
-                }, ("TURBOPACK compile-time value", void 0))
+                }, this)
             }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 111,
+                lineNumber: 122,
                 columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0)),
-            error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6",
-                children: error
-            }, void 0, false, {
-                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 155,
-                columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0)),
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "bg-white rounded-lg shadow overflow-hidden",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "px-6 py-4 border-b border-gray-200",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "text-lg font-semibold text-gray-900",
-                            children: [
-                                "Danh sách khách hàng (",
-                                total,
-                                ")"
-                            ]
-                        }, void 0, true, {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                    className: "min-w-full divide-y divide-gray-200",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                            className: "bg-gray-50",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
+                                        children: "Họ tên"
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                        lineNumber: 168,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
+                                        children: "Email"
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                        lineNumber: 169,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
+                                        children: "Số điện thoại"
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                        lineNumber: 170,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
+                                        children: "Trạng thái"
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                        lineNumber: 171,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
+                                        children: "Thao tác"
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                        lineNumber: 172,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                lineNumber: 167,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 163,
+                            lineNumber: 166,
                             columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0))
-                    }, void 0, false, {
-                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                        lineNumber: 162,
-                        columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "p-6 text-center",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"
-                            }, void 0, false, {
-                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 170,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "mt-2 text-gray-600",
-                                children: "Đang tải..."
-                            }, void 0, false, {
-                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 171,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0))
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                        lineNumber: 169,
-                        columnNumber: 11
-                    }, ("TURBOPACK compile-time value", void 0)) : users.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "p-6 text-center text-gray-500",
-                        children: "Không có khách hàng nào"
-                    }, void 0, false, {
-                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                        lineNumber: 174,
-                        columnNumber: 11
-                    }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "overflow-x-auto",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                                    className: "min-w-full divide-y divide-gray-200",
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                            className: "bg-white divide-y divide-gray-200",
+                            children: users.map((u)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                    className: "hover:bg-gray-50",
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                                            className: "bg-gray-50",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                                        children: "Thông tin khách hàng"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                        lineNumber: 183,
-                                                        columnNumber: 21
-                                                    }, ("TURBOPACK compile-time value", void 0)),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                                        children: "Liên hệ"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                        lineNumber: 186,
-                                                        columnNumber: 21
-                                                    }, ("TURBOPACK compile-time value", void 0)),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                                        children: "Điểm tích lũy"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                        lineNumber: 189,
-                                                        columnNumber: 21
-                                                    }, ("TURBOPACK compile-time value", void 0)),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                                        children: "Ngày đăng ký"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                        lineNumber: 192,
-                                                        columnNumber: 21
-                                                    }, ("TURBOPACK compile-time value", void 0))
-                                                ]
-                                            }, void 0, true, {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "px-6 py-4",
+                                            children: u.fullName
+                                        }, void 0, false, {
+                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                            lineNumber: 178,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "px-6 py-4",
+                                            children: u.email
+                                        }, void 0, false, {
+                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                            lineNumber: 179,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "px-6 py-4",
+                                            children: u.phone
+                                        }, void 0, false, {
+                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                            lineNumber: 180,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "px-6 py-4",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: `px-2 py-1 text-xs font-semibold rounded-full ${u.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`,
+                                                children: u.status === 'active' ? 'Hoạt động' : 'Khóa'
+                                            }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
                                                 lineNumber: 182,
                                                 columnNumber: 19
-                                            }, ("TURBOPACK compile-time value", void 0))
+                                            }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
                                             lineNumber: 181,
                                             columnNumber: 17
-                                        }, ("TURBOPACK compile-time value", void 0)),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                                            className: "bg-white divide-y divide-gray-200",
-                                            children: users.map((user)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                    className: "hover:bg-gray-50",
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "px-6 py-4 flex space-x-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: ()=>handleEdit(u),
+                                                    className: "text-blue-600 hover:text-blue-900",
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            className: "px-6 py-4 whitespace-nowrap",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "text-sm font-medium text-gray-900",
-                                                                        children: user.fullName
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                                        lineNumber: 202,
-                                                                        columnNumber: 27
-                                                                    }, ("TURBOPACK compile-time value", void 0)),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: "text-sm text-gray-500",
-                                                                        children: [
-                                                                            "@",
-                                                                            user.username
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                                        lineNumber: 203,
-                                                                        columnNumber: 27
-                                                                    }, ("TURBOPACK compile-time value", void 0))
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                                lineNumber: 201,
-                                                                columnNumber: 25
-                                                            }, ("TURBOPACK compile-time value", void 0))
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                            className: "fas fa-edit mr-1"
                                                         }, void 0, false, {
                                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 200,
-                                                            columnNumber: 23
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            className: "px-6 py-4 whitespace-nowrap",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "text-sm text-gray-900",
-                                                                    children: user.email
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                                    lineNumber: 207,
-                                                                    columnNumber: 25
-                                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "text-sm text-gray-500",
-                                                                    children: user.phone
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                                    lineNumber: 208,
-                                                                    columnNumber: 25
-                                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                                user.address && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "text-sm text-gray-500",
-                                                                    children: user.address
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                                    lineNumber: 210,
-                                                                    columnNumber: 27
-                                                                }, ("TURBOPACK compile-time value", void 0))
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 206,
-                                                            columnNumber: 23
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            className: "px-6 py-4 whitespace-nowrap",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800",
-                                                                children: [
-                                                                    user.loyalty_points.toLocaleString(),
-                                                                    " điểm"
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                                lineNumber: 214,
-                                                                columnNumber: 25
-                                                            }, ("TURBOPACK compile-time value", void 0))
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 213,
-                                                            columnNumber: 23
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500",
-                                                            children: formatDate(user.created_at)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 218,
-                                                            columnNumber: 23
-                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                            lineNumber: 193,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        "Sửa"
                                                     ]
-                                                }, user.id, true, {
+                                                }, void 0, true, {
                                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                    lineNumber: 199,
-                                                    columnNumber: 21
-                                                }, ("TURBOPACK compile-time value", void 0)))
-                                        }, void 0, false, {
+                                                    lineNumber: 189,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: ()=>handleStatusToggle(u),
+                                                    className: u.status === 'active' ? 'text-red-600 hover:text-red-900' : 'text-green-600 hover:text-green-900',
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                                            className: `fas ${u.status === 'active' ? 'fa-lock' : 'fa-unlock'} mr-1`
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                                            lineNumber: 201,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        u.status === 'active' ? 'Khóa' : 'Mở'
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                                    lineNumber: 195,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 197,
+                                            lineNumber: 188,
                                             columnNumber: 17
-                                        }, ("TURBOPACK compile-time value", void 0))
+                                        }, this)
                                     ]
-                                }, void 0, true, {
+                                }, u.id, true, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 180,
+                                    lineNumber: 177,
                                     columnNumber: 15
-                                }, ("TURBOPACK compile-time value", void 0))
-                            }, void 0, false, {
-                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 179,
-                                columnNumber: 13
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex-1 flex justify-between sm:hidden",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                onClick: ()=>setCurrentPage(Math.max(1, currentPage - 1)),
-                                                disabled: currentPage === 1,
-                                                className: "relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed",
-                                                children: "Trước"
-                                            }, void 0, false, {
-                                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                lineNumber: 231,
-                                                columnNumber: 19
-                                            }, ("TURBOPACK compile-time value", void 0)),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                onClick: ()=>setCurrentPage(Math.min(totalPages, currentPage + 1)),
-                                                disabled: currentPage === totalPages,
-                                                className: "ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed",
-                                                children: "Sau"
-                                            }, void 0, false, {
-                                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                lineNumber: 238,
-                                                columnNumber: 19
-                                            }, ("TURBOPACK compile-time value", void 0))
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 230,
-                                        columnNumber: 17
-                                    }, ("TURBOPACK compile-time value", void 0)),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "hidden sm:flex-1 sm:flex sm:items-center sm:justify-between",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-sm text-gray-700",
-                                                    children: [
-                                                        "Hiển thị ",
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-medium",
-                                                            children: (currentPage - 1) * limit + 1
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 249,
-                                                            columnNumber: 32
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        " đến",
-                                                        ' ',
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-medium",
-                                                            children: Math.min(currentPage * limit, total)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 250,
-                                                            columnNumber: 23
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        ' ',
-                                                        "trong tổng số ",
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-medium",
-                                                            children: total
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 253,
-                                                            columnNumber: 37
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        " kết quả"
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                    lineNumber: 248,
-                                                    columnNumber: 21
-                                                }, ("TURBOPACK compile-time value", void 0))
-                                            }, void 0, false, {
-                                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                lineNumber: 247,
-                                                columnNumber: 19
-                                            }, ("TURBOPACK compile-time value", void 0)),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-                                                    className: "relative z-0 inline-flex rounded-md shadow-sm -space-x-px",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                            onClick: ()=>setCurrentPage(Math.max(1, currentPage - 1)),
-                                                            disabled: currentPage === 1,
-                                                            className: "relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed",
-                                                            children: "Trước"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 258,
-                                                            columnNumber: 23
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        Array.from({
-                                                            length: totalPages
-                                                        }, (_, i)=>i + 1).map((page)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                onClick: ()=>setCurrentPage(page),
-                                                                className: `relative inline-flex items-center px-4 py-2 border text-sm font-medium ${page === currentPage ? 'z-10 bg-blue-50 border-blue-500 text-blue-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'}`,
-                                                                children: page
-                                                            }, page, false, {
-                                                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                                lineNumber: 266,
-                                                                columnNumber: 25
-                                                            }, ("TURBOPACK compile-time value", void 0))),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                            onClick: ()=>setCurrentPage(Math.min(totalPages, currentPage + 1)),
-                                                            disabled: currentPage === totalPages,
-                                                            className: "relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed",
-                                                            children: "Sau"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 278,
-                                                            columnNumber: 23
-                                                        }, ("TURBOPACK compile-time value", void 0))
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                    lineNumber: 257,
-                                                    columnNumber: 21
-                                                }, ("TURBOPACK compile-time value", void 0))
-                                            }, void 0, false, {
-                                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                lineNumber: 256,
-                                                columnNumber: 19
-                                            }, ("TURBOPACK compile-time value", void 0))
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 246,
-                                        columnNumber: 17
-                                    }, ("TURBOPACK compile-time value", void 0))
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 229,
-                                columnNumber: 15
-                            }, ("TURBOPACK compile-time value", void 0))
-                        ]
-                    }, void 0, true)
-                ]
-            }, void 0, true, {
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                            lineNumber: 175,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                    lineNumber: 165,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 161,
+                lineNumber: 164,
                 columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0))
+            }, this),
+            showEditModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "bg-white rounded-lg shadow-lg w-full max-w-3xl p-6",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                            className: "text-xl font-bold mb-4",
+                            children: "Chỉnh sửa người dùng"
+                        }, void 0, false, {
+                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                            lineNumber: 215,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "grid grid-cols-1 md:grid-cols-2 gap-4",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    value: editForm.fullName || '',
+                                    onChange: (e)=>setEditForm({
+                                            ...editForm,
+                                            fullName: e.target.value
+                                        }),
+                                    placeholder: "Họ tên",
+                                    className: "border p-2 rounded"
+                                }, void 0, false, {
+                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                    lineNumber: 217,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "email",
+                                    value: editForm.email || '',
+                                    onChange: (e)=>setEditForm({
+                                            ...editForm,
+                                            email: e.target.value
+                                        }),
+                                    placeholder: "Email",
+                                    className: "border p-2 rounded"
+                                }, void 0, false, {
+                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                    lineNumber: 224,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "tel",
+                                    value: editForm.phone || '',
+                                    onChange: (e)=>setEditForm({
+                                            ...editForm,
+                                            phone: e.target.value
+                                        }),
+                                    placeholder: "Số điện thoại",
+                                    className: "border p-2 rounded"
+                                }, void 0, false, {
+                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                    lineNumber: 231,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    value: editForm.address || '',
+                                    onChange: (e)=>setEditForm({
+                                            ...editForm,
+                                            address: e.target.value
+                                        }),
+                                    placeholder: "Địa chỉ",
+                                    className: "border p-2 rounded"
+                                }, void 0, false, {
+                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                    lineNumber: 238,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                            lineNumber: 216,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex justify-end mt-6 space-x-2",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>setShowEditModal(false),
+                                    className: "px-4 py-2 bg-gray-400 text-white rounded",
+                                    children: "Hủy"
+                                }, void 0, false, {
+                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                    lineNumber: 247,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: handleSave,
+                                    className: "px-4 py-2 bg-green-600 text-white rounded",
+                                    children: "Lưu"
+                                }, void 0, false, {
+                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                    lineNumber: 248,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                            lineNumber: 246,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                    lineNumber: 214,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                lineNumber: 213,
+                columnNumber: 9
+            }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-        lineNumber: 104,
+        lineNumber: 117,
         columnNumber: 5
-    }, ("TURBOPACK compile-time value", void 0));
-};
-const __TURBOPACK__default__export__ = UsersManagement;
+    }, this);
+}
 }),
 "[project]/my-next-app/src/app/users/page.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -1468,12 +1345,12 @@ function UsersPage() {
         currentPage: "users",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$UsersManagement$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
             fileName: "[project]/my-next-app/src/app/users/page.tsx",
-            lineNumber: 10,
+            lineNumber: 11,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/my-next-app/src/app/users/page.tsx",
-        lineNumber: 9,
+        lineNumber: 10,
         columnNumber: 5
     }, this);
 }

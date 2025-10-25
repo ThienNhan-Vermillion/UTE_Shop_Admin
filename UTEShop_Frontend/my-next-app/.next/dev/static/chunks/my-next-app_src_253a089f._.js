@@ -301,11 +301,11 @@ var _s = __turbopack_context__.k.signature();
 function AdminLayout(t0) {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(39);
-    if ($[0] !== "4fe4c1302b1388cd505e7f76e646fea0817486f144cf300a241b5cfc5ae9ab78") {
+    if ($[0] !== "5216105276c980784612cee51d1217b295ab7d7fc5a9307a9f1e8a1ec66d9340") {
         for(let $i = 0; $i < 39; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "4fe4c1302b1388cd505e7f76e646fea0817486f144cf300a241b5cfc5ae9ab78";
+        $[0] = "5216105276c980784612cee51d1217b295ab7d7fc5a9307a9f1e8a1ec66d9340";
     }
     const { children, currentPage: t1 } = t0;
     const currentPage = t1 === undefined ? "dashboard" : t1;
@@ -368,6 +368,18 @@ function AdminLayout(t0) {
                 label: "Khuy\u1EBFn m\xE3i",
                 icon: "fas fa-tags",
                 href: "/promotions"
+            },
+            {
+                id: "comments",
+                label: "B\xECnh lu\u1EADn",
+                icon: "fas fa-comments",
+                href: "/comments"
+            },
+            {
+                id: "vouchers",
+                label: "Voucher",
+                icon: "fas fa-tags",
+                href: "/vouchers"
             }
         ];
         $[3] = t4;
@@ -387,7 +399,7 @@ function AdminLayout(t0) {
                         className: "fas fa-coffee text-white text-2xl mr-3"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 89,
+                        lineNumber: 99,
                         columnNumber: 118
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -395,18 +407,18 @@ function AdminLayout(t0) {
                         children: "UTEShop"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 89,
+                        lineNumber: 99,
                         columnNumber: 174
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 89,
+                lineNumber: 99,
                 columnNumber: 83
             }, this)
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 89,
+            lineNumber: 99,
             columnNumber: 10
         }, this);
         $[4] = t6;
@@ -426,20 +438,20 @@ function AdminLayout(t0) {
                                 className: `${item.icon} mr-3`
                             }, void 0, false, {
                                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                lineNumber: 97,
+                                lineNumber: 107,
                                 columnNumber: 249
                             }, this),
                             item.label
                         ]
                     }, item.id, true, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 97,
+                        lineNumber: 107,
                         columnNumber: 49
                     }, this)
             }["AdminLayout[menuItems.map()]"])
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 96,
+            lineNumber: 106,
             columnNumber: 10
         }, this);
         $[5] = currentPage;
@@ -457,7 +469,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 106,
+            lineNumber: 116,
             columnNumber: 10
         }, this);
         $[7] = t5;
@@ -482,7 +494,7 @@ function AdminLayout(t0) {
             className: "fas fa-bars text-xl"
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 125,
+            lineNumber: 135,
             columnNumber: 11
         }, this);
         $[12] = t10;
@@ -497,7 +509,7 @@ function AdminLayout(t0) {
             children: t10
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 132,
+            lineNumber: 142,
             columnNumber: 11
         }, this);
         $[13] = t9;
@@ -515,7 +527,7 @@ function AdminLayout(t0) {
             children: t12
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 143,
+            lineNumber: 153,
             columnNumber: 11
         }, this);
         $[15] = t12;
@@ -533,7 +545,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 151,
+            lineNumber: 161,
             columnNumber: 11
         }, this);
         $[17] = t11;
@@ -553,7 +565,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 161,
+            lineNumber: 171,
             columnNumber: 11
         }, this);
         $[20] = t15;
@@ -565,7 +577,7 @@ function AdminLayout(t0) {
     if ($[22] === Symbol.for("react.memo_cache_sentinel")) {
         t17 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$LogoutWithConfirmation$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 169,
+            lineNumber: 179,
             columnNumber: 11
         }, this);
         $[22] = t17;
@@ -582,7 +594,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 176,
+            lineNumber: 186,
             columnNumber: 11
         }, this);
         $[23] = t16;
@@ -602,12 +614,12 @@ function AdminLayout(t0) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 184,
+                lineNumber: 194,
                 columnNumber: 59
             }, this)
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 184,
+            lineNumber: 194,
             columnNumber: 11
         }, this);
         $[25] = t14;
@@ -623,7 +635,7 @@ function AdminLayout(t0) {
             children: children
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 193,
+            lineNumber: 203,
             columnNumber: 11
         }, this);
         $[28] = children;
@@ -641,7 +653,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 201,
+            lineNumber: 211,
             columnNumber: 11
         }, this);
         $[30] = t19;
@@ -659,7 +671,7 @@ function AdminLayout(t0) {
             }["AdminLayout[<div>.onClick]"]
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 210,
+            lineNumber: 220,
             columnNumber: 26
         }, this);
         $[33] = sidebarOpen;
@@ -678,7 +690,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 220,
+            lineNumber: 230,
             columnNumber: 11
         }, this);
         $[35] = t21;
@@ -1182,6 +1194,8 @@ __turbopack_context__.s([
     ()=>createReview,
     "deleteReview",
     ()=>deleteReview,
+    "deleteVoucher",
+    ()=>deleteVoucher,
     "forgotPassword",
     ()=>forgotPassword,
     "getDrinkRatingStats",
@@ -1200,10 +1214,16 @@ __turbopack_context__.s([
     ()=>getReviewsByDrinkId,
     "getUsers",
     ()=>getUsers,
+    "getVoucher",
+    ()=>getVoucher,
+    "getVouchers",
+    ()=>getVouchers,
     "hideProduct",
     ()=>hideProduct,
     "login",
     ()=>login,
+    "markVoucherAsUsed",
+    ()=>markVoucherAsUsed,
     "registerConfirm",
     ()=>registerConfirm,
     "registerRequestOtp",
@@ -1218,8 +1238,10 @@ __turbopack_context__.s([
     ()=>updateProduct,
     "updateReview",
     ()=>updateReview,
-    "verifyForgotOtp",
-    ()=>verifyForgotOtp
+    "updateUser",
+    ()=>updateUser,
+    "updateVoucher",
+    ()=>updateVoucher
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/my-next-app/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/node_modules/axios/lib/axios.js [app-client] (ecmascript)");
@@ -1265,10 +1287,6 @@ const forgotPassword = async (email)=>{
     });
     return response.data;
 };
-const verifyForgotOtp = async (email, otp)=>{
-    // Endpoint này không tồn tại trong backend, sẽ được xử lý trong resetPassword
-    throw new Error('Use resetPassword instead');
-};
 const resetPassword = async (email, otp, newPassword, confirmPassword)=>{
     const response = await api.post('/auth/reset-password', {
         email,
@@ -1280,9 +1298,7 @@ const resetPassword = async (email, otp, newPassword, confirmPassword)=>{
 };
 const getProducts = async ()=>{
     try {
-        console.log('Fetching products from:', API_BASE_URL + '/products');
         const response = await api.get('/products');
-        console.log('Products response:', response.data);
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -1290,86 +1306,46 @@ const getProducts = async ()=>{
     }
 };
 const getProduct = async (id)=>{
-    try {
-        const response = await api.get(`/products/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching product:', error);
-        throw error;
-    }
+    const response = await api.get(`/products/${id}`);
+    return response.data;
 };
 const createProduct = async (productData, images)=>{
-    try {
-        const formData = new FormData();
-        // Thêm các field text vào FormData
-        Object.keys(productData).forEach((key)=>{
-            if (productData[key] !== undefined && productData[key] !== null) {
-                formData.append(key, productData[key]);
-            }
-        });
-        // Thêm images vào FormData
-        if (images && images.length > 0) {
-            images.forEach((image)=>{
-                formData.append('images', image);
-            });
+    const formData = new FormData();
+    Object.keys(productData).forEach((key)=>{
+        if (productData[key] !== undefined && productData[key] !== null) {
+            formData.append(key, productData[key]);
         }
-        const response = await api.post('/products', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error creating product:', error);
-        throw error;
-    }
+    });
+    if (images?.length) images.forEach((img)=>formData.append('images', img));
+    const response = await api.post('/products', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+    return response.data;
 };
 const updateProduct = async (id, productData, images)=>{
-    try {
-        console.log('Updating product:', id, productData);
-        const formData = new FormData();
-        // Thêm các field text vào FormData
-        Object.keys(productData).forEach((key)=>{
-            if (productData[key] !== undefined && productData[key] !== null) {
-                formData.append(key, productData[key]);
-            }
-        });
-        // Thêm images vào FormData
-        if (images && images.length > 0) {
-            images.forEach((image)=>{
-                formData.append('images', image);
-            });
+    const formData = new FormData();
+    Object.keys(productData).forEach((key)=>{
+        if (productData[key] !== undefined && productData[key] !== null) {
+            formData.append(key, productData[key]);
         }
-        const response = await api.patch(`/products/${id}`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        console.log('Update response:', response.data);
-        return response.data;
-    } catch (error) {
-        console.error('Error updating product:', error);
-        console.error('Error response:', error.response?.data);
-        throw error;
-    }
+    });
+    if (images?.length) images.forEach((img)=>formData.append('images', img));
+    const response = await api.patch(`/products/${id}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+    return response.data;
 };
 const hideProduct = async (id)=>{
-    try {
-        const response = await api.patch(`/products/${id}/hide`);
-        return response.data;
-    } catch (error) {
-        console.error('Error hiding product:', error);
-        throw error;
-    }
+    const response = await api.patch(`/products/${id}/hide`);
+    return response.data;
 };
 const showProduct = async (id)=>{
-    try {
-        const response = await api.patch(`/products/${id}/show`);
-        return response.data;
-    } catch (error) {
-        console.error('Error showing product:', error);
-        throw error;
-    }
+    const response = await api.patch(`/products/${id}/show`);
+    return response.data;
 };
 const getOrders = async (params)=>{
     try {
@@ -1393,81 +1369,70 @@ const getUsers = async (params)=>{
         throw error;
     }
 };
-const getReviews = async (params)=>{
+const updateUser = async (id, userData)=>{
     try {
-        const response = await api.get('/reviews', {
-            params
-        });
+        const response = await api.put(`/users/${id}`, userData);
         return response.data;
     } catch (error) {
-        console.error('Error fetching reviews:', error);
+        console.error('Error updating user:', error);
         throw error;
     }
+};
+const getReviews = async (params)=>{
+    const response = await api.get('/reviews', {
+        params
+    });
+    return response.data;
 };
 const getReview = async (id)=>{
-    try {
-        const response = await api.get(`/reviews/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching review:', error);
-        throw error;
-    }
+    const response = await api.get(`/reviews/${id}`);
+    return response.data;
 };
 const getReviewsByDrinkId = async (drinkId, params)=>{
-    try {
-        const response = await api.get(`/reviews/drink/${drinkId}`, {
-            params
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching reviews by drink:', error);
-        throw error;
-    }
+    const response = await api.get(`/reviews/drink/${drinkId}`, {
+        params
+    });
+    return response.data;
 };
 const getDrinkRatingStats = async (drinkId)=>{
-    try {
-        const response = await api.get(`/reviews/drink/${drinkId}/stats`);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching drink rating stats:', error);
-        throw error;
-    }
+    const response = await api.get(`/reviews/drink/${drinkId}/stats`);
+    return response.data;
 };
 const createReview = async (reviewData)=>{
-    try {
-        const response = await api.post('/reviews', reviewData);
-        return response.data;
-    } catch (error) {
-        console.error('Error creating review:', error);
-        throw error;
-    }
+    const response = await api.post('/reviews', reviewData);
+    return response.data;
 };
 const updateReview = async (id, reviewData)=>{
-    try {
-        const response = await api.patch(`/reviews/${id}`, reviewData);
-        return response.data;
-    } catch (error) {
-        console.error('Error updating review:', error);
-        throw error;
-    }
+    const response = await api.patch(`/reviews/${id}`, reviewData);
+    return response.data;
 };
 const toggleReviewHidden = async (id)=>{
-    try {
-        const response = await api.patch(`/reviews/${id}/toggle-hidden`);
-        return response.data;
-    } catch (error) {
-        console.error('Error toggling review hidden:', error);
-        throw error;
-    }
+    const response = await api.patch(`/reviews/${id}/toggle-hidden`);
+    return response.data;
 };
 const deleteReview = async (id)=>{
-    try {
-        const response = await api.delete(`/reviews/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error('Error deleting review:', error);
-        throw error;
-    }
+    const response = await api.delete(`/reviews/${id}`);
+    return response.data;
+};
+const getVouchers = async ()=>{
+    const response = await api.get('/vouchers');
+    return response.data;
+};
+const getVoucher = async (id)=>{
+    const response = await api.get(`/vouchers/${id}`);
+    return response.data;
+};
+const updateVoucher = async (id, voucherData)=>{
+    const response = await api.patch(`/vouchers/${id}`, voucherData);
+    return response.data;
+};
+const deleteVoucher = async (id)=>{
+    const response = await api.delete(`/vouchers/${id}`);
+    return response.data;
+};
+const markVoucherAsUsed = async (id)=>{
+    const response = await api.patch(`/vouchers/${id}/mark-used`);
+    return response.data;
 };
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);

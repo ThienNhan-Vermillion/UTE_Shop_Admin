@@ -1,14 +1,10 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/login/page": "app/login/page.js",
   "/orders/page": "app/orders/page.js",
   "/page": "app/page.js",
   "/products/page": "app/products/page.js",
-<<<<<<< HEAD
-  "/users/page": "app/users/page.js"
-=======
+  "/reviews/page": "app/reviews/page.js",
   "/users/page": "app/users/page.js",
   "/vouchers/page": "app/vouchers/page.js"
->>>>>>> nha
 }

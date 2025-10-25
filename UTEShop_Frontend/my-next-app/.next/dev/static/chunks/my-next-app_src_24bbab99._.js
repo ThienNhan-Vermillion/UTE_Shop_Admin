@@ -968,12 +968,12 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/my-next-app/src/components/UsersManagement.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"[project]/my-next-app/src/components/ReviewsManagement.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
     "default",
-    ()=>UsersManagement
+    ()=>__TURBOPACK__default__export__
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
@@ -983,22 +983,18 @@ var _s = __turbopack_context__.k.signature();
 'use client';
 ;
 ;
-function UsersManagement() {
+const ReviewsManagement = ()=>{
     _s();
-    const [users, setUsers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [reviews, setReviews] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [currentPage, setCurrentPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
     const [totalPages, setTotalPages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
     const [total, setTotal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const [searchTerm, setSearchTerm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
-    const [dateFrom, setDateFrom] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
-    const [dateTo, setDateTo] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
-    const [showEditModal, setShowEditModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [editingUser, setEditingUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [editForm, setEditForm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
+    const [filterHidden, setFilterHidden] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('all');
     const limit = 10;
-    const fetchUsers = async ()=>{
+    const fetchReviews = async ()=>{
         try {
             setLoading(true);
             setError(null);
@@ -1006,551 +1002,636 @@ function UsersManagement() {
                 page: currentPage,
                 limit
             };
-            if (searchTerm.trim()) params.search = searchTerm.trim();
-            if (dateFrom) params.dateFrom = dateFrom;
-            if (dateTo) params.dateTo = dateTo;
-            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getUsers"])(params);
-            setUsers(response.users);
+            if (searchTerm.trim()) {
+                params.search = searchTerm.trim();
+            }
+            if (filterHidden !== 'all') {
+                params.is_hidden = filterHidden === 'hidden';
+            }
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getReviews"])(params);
+            setReviews(response.reviews);
             setTotalPages(response.totalPages);
             setTotal(response.total);
         } catch (err) {
-            setError(err.response?.data?.message || 'Có lỗi xảy ra khi tải danh sách khách hàng');
+            setError(err.response?.data?.message || 'Có lỗi xảy ra khi tải danh sách đánh giá');
         } finally{
             setLoading(false);
         }
     };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "UsersManagement.useEffect": ()=>{
-            const timeout = setTimeout({
-                "UsersManagement.useEffect.timeout": ()=>fetchUsers()
-            }["UsersManagement.useEffect.timeout"], 300);
+        "ReviewsManagement.useEffect": ()=>{
+            const timeoutId = setTimeout({
+                "ReviewsManagement.useEffect.timeoutId": ()=>{
+                    fetchReviews();
+                }
+            }["ReviewsManagement.useEffect.timeoutId"], 300); // Debounce 300ms
             return ({
-                "UsersManagement.useEffect": ()=>clearTimeout(timeout)
-            })["UsersManagement.useEffect"];
+                "ReviewsManagement.useEffect": ()=>clearTimeout(timeoutId)
+            })["ReviewsManagement.useEffect"];
         }
-    }["UsersManagement.useEffect"], [
+    }["ReviewsManagement.useEffect"], [
         currentPage,
         searchTerm,
-        dateFrom,
-        dateTo
+        filterHidden
     ]);
-    const handleEdit = (user)=>{
-        setEditingUser(user);
-        setEditForm({
-            fullName: user.fullName,
-            email: user.email,
-            dob: user.dob,
-            phone: user.phone,
-            address: user.address,
-            status: user.status
-        });
-        setShowEditModal(true);
-    };
-    const handleSave = async ()=>{
-        if (!editingUser) return;
+    const handleToggleHidden = async (reviewId)=>{
         try {
-            const response_0 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["updateUser"])(editingUser.id, editForm);
-            if (response_0.success) {
-                setUsers(users.map((u)=>u.id === editingUser.id ? {
-                        ...u,
-                        ...editForm
-                    } : u));
-                setShowEditModal(false);
-            } else setError('Không thể cập nhật thông tin người dùng');
+            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toggleReviewHidden"])(reviewId);
+            await fetchReviews();
         } catch (err_0) {
-            setError(err_0.message || 'Có lỗi xảy ra khi cập nhật');
+            setError(err_0.response?.data?.message || 'Có lỗi xảy ra khi thay đổi trạng thái đánh giá');
         }
     };
-    const handleStatusToggle = async (user_0)=>{
-        const newStatus = user_0.status === 'active' ? 'inactive' : 'active';
+    const handleDelete = async (reviewId_0)=>{
+        if (!confirm('Bạn có chắc chắn muốn xóa đánh giá này?')) {
+            return;
+        }
         try {
-            const response_1 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["updateUser"])(user_0.id, {
-                status: newStatus
-            });
-            if (response_1.success) {
-                setUsers(users.map((u_0)=>u_0.id === user_0.id ? {
-                        ...u_0,
-                        status: newStatus
-                    } : u_0));
-            }
+            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$services$2f$api$2e$services$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["deleteReview"])(reviewId_0);
+            await fetchReviews();
         } catch (err_1) {
-            setError(err_1.message || 'Có lỗi xảy ra khi cập nhật trạng thái');
+            setError(err_1.response?.data?.message || 'Có lỗi xảy ra khi xóa đánh giá');
         }
     };
-    const formatDate = (date)=>date ? new Date(date).toLocaleDateString('vi-VN') : '';
-    const handleReset = ()=>{
-        setSearchTerm('');
-        setDateFrom('');
-        setDateTo('');
-        setCurrentPage(1);
+    const renderStars = (rating)=>{
+        return Array.from({
+            length: 5
+        }, (_, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                className: `text-lg ${index < rating ? 'text-yellow-400' : 'text-gray-300'}`,
+                children: "★"
+            }, index, false, {
+                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                lineNumber: 101,
+                columnNumber: 22
+            }, ("TURBOPACK compile-time value", void 0)));
+    };
+    const formatDate = (dateString)=>{
+        return new Date(dateString).toLocaleDateString('vi-VN', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "p-6",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: "text-2xl font-bold text-gray-900 mb-2",
-                children: "Quản lý khách hàng"
-            }, void 0, false, {
-                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 114,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-gray-600 mb-6",
-                children: "Tìm kiếm, chỉnh sửa và quản lý khách hàng"
-            }, void 0, false, {
-                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mb-6",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                        className: "text-2xl font-bold text-gray-900 mb-2",
+                        children: "Quản lý Đánh giá"
+                    }, void 0, false, {
+                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                        lineNumber: 116,
+                        columnNumber: 9
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-gray-600",
+                        children: "Quản lý và kiểm duyệt các đánh giá sản phẩm"
+                    }, void 0, false, {
+                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                        lineNumber: 117,
+                        columnNumber: 9
+                    }, ("TURBOPACK compile-time value", void 0))
+                ]
+            }, void 0, true, {
+                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
                 lineNumber: 115,
                 columnNumber: 7
-            }, this),
+            }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "bg-white rounded-lg shadow p-6 mb-6",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4",
+                    className: "flex gap-4",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium text-gray-700 mb-1",
-                                    children: "Tìm kiếm"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 121,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "text",
-                                    value: searchTerm,
-                                    onChange: (e)=>setSearchTerm(e.target.value),
-                                    placeholder: "Tên, email, số điện thoại...",
-                                    className: "w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 122,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 120,
+                            className: "flex-1",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                type: "text",
+                                placeholder: "Tìm kiếm theo tên người dùng, sản phẩm hoặc nội dung đánh giá...",
+                                value: searchTerm,
+                                onChange: (e)=>setSearchTerm(e.target.value),
+                                className: "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            }, void 0, false, {
+                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                lineNumber: 124,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0))
+                        }, void 0, false, {
+                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                            lineNumber: 123,
                             columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        }, ("TURBOPACK compile-time value", void 0)),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                            value: filterHidden,
+                            onChange: (e_0)=>setFilterHidden(e_0.target.value),
+                            className: "px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium text-gray-700 mb-1",
-                                    children: "Từ ngày"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                    value: "all",
+                                    children: "Tất cả đánh giá"
                                 }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 125,
+                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                    lineNumber: 127,
                                     columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "date",
-                                    value: dateFrom,
-                                    onChange: (e_0)=>setDateFrom(e_0.target.value),
-                                    className: "w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600"
+                                }, ("TURBOPACK compile-time value", void 0)),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                    value: "visible",
+                                    children: "Đánh giá hiển thị"
                                 }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 126,
+                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                    lineNumber: 128,
                                     columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 124,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium text-gray-700 mb-1",
-                                    children: "Đến ngày"
+                                }, ("TURBOPACK compile-time value", void 0)),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                    value: "hidden",
+                                    children: "Đánh giá bị ẩn"
                                 }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
                                     lineNumber: 129,
                                     columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "date",
-                                    value: dateTo,
-                                    onChange: (e_1)=>setDateTo(e_1.target.value),
-                                    className: "w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 130,
-                                    columnNumber: 13
-                                }, this)
+                                }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 128,
+                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                            lineNumber: 126,
                             columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-end",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: handleReset,
-                                className: "w-full px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600",
-                                children: "Làm mới"
-                            }, void 0, false, {
-                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 133,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 132,
-                            columnNumber: 11
-                        }, this)
+                        }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
-                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                    lineNumber: 119,
+                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                    lineNumber: 122,
                     columnNumber: 9
-                }, this)
+                }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
-                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 118,
+                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                lineNumber: 121,
                 columnNumber: 7
-            }, this),
+            }, ("TURBOPACK compile-time value", void 0)),
+            error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6",
+                children: error
+            }, void 0, false, {
+                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                lineNumber: 135,
+                columnNumber: 17
+            }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "bg-white rounded-lg shadow overflow-hidden",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                    className: "min-w-full divide-y divide-gray-200",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                            className: "bg-gray-50",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
-                                        children: "Họ tên"
-                                    }, void 0, false, {
-                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 145,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
-                                        children: "Email"
-                                    }, void 0, false, {
-                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 146,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
-                                        children: "Số điện thoại"
-                                    }, void 0, false, {
-                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 147,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
-                                        children: "Trạng thái"
-                                    }, void 0, false, {
-                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 148,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase",
-                                        children: "Thao tác"
-                                    }, void 0, false, {
-                                        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 149,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 144,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 143,
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "px-6 py-4 border-b border-gray-200",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                            className: "text-lg font-semibold text-gray-900",
+                            children: [
+                                "Danh sách đánh giá (",
+                                total,
+                                ")"
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                            lineNumber: 142,
                             columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                            className: "bg-white divide-y divide-gray-200",
-                            children: users.map((u_1)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                    className: "hover:bg-gray-50",
+                        }, ("TURBOPACK compile-time value", void 0))
+                    }, void 0, false, {
+                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                        lineNumber: 141,
+                        columnNumber: 9
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "p-6 text-center",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"
+                            }, void 0, false, {
+                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                lineNumber: 148,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "mt-2 text-gray-600",
+                                children: "Đang tải..."
+                            }, void 0, false, {
+                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                lineNumber: 149,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0))
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                        lineNumber: 147,
+                        columnNumber: 20
+                    }, ("TURBOPACK compile-time value", void 0)) : reviews.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "p-6 text-center text-gray-500",
+                        children: "Không có đánh giá nào"
+                    }, void 0, false, {
+                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                        lineNumber: 150,
+                        columnNumber: 43
+                    }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "overflow-x-auto",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                    className: "min-w-full divide-y divide-gray-200",
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4",
-                                            children: u_1.fullName
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                            className: "bg-gray-50",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                                        children: "Người dùng"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                        lineNumber: 157,
+                                                        columnNumber: 21
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                                        children: "Sản phẩm"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                        lineNumber: 160,
+                                                        columnNumber: 21
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                                        children: "Đánh giá"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                        lineNumber: 163,
+                                                        columnNumber: 21
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                                        children: "Nội dung"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                        lineNumber: 166,
+                                                        columnNumber: 21
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                                        children: "Trạng thái"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                        lineNumber: 169,
+                                                        columnNumber: 21
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                                        children: "Ngày tạo"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                        lineNumber: 172,
+                                                        columnNumber: 21
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                                        children: "Thao tác"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                        lineNumber: 175,
+                                                        columnNumber: 21
+                                                    }, ("TURBOPACK compile-time value", void 0))
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                lineNumber: 156,
+                                                columnNumber: 19
+                                            }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
-                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 154,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4",
-                                            children: u_1.email
-                                        }, void 0, false, {
-                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
+                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
                                             lineNumber: 155,
                                             columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4",
-                                            children: u_1.phone
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                            className: "bg-white divide-y divide-gray-200",
+                                            children: reviews.map((review)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                    className: "hover:bg-gray-50",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                            className: "px-6 py-4 whitespace-nowrap",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "text-sm font-medium text-gray-900",
+                                                                        children: review.user?.fullName || 'N/A'
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                        lineNumber: 184,
+                                                                        columnNumber: 27
+                                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "text-sm text-gray-500",
+                                                                        children: [
+                                                                            "@",
+                                                                            review.user?.username || 'N/A'
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                        lineNumber: 187,
+                                                                        columnNumber: 27
+                                                                    }, ("TURBOPACK compile-time value", void 0))
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                lineNumber: 183,
+                                                                columnNumber: 25
+                                                            }, ("TURBOPACK compile-time value", void 0))
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                            lineNumber: 182,
+                                                            columnNumber: 23
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                            className: "px-6 py-4 whitespace-nowrap",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "text-sm text-gray-900",
+                                                                    children: review.drink?.name || 'N/A'
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                    lineNumber: 193,
+                                                                    columnNumber: 25
+                                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "text-sm text-gray-500",
+                                                                    children: [
+                                                                        "Đơn hàng: ",
+                                                                        review.order?.order_number || 'N/A'
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                    lineNumber: 196,
+                                                                    columnNumber: 25
+                                                                }, ("TURBOPACK compile-time value", void 0))
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                            lineNumber: 192,
+                                                            columnNumber: 23
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                            className: "px-6 py-4 whitespace-nowrap",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex items-center",
+                                                                children: [
+                                                                    renderStars(review.rating),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: "ml-2 text-sm text-gray-600",
+                                                                        children: [
+                                                                            "(",
+                                                                            review.rating,
+                                                                            "/5)"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                        lineNumber: 203,
+                                                                        columnNumber: 27
+                                                                    }, ("TURBOPACK compile-time value", void 0))
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                lineNumber: 201,
+                                                                columnNumber: 25
+                                                            }, ("TURBOPACK compile-time value", void 0))
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                            lineNumber: 200,
+                                                            columnNumber: 23
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                            className: "px-6 py-4",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "text-sm text-gray-900 max-w-xs truncate",
+                                                                children: review.comment || 'Không có bình luận'
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                lineNumber: 209,
+                                                                columnNumber: 25
+                                                            }, ("TURBOPACK compile-time value", void 0))
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                            lineNumber: 208,
+                                                            columnNumber: 23
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                            className: "px-6 py-4 whitespace-nowrap",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: `inline-flex px-2 py-1 text-xs font-semibold rounded-full ${review.is_hidden ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`,
+                                                                children: review.is_hidden ? 'Đã ẩn' : 'Hiển thị'
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                lineNumber: 214,
+                                                                columnNumber: 25
+                                                            }, ("TURBOPACK compile-time value", void 0))
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                            lineNumber: 213,
+                                                            columnNumber: 23
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                            className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500",
+                                                            children: formatDate(review.created_at)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                            lineNumber: 218,
+                                                            columnNumber: 23
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                            className: "px-6 py-4 whitespace-nowrap text-sm font-medium",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex space-x-2",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                        onClick: ()=>handleToggleHidden(review.id),
+                                                                        className: `${review.is_hidden ? 'text-green-600 hover:text-green-900' : 'text-yellow-600 hover:text-yellow-900'}`,
+                                                                        children: review.is_hidden ? 'Hiện' : 'Ẩn'
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                        lineNumber: 223,
+                                                                        columnNumber: 27
+                                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                        onClick: ()=>handleDelete(review.id),
+                                                                        className: "text-red-600 hover:text-red-900",
+                                                                        children: "Xóa"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                        lineNumber: 226,
+                                                                        columnNumber: 27
+                                                                    }, ("TURBOPACK compile-time value", void 0))
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                                lineNumber: 222,
+                                                                columnNumber: 25
+                                                            }, ("TURBOPACK compile-time value", void 0))
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                            lineNumber: 221,
+                                                            columnNumber: 23
+                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                    ]
+                                                }, review.id, true, {
+                                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                    lineNumber: 181,
+                                                    columnNumber: 42
+                                                }, ("TURBOPACK compile-time value", void 0)))
                                         }, void 0, false, {
-                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 156,
+                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                            lineNumber: 180,
                                             columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: `px-2 py-1 text-xs font-semibold rounded-full ${u_1.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`,
-                                                children: u_1.status === 'active' ? 'Hoạt động' : 'Khóa'
-                                            }, void 0, false, {
-                                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                lineNumber: 158,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 157,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            className: "px-6 py-4 flex space-x-2",
+                                        }, ("TURBOPACK compile-time value", void 0))
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                    lineNumber: 154,
+                                    columnNumber: 15
+                                }, ("TURBOPACK compile-time value", void 0))
+                            }, void 0, false, {
+                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                lineNumber: 153,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "px-6 py-4 border-t border-gray-200",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-center justify-between",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "text-sm text-gray-700",
                                             children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    onClick: ()=>handleEdit(u_1),
-                                                    className: "text-blue-600 hover:text-blue-900",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                            className: "fas fa-edit mr-1"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 164,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        "Sửa"
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                    lineNumber: 163,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    onClick: ()=>handleStatusToggle(u_1),
-                                                    className: u_1.status === 'active' ? 'text-red-600 hover:text-red-900' : 'text-green-600 hover:text-green-900',
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                            className: `fas ${u_1.status === 'active' ? 'fa-lock' : 'fa-unlock'} mr-1`
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 167,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        u_1.status === 'active' ? 'Khóa' : 'Mở'
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                    lineNumber: 166,
-                                                    columnNumber: 19
-                                                }, this)
+                                                "Hiển thị ",
+                                                (currentPage - 1) * limit + 1,
+                                                " đến",
+                                                ' ',
+                                                Math.min(currentPage * limit, total),
+                                                " trong tổng số ",
+                                                total,
+                                                " đánh giá"
                                             ]
                                         }, void 0, true, {
-                                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 162,
-                                            columnNumber: 17
-                                        }, this)
+                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                            lineNumber: 239,
+                                            columnNumber: 19
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex space-x-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: ()=>setCurrentPage(currentPage - 1),
+                                                    disabled: currentPage === 1,
+                                                    className: "px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed",
+                                                    children: "Trước"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                    lineNumber: 244,
+                                                    columnNumber: 21
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "px-3 py-2 text-sm font-medium text-gray-700",
+                                                    children: [
+                                                        currentPage,
+                                                        " / ",
+                                                        totalPages
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                    lineNumber: 247,
+                                                    columnNumber: 21
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: ()=>setCurrentPage(currentPage + 1),
+                                                    disabled: currentPage === totalPages,
+                                                    className: "px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed",
+                                                    children: "Sau"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                                    lineNumber: 250,
+                                                    columnNumber: 21
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                            lineNumber: 243,
+                                            columnNumber: 19
+                                        }, ("TURBOPACK compile-time value", void 0))
                                     ]
-                                }, u_1.id, true, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 153,
-                                    columnNumber: 31
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 152,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                    lineNumber: 142,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 141,
+                                }, void 0, true, {
+                                    fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                    lineNumber: 238,
+                                    columnNumber: 17
+                                }, ("TURBOPACK compile-time value", void 0))
+                            }, void 0, false, {
+                                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                                lineNumber: 237,
+                                columnNumber: 32
+                            }, ("TURBOPACK compile-time value", void 0))
+                        ]
+                    }, void 0, true)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+                lineNumber: 140,
                 columnNumber: 7
-            }, this),
-            showEditModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "bg-white rounded-lg shadow-lg w-full max-w-3xl p-6",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "text-xl font-bold mb-4",
-                            children: "Chỉnh sửa người dùng"
-                        }, void 0, false, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 179,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "grid grid-cols-1 md:grid-cols-2 gap-4",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "text",
-                                    value: editForm.fullName || '',
-                                    onChange: (e_2)=>setEditForm({
-                                            ...editForm,
-                                            fullName: e_2.target.value
-                                        }),
-                                    placeholder: "Họ tên",
-                                    className: "border p-2 rounded"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 181,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "email",
-                                    value: editForm.email || '',
-                                    onChange: (e_3)=>setEditForm({
-                                            ...editForm,
-                                            email: e_3.target.value
-                                        }),
-                                    placeholder: "Email",
-                                    className: "border p-2 rounded"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 185,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "tel",
-                                    value: editForm.phone || '',
-                                    onChange: (e_4)=>setEditForm({
-                                            ...editForm,
-                                            phone: e_4.target.value
-                                        }),
-                                    placeholder: "Số điện thoại",
-                                    className: "border p-2 rounded"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 189,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "text",
-                                    value: editForm.address || '',
-                                    onChange: (e_5)=>setEditForm({
-                                            ...editForm,
-                                            address: e_5.target.value
-                                        }),
-                                    placeholder: "Địa chỉ",
-                                    className: "border p-2 rounded"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 193,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 180,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex justify-end mt-6 space-x-2",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: ()=>setShowEditModal(false),
-                                    className: "px-4 py-2 bg-gray-400 text-white rounded",
-                                    children: "Hủy"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 199,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: handleSave,
-                                    className: "px-4 py-2 bg-green-600 text-white rounded",
-                                    children: "Lưu"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 200,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 198,
-                            columnNumber: 13
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                    lineNumber: 178,
-                    columnNumber: 11
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 177,
-                columnNumber: 25
-            }, this)
+            }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
-        fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-        lineNumber: 113,
+        fileName: "[project]/my-next-app/src/components/ReviewsManagement.tsx",
+        lineNumber: 114,
         columnNumber: 10
-    }, this);
-}
-_s(UsersManagement, "Qeq9v/Fo44oDci0lb6fXJ+Vzlxc=");
-_c = UsersManagement;
+    }, ("TURBOPACK compile-time value", void 0));
+};
+_s(ReviewsManagement, "iQLe9jfRCHowpEHluCh/0ayC8Ks=");
+_c = ReviewsManagement;
+const __TURBOPACK__default__export__ = ReviewsManagement;
 var _c;
-__turbopack_context__.k.register(_c, "UsersManagement");
+__turbopack_context__.k.register(_c, "ReviewsManagement");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/my-next-app/src/app/users/page.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"[project]/my-next-app/src/app/reviews/page.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
     "default",
-    ()=>UsersPage
+    ()=>ReviewsPage
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/node_modules/next/dist/compiled/react/compiler-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$AdminLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/src/components/AdminLayout.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$UsersManagement$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/src/components/UsersManagement.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$ReviewsManagement$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/my-next-app/src/components/ReviewsManagement.tsx [app-client] (ecmascript)");
 'use client';
 ;
 ;
 ;
 ;
-function UsersPage() {
+function ReviewsPage() {
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(2);
-    if ($[0] !== "9c6bbf0ba4986279b7e7856678404e00ebf3dd80424fd327229eb6b4820d4656") {
+    if ($[0] !== "9e2c503ebc722230391a3f8e5d5e21c7ded5825c598712e1768fdbb9da88305c") {
         for(let $i = 0; $i < 2; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "9c6bbf0ba4986279b7e7856678404e00ebf3dd80424fd327229eb6b4820d4656";
+        $[0] = "9e2c503ebc722230391a3f8e5d5e21c7ded5825c598712e1768fdbb9da88305c";
     }
     let t0;
     if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
         t0 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$AdminLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-            currentPage: "users",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$UsersManagement$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                fileName: "[project]/my-next-app/src/app/users/page.tsx",
+            currentPage: "reviews",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$ReviewsManagement$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                fileName: "[project]/my-next-app/src/app/reviews/page.tsx",
                 lineNumber: 17,
-                columnNumber: 43
+                columnNumber: 45
             }, this)
         }, void 0, false, {
-            fileName: "[project]/my-next-app/src/app/users/page.tsx",
+            fileName: "[project]/my-next-app/src/app/reviews/page.tsx",
             lineNumber: 17,
             columnNumber: 10
         }, this);
@@ -1560,13 +1641,13 @@ function UsersPage() {
     }
     return t0;
 }
-_c = UsersPage;
+_c = ReviewsPage;
 var _c;
-__turbopack_context__.k.register(_c, "UsersPage");
+__turbopack_context__.k.register(_c, "ReviewsPage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
 ]);
 
-//# sourceMappingURL=my-next-app_src_db891ceb._.js.map
+//# sourceMappingURL=my-next-app_src_24bbab99._.js.map

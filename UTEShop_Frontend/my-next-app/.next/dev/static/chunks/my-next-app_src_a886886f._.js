@@ -301,11 +301,11 @@ var _s = __turbopack_context__.k.signature();
 function AdminLayout(t0) {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(39);
-    if ($[0] !== "4fe4c1302b1388cd505e7f76e646fea0817486f144cf300a241b5cfc5ae9ab78") {
+    if ($[0] !== "5216105276c980784612cee51d1217b295ab7d7fc5a9307a9f1e8a1ec66d9340") {
         for(let $i = 0; $i < 39; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "4fe4c1302b1388cd505e7f76e646fea0817486f144cf300a241b5cfc5ae9ab78";
+        $[0] = "5216105276c980784612cee51d1217b295ab7d7fc5a9307a9f1e8a1ec66d9340";
     }
     const { children, currentPage: t1 } = t0;
     const currentPage = t1 === undefined ? "dashboard" : t1;
@@ -368,6 +368,18 @@ function AdminLayout(t0) {
                 label: "Khuy\u1EBFn m\xE3i",
                 icon: "fas fa-tags",
                 href: "/promotions"
+            },
+            {
+                id: "comments",
+                label: "B\xECnh lu\u1EADn",
+                icon: "fas fa-comments",
+                href: "/comments"
+            },
+            {
+                id: "vouchers",
+                label: "Voucher",
+                icon: "fas fa-tags",
+                href: "/vouchers"
             }
         ];
         $[3] = t4;
@@ -387,7 +399,7 @@ function AdminLayout(t0) {
                         className: "fas fa-coffee text-white text-2xl mr-3"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 89,
+                        lineNumber: 99,
                         columnNumber: 118
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -395,18 +407,18 @@ function AdminLayout(t0) {
                         children: "UTEShop"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 89,
+                        lineNumber: 99,
                         columnNumber: 174
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 89,
+                lineNumber: 99,
                 columnNumber: 83
             }, this)
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 89,
+            lineNumber: 99,
             columnNumber: 10
         }, this);
         $[4] = t6;
@@ -426,20 +438,20 @@ function AdminLayout(t0) {
                                 className: `${item.icon} mr-3`
                             }, void 0, false, {
                                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                lineNumber: 97,
+                                lineNumber: 107,
                                 columnNumber: 249
                             }, this),
                             item.label
                         ]
                     }, item.id, true, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 97,
+                        lineNumber: 107,
                         columnNumber: 49
                     }, this)
             }["AdminLayout[menuItems.map()]"])
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 96,
+            lineNumber: 106,
             columnNumber: 10
         }, this);
         $[5] = currentPage;
@@ -457,7 +469,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 106,
+            lineNumber: 116,
             columnNumber: 10
         }, this);
         $[7] = t5;
@@ -482,7 +494,7 @@ function AdminLayout(t0) {
             className: "fas fa-bars text-xl"
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 125,
+            lineNumber: 135,
             columnNumber: 11
         }, this);
         $[12] = t10;
@@ -497,7 +509,7 @@ function AdminLayout(t0) {
             children: t10
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 132,
+            lineNumber: 142,
             columnNumber: 11
         }, this);
         $[13] = t9;
@@ -515,7 +527,7 @@ function AdminLayout(t0) {
             children: t12
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 143,
+            lineNumber: 153,
             columnNumber: 11
         }, this);
         $[15] = t12;
@@ -533,7 +545,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 151,
+            lineNumber: 161,
             columnNumber: 11
         }, this);
         $[17] = t11;
@@ -553,7 +565,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 161,
+            lineNumber: 171,
             columnNumber: 11
         }, this);
         $[20] = t15;
@@ -565,7 +577,7 @@ function AdminLayout(t0) {
     if ($[22] === Symbol.for("react.memo_cache_sentinel")) {
         t17 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$LogoutWithConfirmation$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 169,
+            lineNumber: 179,
             columnNumber: 11
         }, this);
         $[22] = t17;
@@ -582,7 +594,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 176,
+            lineNumber: 186,
             columnNumber: 11
         }, this);
         $[23] = t16;
@@ -602,12 +614,12 @@ function AdminLayout(t0) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 184,
+                lineNumber: 194,
                 columnNumber: 59
             }, this)
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 184,
+            lineNumber: 194,
             columnNumber: 11
         }, this);
         $[25] = t14;
@@ -623,7 +635,7 @@ function AdminLayout(t0) {
             children: children
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 193,
+            lineNumber: 203,
             columnNumber: 11
         }, this);
         $[28] = children;
@@ -641,7 +653,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 201,
+            lineNumber: 211,
             columnNumber: 11
         }, this);
         $[30] = t19;
@@ -659,7 +671,7 @@ function AdminLayout(t0) {
             }["AdminLayout[<div>.onClick]"]
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 210,
+            lineNumber: 220,
             columnNumber: 26
         }, this);
         $[33] = sidebarOpen;
@@ -678,7 +690,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 220,
+            lineNumber: 230,
             columnNumber: 11
         }, this);
         $[35] = t21;
