@@ -21,7 +21,7 @@ import { VouchersModule } from './vouchers/vouchers.module';
       host: process.env.MYSQL_HOST || 'localhost',
       port: parseInt(process.env.MYSQL_PORT || '3306'),
       username: process.env.MYSQL_USER || 'root',
-      password: process.env.MYSQL_PASSWORD || '040404',
+      password: process.env.MYSQL_PASSWORD || 'kolothefourth4$',
       database: process.env.MYSQL_DB || 'uteshop',
       models: [UTEShopUser, UTEShopOrder, UTEShopOrderItem, UTEShopDrink, UTEShopVoucher],
       autoLoadModels: true,
