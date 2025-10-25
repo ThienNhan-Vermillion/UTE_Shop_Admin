@@ -51,8 +51,16 @@ __turbopack_context__.s([
     ()=>checkEmailAvailable,
     "checkUsernameAvailable",
     ()=>checkUsernameAvailable,
+    "createProduct",
+    ()=>createProduct,
     "forgotPassword",
     ()=>forgotPassword,
+    "getProduct",
+    ()=>getProduct,
+    "getProducts",
+    ()=>getProducts,
+    "hideProduct",
+    ()=>hideProduct,
     "login",
     ()=>login,
     "registerConfirm",
@@ -61,6 +69,10 @@ __turbopack_context__.s([
     ()=>registerRequestOtp,
     "resetPassword",
     ()=>resetPassword,
+    "showProduct",
+    ()=>showProduct,
+    "updateProduct",
+    ()=>updateProduct,
     "verifyForgotOtp",
     ()=>verifyForgotOtp
 ]);
@@ -68,11 +80,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-client] (ecmascript)");
 ;
 const API_BASE_URL = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001';
+console.log('API Base URL:', API_BASE_URL);
 const api = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].create({
     baseURL: API_BASE_URL,
     headers: {
         'Content-Type': 'application/json'
-    }
+    },
+    timeout: 10000
 });
 const login = async (username, password)=>{
     const response = await api.post('/auth/login', {
@@ -119,6 +133,62 @@ const resetPassword = async (email, otp, newPassword, confirmPassword)=>{
     });
     return response.data;
 };
+const getProducts = async ()=>{
+    try {
+        console.log('Fetching products from:', API_BASE_URL + '/products');
+        const response = await api.get('/products');
+        console.log('Products response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        throw error;
+    }
+};
+const getProduct = async (id)=>{
+    try {
+        const response = await api.get(`/products/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        throw error;
+    }
+};
+const createProduct = async (productData)=>{
+    try {
+        const response = await api.post('/products', productData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating product:', error);
+        throw error;
+    }
+};
+const updateProduct = async (id, productData)=>{
+    try {
+        const response = await api.patch(`/products/${id}`, productData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating product:', error);
+        throw error;
+    }
+};
+const hideProduct = async (id)=>{
+    try {
+        const response = await api.patch(`/products/${id}/hide`);
+        return response.data;
+    } catch (error) {
+        console.error('Error hiding product:', error);
+        throw error;
+    }
+};
+const showProduct = async (id)=>{
+    try {
+        const response = await api.patch(`/products/${id}/show`);
+        return response.data;
+    } catch (error) {
+        console.error('Error showing product:', error);
+        throw error;
+    }
+};
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -148,11 +218,11 @@ var _s = __turbopack_context__.k.signature();
 function Register() {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(43);
-    if ($[0] !== "5c437bbaf00a998fdabdbd557b4b1535d40b8572320c1377e476d34f4a3efbeb") {
+    if ($[0] !== "a4c66baa9fc58ae2cb68ac10eeefceff7d99d0f278f7bc714a6e64ac4041ef90") {
         for(let $i = 0; $i < 43; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "5c437bbaf00a998fdabdbd557b4b1535d40b8572320c1377e476d34f4a3efbeb";
+        $[0] = "a4c66baa9fc58ae2cb68ac10eeefceff7d99d0f278f7bc714a6e64ac4041ef90";
     }
     let t0;
     if ($[1] === Symbol.for("react.memo_cache_sentinel")) {

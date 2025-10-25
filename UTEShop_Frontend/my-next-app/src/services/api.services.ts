@@ -121,3 +121,84 @@ export const showProduct = async (id: number) => {
   }
 };
 
+// Users API
+export const getUsers = async () => {
+  try {
+    console.log('Fetching users from:', API_BASE_URL + '/users');
+    const response = await api.get('/users');
+    console.log('Users response:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    throw error;
+  }
+};
+
+export const updateUser = async (id: number, userData: any) => {
+  try {
+    const response = await api.put(`/users/${id}`, userData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating user:', error);
+    throw error;
+  }
+};
+
+// Vouchers API
+export const getVouchers = async () => {
+  try {
+    console.log('Fetching vouchers from:', API_BASE_URL + '/vouchers');
+    const response = await api.get('/vouchers');
+    console.log('Vouchers response:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching vouchers:', error);
+    throw error;
+  }
+};
+
+export const getVoucher = async (id: number) => {
+  try {
+    const response = await api.get(`/vouchers/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching voucher:', error);
+    throw error;
+  }
+};
+
+export const updateVoucher = async (id: number, voucherData: any) => {
+  try {
+    console.log('Updating voucher:', { id, voucherData });
+    const response = await api.patch(`/vouchers/${id}`, voucherData);
+    return response.data;
+  } catch (error: any) {
+    console.error('Error updating voucher:', error);
+    if (error.response) {
+      console.error('Response data:', error.response.data);
+      console.error('Response status:', error.response.status);
+    }
+    throw error;
+  }
+};
+
+export const deleteVoucher = async (id: number) => {
+  try {
+    const response = await api.delete(`/vouchers/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting voucher:', error);
+    throw error;
+  }
+};
+
+export const markVoucherAsUsed = async (id: number) => {
+  try {
+    const response = await api.patch(`/vouchers/${id}/mark-used`);
+    return response.data;
+  } catch (error) {
+    console.error('Error marking voucher as used:', error);
+    throw error;
+  }
+};
+

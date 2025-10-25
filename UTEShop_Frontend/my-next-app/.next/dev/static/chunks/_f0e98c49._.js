@@ -66,11 +66,11 @@ var _s = __turbopack_context__.k.signature();
 function HomePage() {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(5);
-    if ($[0] !== "73423ea6394673751c2d4773e131f5e01b7f098eaf0448ba8c2a9140ccfccf86") {
+    if ($[0] !== "6bfc25144446f5fc74797097fc6c09cb2035c8a7ad4936aacf2c2c0277b56b52") {
         for(let $i = 0; $i < 5; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "73423ea6394673751c2d4773e131f5e01b7f098eaf0448ba8c2a9140ccfccf86";
+        $[0] = "6bfc25144446f5fc74797097fc6c09cb2035c8a7ad4936aacf2c2c0277b56b52";
     }
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     let t0;

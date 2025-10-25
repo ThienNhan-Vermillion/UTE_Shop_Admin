@@ -269,10 +269,10 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
             href: '/comments'
         },
         {
-            id: 'promotions',
-            label: 'Khuyến mãi',
+            id: 'vouchers',
+            label: 'Voucher',
             icon: 'fas fa-tags',
-            href: '/promotions'
+            href: '/vouchers'
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -537,16 +537,26 @@ __turbopack_context__.s([
     ()=>checkUsernameAvailable,
     "createProduct",
     ()=>createProduct,
+    "deleteVoucher",
+    ()=>deleteVoucher,
     "forgotPassword",
     ()=>forgotPassword,
     "getProduct",
     ()=>getProduct,
     "getProducts",
     ()=>getProducts,
+    "getUsers",
+    ()=>getUsers,
+    "getVoucher",
+    ()=>getVoucher,
+    "getVouchers",
+    ()=>getVouchers,
     "hideProduct",
     ()=>hideProduct,
     "login",
     ()=>login,
+    "markVoucherAsUsed",
+    ()=>markVoucherAsUsed,
     "registerConfirm",
     ()=>registerConfirm,
     "registerRequestOtp",
@@ -557,6 +567,10 @@ __turbopack_context__.s([
     ()=>showProduct,
     "updateProduct",
     ()=>updateProduct,
+    "updateUser",
+    ()=>updateUser,
+    "updateVoucher",
+    ()=>updateVoucher,
     "verifyForgotOtp",
     ()=>verifyForgotOtp
 ]);
@@ -669,6 +683,81 @@ const showProduct = async (id)=>{
         return response.data;
     } catch (error) {
         console.error('Error showing product:', error);
+        throw error;
+    }
+};
+const getUsers = async ()=>{
+    try {
+        console.log('Fetching users from:', API_BASE_URL + '/users');
+        const response = await api.get('/users');
+        console.log('Users response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        throw error;
+    }
+};
+const updateUser = async (id, userData)=>{
+    try {
+        const response = await api.put(`/users/${id}`, userData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+};
+const getVouchers = async ()=>{
+    try {
+        console.log('Fetching vouchers from:', API_BASE_URL + '/vouchers');
+        const response = await api.get('/vouchers');
+        console.log('Vouchers response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching vouchers:', error);
+        throw error;
+    }
+};
+const getVoucher = async (id)=>{
+    try {
+        const response = await api.get(`/vouchers/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching voucher:', error);
+        throw error;
+    }
+};
+const updateVoucher = async (id, voucherData)=>{
+    try {
+        console.log('Updating voucher:', {
+            id,
+            voucherData
+        });
+        const response = await api.patch(`/vouchers/${id}`, voucherData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating voucher:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+        }
+        throw error;
+    }
+};
+const deleteVoucher = async (id)=>{
+    try {
+        const response = await api.delete(`/vouchers/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting voucher:', error);
+        throw error;
+    }
+};
+const markVoucherAsUsed = async (id)=>{
+    try {
+        const response = await api.patch(`/vouchers/${id}/mark-used`);
+        return response.data;
+    } catch (error) {
+        console.error('Error marking voucher as used:', error);
         throw error;
     }
 };

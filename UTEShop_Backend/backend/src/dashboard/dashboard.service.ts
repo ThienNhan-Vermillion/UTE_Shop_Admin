@@ -1,13 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Users } from '../models/user.model';
 import { UTEShopOrder, UTEShopUser } from '../models/uteshop.models';
 import { Op } from 'sequelize';
 
 @Injectable()
 export class DashboardService {
   constructor(
-    @InjectModel(Users) private userModel: typeof Users,
+    @InjectModel(UTEShopUser) private userModel: typeof UTEShopUser,
     @InjectModel(UTEShopOrder) private orderModel: typeof UTEShopOrder,
     @InjectModel(UTEShopUser) private uteshopUserModel: typeof UTEShopUser,
   ) {}

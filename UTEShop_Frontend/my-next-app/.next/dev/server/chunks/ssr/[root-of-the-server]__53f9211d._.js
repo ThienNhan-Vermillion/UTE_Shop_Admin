@@ -109,27 +109,55 @@ __turbopack_context__.s([
     ()=>checkEmailAvailable,
     "checkUsernameAvailable",
     ()=>checkUsernameAvailable,
+    "createProduct",
+    ()=>createProduct,
+    "deleteVoucher",
+    ()=>deleteVoucher,
     "forgotPassword",
     ()=>forgotPassword,
+    "getProduct",
+    ()=>getProduct,
+    "getProducts",
+    ()=>getProducts,
+    "getUsers",
+    ()=>getUsers,
+    "getVoucher",
+    ()=>getVoucher,
+    "getVouchers",
+    ()=>getVouchers,
+    "hideProduct",
+    ()=>hideProduct,
     "login",
     ()=>login,
+    "markVoucherAsUsed",
+    ()=>markVoucherAsUsed,
     "registerConfirm",
     ()=>registerConfirm,
     "registerRequestOtp",
     ()=>registerRequestOtp,
     "resetPassword",
     ()=>resetPassword,
+    "showProduct",
+    ()=>showProduct,
+    "updateProduct",
+    ()=>updateProduct,
+    "updateUser",
+    ()=>updateUser,
+    "updateVoucher",
+    ()=>updateVoucher,
     "verifyForgotOtp",
     ()=>verifyForgotOtp
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-ssr] (ecmascript)");
 ;
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001';
+console.log('API Base URL:', API_BASE_URL);
 const api = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].create({
     baseURL: API_BASE_URL,
     headers: {
         'Content-Type': 'application/json'
-    }
+    },
+    timeout: 10000
 });
 const login = async (username, password)=>{
     const response = await api.post('/auth/login', {
@@ -175,6 +203,137 @@ const resetPassword = async (email, otp, newPassword, confirmPassword)=>{
         confirmPassword
     });
     return response.data;
+};
+const getProducts = async ()=>{
+    try {
+        console.log('Fetching products from:', API_BASE_URL + '/products');
+        const response = await api.get('/products');
+        console.log('Products response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        throw error;
+    }
+};
+const getProduct = async (id)=>{
+    try {
+        const response = await api.get(`/products/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        throw error;
+    }
+};
+const createProduct = async (productData)=>{
+    try {
+        const response = await api.post('/products', productData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating product:', error);
+        throw error;
+    }
+};
+const updateProduct = async (id, productData)=>{
+    try {
+        const response = await api.patch(`/products/${id}`, productData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating product:', error);
+        throw error;
+    }
+};
+const hideProduct = async (id)=>{
+    try {
+        const response = await api.patch(`/products/${id}/hide`);
+        return response.data;
+    } catch (error) {
+        console.error('Error hiding product:', error);
+        throw error;
+    }
+};
+const showProduct = async (id)=>{
+    try {
+        const response = await api.patch(`/products/${id}/show`);
+        return response.data;
+    } catch (error) {
+        console.error('Error showing product:', error);
+        throw error;
+    }
+};
+const getUsers = async ()=>{
+    try {
+        console.log('Fetching users from:', API_BASE_URL + '/users');
+        const response = await api.get('/users');
+        console.log('Users response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        throw error;
+    }
+};
+const updateUser = async (id, userData)=>{
+    try {
+        const response = await api.put(`/users/${id}`, userData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+};
+const getVouchers = async ()=>{
+    try {
+        console.log('Fetching vouchers from:', API_BASE_URL + '/vouchers');
+        const response = await api.get('/vouchers');
+        console.log('Vouchers response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching vouchers:', error);
+        throw error;
+    }
+};
+const getVoucher = async (id)=>{
+    try {
+        const response = await api.get(`/vouchers/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching voucher:', error);
+        throw error;
+    }
+};
+const updateVoucher = async (id, voucherData)=>{
+    try {
+        console.log('Updating voucher:', {
+            id,
+            voucherData
+        });
+        const response = await api.patch(`/vouchers/${id}`, voucherData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating voucher:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+        }
+        throw error;
+    }
+};
+const deleteVoucher = async (id)=>{
+    try {
+        const response = await api.delete(`/vouchers/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting voucher:', error);
+        throw error;
+    }
+};
+const markVoucherAsUsed = async (id)=>{
+    try {
+        const response = await api.patch(`/vouchers/${id}/mark-used`);
+        return response.data;
+    } catch (error) {
+        console.error('Error marking voucher as used:', error);
+        throw error;
+    }
 };
 }),
 "[project]/src/utils/authStorage.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {

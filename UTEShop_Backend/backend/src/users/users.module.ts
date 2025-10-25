@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Users } from '../models/user.model';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
+import { UTEShopUser } from '../models/uteshop.models';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Users])],
+  imports: [SequelizeModule.forFeature([UTEShopUser])],
   controllers: [UsersController],
   providers: [UsersService],
 })

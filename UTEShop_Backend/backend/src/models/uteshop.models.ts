@@ -12,6 +12,9 @@ export class UTEShopUser extends Model<UTEShopUser> {
   
   @Column({ type: DataType.STRING, allowNull: false })
   declare password: string;
+
+  @Column({ type: DataType.STRING, allowNull: false, defaultValue: 'active' })
+  declare status: string;
   
   @Column({ type: DataType.STRING, allowNull: false, unique: true })
   declare email: string;
@@ -30,6 +33,9 @@ export class UTEShopUser extends Model<UTEShopUser> {
 
   @HasMany(() => UTEShopOrder, 'user_id')
   declare orders: UTEShopOrder[];
+
+  @Column({ type: DataType.STRING, allowNull: false, defaultValue: 'user' })
+  declare role: string;
 }
 
 @Table({ tableName: 'drinks', timestamps: false })
@@ -203,4 +209,53 @@ export class UTEShopOrderItem extends Model<UTEShopOrderItem> {
 
   @BelongsTo(() => UTEShopDrink, 'drink_id')
   declare drink: UTEShopDrink;
+}
+
+@Table({
+  tableName: 'vouchers',
+  timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
+})
+export class UTEShopVoucher extends Model<UTEShopVoucher> {
+  @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
+  declare id: number;
+
+  @ForeignKey(() => UTEShopUser)
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  declare user_id: number;
+
+  @Column({ type: DataType.STRING(32), allowNull: false, unique: true })
+  declare code: string;
+
+  @Column({
+    type: DataType.ENUM('percent', 'fixed'),
+    allowNull: false,
+    defaultValue: 'fixed',
+  })
+  declare discount_type: 'percent' | 'fixed';
+
+  @Column({ type: DataType.DECIMAL(10, 2), allowNull: false })
+  declare discount_value: number;
+
+  @Column({ type: DataType.DECIMAL(10, 2), allowNull: true })
+  declare min_order_total: number;
+
+  @Column({ type: DataType.DATE, allowNull: true })
+  declare expires_at: Date;
+
+  @Column({ type: DataType.DATE, allowNull: true })
+  declare used_at: Date;
+
+  @Column({ type: DataType.STRING, allowNull: true })
+  declare description: string;
+
+  @Column({ type: DataType.DATE })
+  declare created_at: Date;
+
+  @Column({ type: DataType.DATE })
+  declare updated_at: Date;
+
+  @BelongsTo(() => UTEShopUser, 'user_id')
+  declare user: UTEShopUser;
 }

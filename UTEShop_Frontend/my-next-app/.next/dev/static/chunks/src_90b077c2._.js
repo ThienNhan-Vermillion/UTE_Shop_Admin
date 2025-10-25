@@ -66,11 +66,11 @@ var _s = __turbopack_context__.k.signature();
 function LogoutWithConfirmation() {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(11);
-    if ($[0] !== "681ac193182d8100b9390c043e15f9390ea9cbdc94560fbd2252f9a4fc71251b") {
+    if ($[0] !== "4f01ceb0c03499715a326747262d362267a45dd40bb47b54c4f7e28ae2b0f6af") {
         for(let $i = 0; $i < 11; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "681ac193182d8100b9390c043e15f9390ea9cbdc94560fbd2252f9a4fc71251b";
+        $[0] = "4f01ceb0c03499715a326747262d362267a45dd40bb47b54c4f7e28ae2b0f6af";
     }
     const [showConfirm, setShowConfirm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -301,11 +301,11 @@ var _s = __turbopack_context__.k.signature();
 function AdminLayout(t0) {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(39);
-    if ($[0] !== "c8dbef178b402194ffa75aa29004b6057c411555644831557118d80839234604") {
+    if ($[0] !== "1ec5415d2230b3386d7a67af69848b46c5e4d82569c91a4207b66abcf5f6aa98") {
         for(let $i = 0; $i < 39; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "c8dbef178b402194ffa75aa29004b6057c411555644831557118d80839234604";
+        $[0] = "1ec5415d2230b3386d7a67af69848b46c5e4d82569c91a4207b66abcf5f6aa98";
     }
     const { children, currentPage: t1 } = t0;
     const currentPage = t1 === undefined ? "dashboard" : t1;
@@ -364,10 +364,10 @@ function AdminLayout(t0) {
                 href: "/comments"
             },
             {
-                id: "promotions",
-                label: "Khuy\u1EBFn m\xE3i",
+                id: "vouchers",
+                label: "Voucher",
                 icon: "fas fa-tags",
-                href: "/promotions"
+                href: "/vouchers"
             }
         ];
         $[3] = t4;
@@ -708,16 +708,26 @@ __turbopack_context__.s([
     ()=>checkUsernameAvailable,
     "createProduct",
     ()=>createProduct,
+    "deleteVoucher",
+    ()=>deleteVoucher,
     "forgotPassword",
     ()=>forgotPassword,
     "getProduct",
     ()=>getProduct,
     "getProducts",
     ()=>getProducts,
+    "getUsers",
+    ()=>getUsers,
+    "getVoucher",
+    ()=>getVoucher,
+    "getVouchers",
+    ()=>getVouchers,
     "hideProduct",
     ()=>hideProduct,
     "login",
     ()=>login,
+    "markVoucherAsUsed",
+    ()=>markVoucherAsUsed,
     "registerConfirm",
     ()=>registerConfirm,
     "registerRequestOtp",
@@ -728,6 +738,10 @@ __turbopack_context__.s([
     ()=>showProduct,
     "updateProduct",
     ()=>updateProduct,
+    "updateUser",
+    ()=>updateUser,
+    "updateVoucher",
+    ()=>updateVoucher,
     "verifyForgotOtp",
     ()=>verifyForgotOtp
 ]);
@@ -841,6 +855,81 @@ const showProduct = async (id)=>{
         return response.data;
     } catch (error) {
         console.error('Error showing product:', error);
+        throw error;
+    }
+};
+const getUsers = async ()=>{
+    try {
+        console.log('Fetching users from:', API_BASE_URL + '/users');
+        const response = await api.get('/users');
+        console.log('Users response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        throw error;
+    }
+};
+const updateUser = async (id, userData)=>{
+    try {
+        const response = await api.put(`/users/${id}`, userData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+};
+const getVouchers = async ()=>{
+    try {
+        console.log('Fetching vouchers from:', API_BASE_URL + '/vouchers');
+        const response = await api.get('/vouchers');
+        console.log('Vouchers response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching vouchers:', error);
+        throw error;
+    }
+};
+const getVoucher = async (id)=>{
+    try {
+        const response = await api.get(`/vouchers/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching voucher:', error);
+        throw error;
+    }
+};
+const updateVoucher = async (id, voucherData)=>{
+    try {
+        console.log('Updating voucher:', {
+            id,
+            voucherData
+        });
+        const response = await api.patch(`/vouchers/${id}`, voucherData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating voucher:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+        }
+        throw error;
+    }
+};
+const deleteVoucher = async (id)=>{
+    try {
+        const response = await api.delete(`/vouchers/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting voucher:', error);
+        throw error;
+    }
+};
+const markVoucherAsUsed = async (id)=>{
+    try {
+        const response = await api.patch(`/vouchers/${id}/mark-used`);
+        return response.data;
+    } catch (error) {
+        console.error('Error marking voucher as used:', error);
         throw error;
     }
 };

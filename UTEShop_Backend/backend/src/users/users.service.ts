@@ -1,15 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Users } from '../models/user.model';
+import { UTEShopUser } from '../models/uteshop.models';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel(Users)
-    private userModel: typeof Users,
+    @InjectModel(UTEShopUser)
+    private userModel: typeof UTEShopUser,
   ) {}
 
-  async findAll(): Promise<Users[]> {
-    return this.userModel.findAll();
+  async findAll(): Promise<Partial<UTEShopUser>[]> {
+    return this.userModel.findAll({
+      where: { role: 'user' },
+      attributes: { exclude: ['password'] },
+    });
   }
+
+  async findOne(id: number): Promise<Partial<UTEShopUser> | null> {
+    return this.userModel.findByPk(id, {
+      attributes: { exclude: ['password'] },
+    });
+  }
+
+  async update(
+    id: number,
+    updateData: Partial<Omit<UTEShopUser, 'password'>>
+  ): Promise<Partial<UTEShopUser> | null> {
+    const user = await this.userModel.findByPk(id);
+    if (!user) return null;
+  
+    await user.update(updateData);
+    return user; 
+  }
+  
 }
