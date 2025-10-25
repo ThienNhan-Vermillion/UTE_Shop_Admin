@@ -66,11 +66,11 @@ var _s = __turbopack_context__.k.signature();
 function LogoutWithConfirmation() {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(11);
-    if ($[0] !== "681ac193182d8100b9390c043e15f9390ea9cbdc94560fbd2252f9a4fc71251b") {
+    if ($[0] !== "4f01ceb0c03499715a326747262d362267a45dd40bb47b54c4f7e28ae2b0f6af") {
         for(let $i = 0; $i < 11; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "681ac193182d8100b9390c043e15f9390ea9cbdc94560fbd2252f9a4fc71251b";
+        $[0] = "4f01ceb0c03499715a326747262d362267a45dd40bb47b54c4f7e28ae2b0f6af";
     }
     const [showConfirm, setShowConfirm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -301,11 +301,19 @@ var _s = __turbopack_context__.k.signature();
 function AdminLayout(t0) {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(39);
+<<<<<<< HEAD
     if ($[0] !== "58f4091235eb1e488567448e1abbfab1b2d9433586ea7862359fc0942ea54787") {
         for(let $i = 0; $i < 39; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
         $[0] = "58f4091235eb1e488567448e1abbfab1b2d9433586ea7862359fc0942ea54787";
+=======
+    if ($[0] !== "1ec5415d2230b3386d7a67af69848b46c5e4d82569c91a4207b66abcf5f6aa98") {
+        for(let $i = 0; $i < 39; $i += 1){
+            $[$i] = Symbol.for("react.memo_cache_sentinel");
+        }
+        $[0] = "1ec5415d2230b3386d7a67af69848b46c5e4d82569c91a4207b66abcf5f6aa98";
+>>>>>>> nha
     }
     const { children, currentPage: t1 } = t0;
     const currentPage = t1 === undefined ? "dashboard" : t1;
@@ -364,10 +372,10 @@ function AdminLayout(t0) {
                 href: "/reviews"
             },
             {
-                id: "promotions",
-                label: "Khuy\u1EBFn m\xE3i",
+                id: "vouchers",
+                label: "Voucher",
                 icon: "fas fa-tags",
-                href: "/promotions"
+                href: "/vouchers"
             }
         ];
         $[3] = t4;

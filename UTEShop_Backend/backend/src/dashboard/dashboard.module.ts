@@ -7,6 +7,7 @@ import { ActivityService } from '../services/activity.service';
 
 @Module({
   imports: [SequelizeModule.forFeature([UTEShopOrder, UTEShopUser, UTEShopActivity])],
+
   controllers: [DashboardController],
   providers: [DashboardService, ActivityService],
 })

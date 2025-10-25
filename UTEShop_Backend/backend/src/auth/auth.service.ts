@@ -13,8 +13,9 @@ import { OtpService } from './services/otp.service';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectModel(UTEShopUser)
-    private userModel: typeof UTEShopUser,
+
+    @InjectModel(UTEShopUser )
+    private userModel: typeof UTEShopUser ,
     private jwtService: JwtService,
     private emailService: EmailService,
     private otpService: OtpService,

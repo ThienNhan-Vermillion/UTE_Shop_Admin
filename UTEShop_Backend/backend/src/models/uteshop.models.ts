@@ -1,5 +1,8 @@
 import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 
+/* ==========================
+   USER MODEL
+========================== */
 @Table({ tableName: 'users', timestamps: false })
 export class UTEShopUser extends Model<UTEShopUser> {
   @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
@@ -13,6 +16,9 @@ export class UTEShopUser extends Model<UTEShopUser> {
   
   @Column({ type: DataType.STRING, allowNull: false })
   declare password: string;
+
+  @Column({ type: DataType.STRING, allowNull: false, defaultValue: 'active' })
+  declare status: string;
   
   @Column({ type: DataType.STRING, allowNull: false, unique: true })
   declare email: string;
@@ -35,9 +41,14 @@ export class UTEShopUser extends Model<UTEShopUser> {
 
   @HasMany(() => UTEShopOrder, 'user_id')
   declare orders: UTEShopOrder[];
+
+  @Column({ type: DataType.STRING, allowNull: false, defaultValue: 'user' })
+  declare role: string;
 }
 
-
+/* ==========================
+   DRINK MODEL
+========================== */
 @Table({ tableName: 'drinks', timestamps: false })
 export class UTEShopDrink extends Model<UTEShopDrink> {
   @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
@@ -89,6 +100,9 @@ export class UTEShopDrink extends Model<UTEShopDrink> {
   declare orderItems: UTEShopOrderItem[];
 }
 
+/* ==========================
+   ORDER MODEL
+========================== */
 @Table({ tableName: 'orders', timestamps: false })
 export class UTEShopOrder extends Model<UTEShopOrder> {
   declare id: number;
@@ -168,6 +182,9 @@ export class UTEShopOrder extends Model<UTEShopOrder> {
   declare orderItems: UTEShopOrderItem[];
 }
 
+/* ==========================
+   ORDER ITEM MODEL
+========================== */
 @Table({ tableName: 'order_items', timestamps: false })
 export class UTEShopOrderItem extends Model<UTEShopOrderItem> {
   declare id: number;
@@ -211,6 +228,9 @@ export class UTEShopOrderItem extends Model<UTEShopOrderItem> {
   declare drink: UTEShopDrink;
 }
 
+/* ==========================
+   REVIEW MODEL
+========================== */
 @Table({ tableName: 'reviews', timestamps: false })
 export class UTEShopReview extends Model<UTEShopReview> {
   @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
@@ -228,14 +248,7 @@ export class UTEShopReview extends Model<UTEShopReview> {
   @Column({ type: DataType.INTEGER, allowNull: false })
   declare order_id: number;
   
-  @Column({ 
-    type: DataType.INTEGER, 
-    allowNull: false,
-    validate: {
-      min: 1,
-      max: 5,
-    }
-  })
+  @Column({ type: DataType.INTEGER, allowNull: false, validate: { min: 1, max: 5 } })
   declare rating: number;
   
   @Column({ type: DataType.TEXT, allowNull: true })
@@ -246,7 +259,7 @@ export class UTEShopReview extends Model<UTEShopReview> {
   
   @Column({ type: DataType.DATE })
   declare created_at: Date;
-  
+
   @Column({ type: DataType.DATE })
   declare updated_at: Date;
 
@@ -260,17 +273,72 @@ export class UTEShopReview extends Model<UTEShopReview> {
   declare order: UTEShopOrder;
 }
 
+/* ==========================
+   ACTIVITY MODEL
+========================== */
 @Table({ tableName: 'activities', timestamps: false })
 export class UTEShopActivity extends Model<UTEShopActivity> {
   @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
   declare id: number;
   
   @Column({ type: DataType.STRING, allowNull: false })
-  declare type: string; // 'product_add', 'product_update', 'product_delete', 'order_status_change', etc.
+  declare type: string;
   
   @Column({ type: DataType.STRING, allowNull: false })
   declare description: string;
   
   @Column({ type: DataType.DATE, allowNull: false })
   declare created_at: Date;
+}
+
+/* ==========================
+   VOUCHER MODEL
+========================== */
+@Table({
+  tableName: 'vouchers',
+  timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
+})
+export class UTEShopVoucher extends Model<UTEShopVoucher> {
+  @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
+  declare id: number;
+
+  @ForeignKey(() => UTEShopUser)
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  declare user_id: number;
+
+  @Column({ type: DataType.STRING(32), allowNull: false, unique: true })
+  declare code: string;
+
+  @Column({
+    type: DataType.ENUM('percent', 'fixed'),
+    allowNull: false,
+    defaultValue: 'fixed',
+  })
+  declare discount_type: 'percent' | 'fixed';
+
+  @Column({ type: DataType.DECIMAL(10, 2), allowNull: false })
+  declare discount_value: number;
+
+  @Column({ type: DataType.DECIMAL(10, 2), allowNull: true })
+  declare min_order_total: number;
+
+  @Column({ type: DataType.DATE, allowNull: true })
+  declare expires_at: Date;
+
+  @Column({ type: DataType.DATE, allowNull: true })
+  declare used_at: Date;
+
+  @Column({ type: DataType.STRING, allowNull: true })
+  declare description: string;
+
+  @Column({ type: DataType.DATE })
+  declare created_at: Date;
+
+  @Column({ type: DataType.DATE })
+  declare updated_at: Date;
+
+  @BelongsTo(() => UTEShopUser, 'user_id')
+  declare user: UTEShopUser;
 }

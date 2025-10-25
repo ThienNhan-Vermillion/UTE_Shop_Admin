@@ -29,6 +29,8 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
     { id: 'users', label: 'Người dùng', icon: 'fas fa-users', href: '/users' },
     { id: 'reviews', label: 'Đánh giá', icon: 'fas fa-star', href: '/reviews' },
     { id: 'promotions', label: 'Khuyến mãi', icon: 'fas fa-tags', href: '/promotions' },
+    { id: 'comments', label: 'Bình luận', icon: 'fas fa-comments', href: '/comments' },
+    { id: 'vouchers', label: 'Voucher', icon: 'fas fa-tags', href: '/vouchers' },
   ];
 
   return (

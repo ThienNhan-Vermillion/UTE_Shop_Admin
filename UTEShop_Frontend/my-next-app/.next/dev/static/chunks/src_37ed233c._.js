@@ -9,16 +9,32 @@ __turbopack_context__.s([
     ()=>checkUsernameAvailable,
     "createProduct",
     ()=>createProduct,
+<<<<<<< HEAD
+=======
+    "deleteVoucher",
+    ()=>deleteVoucher,
+>>>>>>> nha
     "forgotPassword",
     ()=>forgotPassword,
     "getProduct",
     ()=>getProduct,
     "getProducts",
     ()=>getProducts,
+<<<<<<< HEAD
+=======
+    "getUsers",
+    ()=>getUsers,
+    "getVoucher",
+    ()=>getVoucher,
+    "getVouchers",
+    ()=>getVouchers,
+>>>>>>> nha
     "hideProduct",
     ()=>hideProduct,
     "login",
     ()=>login,
+    "markVoucherAsUsed",
+    ()=>markVoucherAsUsed,
     "registerConfirm",
     ()=>registerConfirm,
     "registerRequestOtp",
@@ -29,6 +45,13 @@ __turbopack_context__.s([
     ()=>showProduct,
     "updateProduct",
     ()=>updateProduct,
+<<<<<<< HEAD
+=======
+    "updateUser",
+    ()=>updateUser,
+    "updateVoucher",
+    ()=>updateVoucher,
+>>>>>>> nha
     "verifyForgotOtp",
     ()=>verifyForgotOtp
 ]);
@@ -120,6 +143,7 @@ const createProduct = async (productData)=>{
 };
 const updateProduct = async (id, productData)=>{
     try {
+<<<<<<< HEAD
         console.log('Updating product:', id, productData);
         const response = await api.patch(`/products/${id}`, productData);
         console.log('Update response:', response.data);
@@ -127,6 +151,12 @@ const updateProduct = async (id, productData)=>{
     } catch (error) {
         console.error('Error updating product:', error);
         console.error('Error response:', error.response?.data);
+=======
+        const response = await api.patch(`/products/${id}`, productData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating product:', error);
+>>>>>>> nha
         throw error;
     }
 };
@@ -148,6 +178,84 @@ const showProduct = async (id)=>{
         throw error;
     }
 };
+<<<<<<< HEAD
+=======
+const getUsers = async ()=>{
+    try {
+        console.log('Fetching users from:', API_BASE_URL + '/users');
+        const response = await api.get('/users');
+        console.log('Users response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        throw error;
+    }
+};
+const updateUser = async (id, userData)=>{
+    try {
+        const response = await api.put(`/users/${id}`, userData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+};
+const getVouchers = async ()=>{
+    try {
+        console.log('Fetching vouchers from:', API_BASE_URL + '/vouchers');
+        const response = await api.get('/vouchers');
+        console.log('Vouchers response:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching vouchers:', error);
+        throw error;
+    }
+};
+const getVoucher = async (id)=>{
+    try {
+        const response = await api.get(`/vouchers/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching voucher:', error);
+        throw error;
+    }
+};
+const updateVoucher = async (id, voucherData)=>{
+    try {
+        console.log('Updating voucher:', {
+            id,
+            voucherData
+        });
+        const response = await api.patch(`/vouchers/${id}`, voucherData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating voucher:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+        }
+        throw error;
+    }
+};
+const deleteVoucher = async (id)=>{
+    try {
+        const response = await api.delete(`/vouchers/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting voucher:', error);
+        throw error;
+    }
+};
+const markVoucherAsUsed = async (id)=>{
+    try {
+        const response = await api.patch(`/vouchers/${id}/mark-used`);
+        return response.data;
+    } catch (error) {
+        console.error('Error marking voucher as used:', error);
+        throw error;
+    }
+};
+>>>>>>> nha
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -224,11 +332,11 @@ var _s = __turbopack_context__.k.signature();
 function Login() {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(35);
-    if ($[0] !== "69442a52ed2115326033247ad1bce1d1957c93d50f86b336d000778126efb16d") {
+    if ($[0] !== "ca327a2c5dd8535091c01110c247b7c32a122fa777648e4da4504a4a108aba8e") {
         for(let $i = 0; $i < 35; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "69442a52ed2115326033247ad1bce1d1957c93d50f86b336d000778126efb16d";
+        $[0] = "ca327a2c5dd8535091c01110c247b7c32a122fa777648e4da4504a4a108aba8e";
     }
     const [username, setUsername] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [password, setPassword] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");

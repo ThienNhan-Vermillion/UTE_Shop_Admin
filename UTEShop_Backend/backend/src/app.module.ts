@@ -1,13 +1,24 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { UTEShopUser, UTEShopOrder, UTEShopOrderItem, UTEShopDrink, UTEShopReview, UTEShopActivity } from './models/uteshop.models';
+import { 
+  UTEShopUser, 
+  UTEShopOrder, 
+  UTEShopOrderItem, 
+  UTEShopDrink, 
+  UTEShopReview, 
+  UTEShopActivity, 
+  UTEShopVoucher 
+} from './models/uteshop.models';
+
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { OrdersModule } from './orders/orders.module';
 import { ProductsModule } from './products/products.module';
 import { ReviewsModule } from './reviews/reviews.module';
+import { VouchersModule } from './vouchers/vouchers.module';
+
 
 @Module({
   imports: [
@@ -23,7 +34,7 @@ import { ReviewsModule } from './reviews/reviews.module';
       username: process.env.MYSQL_USER || 'root',
       password: process.env.MYSQL_PASSWORD || 'kolothefourth4$',
       database: process.env.MYSQL_DB || 'uteshop',
-      models: [UTEShopUser, UTEShopOrder, UTEShopOrderItem, UTEShopDrink, UTEShopReview, UTEShopActivity],
+      models: [UTEShopUser, UTEShopOrder, UTEShopOrderItem, UTEShopDrink, UTEShopReview, UTEShopActivity,UTEShopVoucher],
       autoLoadModels: true,
       synchronize: false,
       logging: true,
@@ -35,6 +46,7 @@ import { ReviewsModule } from './reviews/reviews.module';
     OrdersModule,
     ProductsModule,
     ReviewsModule,
+    VouchersModule,
   ],
 })
 export class AppModule {}

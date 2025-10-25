@@ -6,7 +6,6 @@ import { AuthService } from './auth.service';
 import { EmailService } from './services/email.service';
 import { OtpService } from './services/otp.service';
 import { UTEShopUser } from '../models/uteshop.models';
-
 @Module({
   imports: [
     SequelizeModule.forFeature([UTEShopUser]),
