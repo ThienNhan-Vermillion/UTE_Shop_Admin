@@ -257,6 +257,12 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
             href: '/products'
         },
         {
+            id: 'categories',
+            label: 'Loại sản phẩm',
+            icon: 'fas fa-list',
+            href: '/categories'
+        },
+        {
             id: 'users',
             label: 'Người dùng',
             icon: 'fas fa-users',
@@ -267,18 +273,6 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
             label: 'Đánh giá',
             icon: 'fas fa-star',
             href: '/reviews'
-        },
-        {
-            id: 'promotions',
-            label: 'Khuyến mãi',
-            icon: 'fas fa-tags',
-            href: '/promotions'
-        },
-        {
-            id: 'comments',
-            label: 'Bình luận',
-            icon: 'fas fa-comments',
-            href: '/comments'
         },
         {
             id: 'vouchers',
@@ -302,7 +296,7 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                     className: "fas fa-coffee text-white text-2xl mr-3"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 44,
+                                    lineNumber: 43,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -310,18 +304,18 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                     children: "UTEShop"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 45,
+                                    lineNumber: 44,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                            lineNumber: 43,
+                            lineNumber: 42,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 42,
+                        lineNumber: 41,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -334,65 +328,55 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                         className: `${item.icon} mr-3`
                                     }, void 0, false, {
                                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                        lineNumber: 58,
+                                        lineNumber: 57,
                                         columnNumber: 15
                                     }, this),
                                     item.label
                                 ]
                             }, item.id, true, {
                                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                lineNumber: 51,
+                                lineNumber: 50,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 49,
+                        lineNumber: 48,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 39,
+                lineNumber: 38,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "lg:ml-64",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-                        className: "bg-white shadow-sm border-b",
+                        className: "sticky top-0 z-40 bg-white shadow-sm border-b",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center justify-between px-6 py-4",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex items-center",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            onClick: ()=>setSidebarOpen(!sidebarOpen),
-                                            className: "lg:hidden text-gray-600 hover:text-gray-900 mr-4",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                className: "fas fa-bars text-xl"
-                                            }, void 0, false, {
-                                                fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                                lineNumber: 75,
-                                                columnNumber: 17
-                                            }, this)
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>setSidebarOpen(!sidebarOpen),
+                                        className: "lg:hidden text-gray-600 hover:text-gray-900 mr-4",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                            className: "fas fa-bars text-xl"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 71,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                            className: "text-2xl font-bold text-gray-900",
-                                            children: menuItems.find((item)=>item.id === currentPage)?.label || 'Dashboard'
-                                        }, void 0, false, {
-                                            fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 77,
-                                            columnNumber: 15
+                                            lineNumber: 74,
+                                            columnNumber: 17
                                         }, this)
-                                    ]
-                                }, void 0, true, {
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
+                                        lineNumber: 70,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 70,
+                                    lineNumber: 69,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -406,29 +390,29 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 83,
+                                            lineNumber: 79,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$LogoutWithConfirmation$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 86,
+                                            lineNumber: 82,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 78,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                            lineNumber: 69,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 68,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -436,13 +420,13 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 92,
+                        lineNumber: 88,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 66,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             sidebarOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -450,13 +434,13 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                 onClick: ()=>setSidebarOpen(false)
             }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 99,
+                lineNumber: 95,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-        lineNumber: 37,
+        lineNumber: 36,
         columnNumber: 5
     }, this);
 }
@@ -547,16 +531,22 @@ __turbopack_context__.s([
     ()=>checkEmailAvailable,
     "checkUsernameAvailable",
     ()=>checkUsernameAvailable,
+    "createCategory",
+    ()=>createCategory,
     "createProduct",
     ()=>createProduct,
     "createReview",
     ()=>createReview,
+    "deleteCategory",
+    ()=>deleteCategory,
     "deleteReview",
     ()=>deleteReview,
     "deleteVoucher",
     ()=>deleteVoucher,
     "forgotPassword",
     ()=>forgotPassword,
+    "getCategories",
+    ()=>getCategories,
     "getDrinkRatingStats",
     ()=>getDrinkRatingStats,
     "getOrders",
@@ -593,6 +583,8 @@ __turbopack_context__.s([
     ()=>showProduct,
     "toggleReviewHidden",
     ()=>toggleReviewHidden,
+    "updateCategory",
+    ()=>updateCategory,
     "updateProduct",
     ()=>updateProduct,
     "updateReview",
@@ -654,9 +646,9 @@ const resetPassword = async (email, otp, newPassword, confirmPassword)=>{
     });
     return response.data;
 };
-const getProducts = async ()=>{
+const getProducts = async (page = 1, limit = 10)=>{
     try {
-        const response = await api.get('/products');
+        const response = await api.get(`/products?page=${page}&limit=${limit}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -791,6 +783,42 @@ const deleteVoucher = async (id)=>{
 const markVoucherAsUsed = async (id)=>{
     const response = await api.patch(`/vouchers/${id}/mark-used`);
     return response.data;
+};
+const getCategories = async ()=>{
+    try {
+        const response = await api.get('/categories');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        throw error;
+    }
+};
+const createCategory = async (categoryData)=>{
+    try {
+        const response = await api.post('/categories', categoryData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating category:', error);
+        throw error;
+    }
+};
+const updateCategory = async (id, categoryData)=>{
+    try {
+        const response = await api.put(`/categories/${id}`, categoryData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating category:', error);
+        throw error;
+    }
+};
+const deleteCategory = async (id)=>{
+    try {
+        const response = await api.delete(`/categories/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting category:', error);
+        throw error;
+    }
 };
 }),
 "[project]/my-next-app/src/components/VoucherManagement.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
@@ -1371,9 +1399,11 @@ function VoucherManagement() {
                 columnNumber: 9
             }, this),
             showEditModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50",
+                className: "fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[9999]",
+                onClick: handleCancel,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "bg-white rounded-lg shadow-xl w-full max-w-4xl mx-4",
+                    onClick: (e)=>e.stopPropagation(),
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center justify-between p-6 border-b",
@@ -1572,10 +1602,10 @@ function VoucherManagement() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "number",
-                                                        value: editForm.min_order_total || '',
+                                                        value: editForm.min_order_amount ?? '',
                                                         onChange: (e)=>setEditForm({
                                                                 ...editForm,
-                                                                min_order_total: parseFloat(e.target.value)
+                                                                min_order_amount: parseFloat(e.target.value)
                                                             }),
                                                         className: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500",
                                                         placeholder: "Nhập đơn hàng tối thiểu"
@@ -1602,10 +1632,10 @@ function VoucherManagement() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "date",
-                                                        value: editForm.expires_at || '',
+                                                        value: editForm.end_date ?? '',
                                                         onChange: (e)=>setEditForm({
                                                                 ...editForm,
-                                                                expires_at: e.target.value
+                                                                end_date: e.target.value
                                                             }),
                                                         className: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                                                     }, void 0, false, {

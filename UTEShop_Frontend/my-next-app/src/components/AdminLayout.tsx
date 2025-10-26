@@ -26,10 +26,9 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
     { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-chart-line', href: '/dashboard' },
     { id: 'orders', label: 'Đơn hàng', icon: 'fas fa-shopping-cart', href: '/orders' },
     { id: 'products', label: 'Sản phẩm', icon: 'fas fa-box', href: '/products' },
+    { id: 'categories', label: 'Loại sản phẩm', icon: 'fas fa-list', href: '/categories' },
     { id: 'users', label: 'Người dùng', icon: 'fas fa-users', href: '/users' },
     { id: 'reviews', label: 'Đánh giá', icon: 'fas fa-star', href: '/reviews' },
-    { id: 'promotions', label: 'Khuyến mãi', icon: 'fas fa-tags', href: '/promotions' },
-    { id: 'comments', label: 'Bình luận', icon: 'fas fa-comments', href: '/comments' },
     { id: 'vouchers', label: 'Voucher', icon: 'fas fa-tags', href: '/vouchers' },
   ];
 
@@ -65,7 +64,7 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
       {/* Main Content */}
       <div className="lg:ml-64">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b">
+        <header className="sticky top-0 z-40 bg-white shadow-sm border-b">
           <div className="flex items-center justify-between px-6 py-4">
             <div className="flex items-center">
               <button
@@ -74,9 +73,6 @@ export default function AdminLayout({ children, currentPage = 'dashboard' }: Adm
               >
                 <i className="fas fa-bars text-xl"></i>
               </button>
-              <h1 className="text-2xl font-bold text-gray-900">
-                {menuItems.find(item => item.id === currentPage)?.label || 'Dashboard'}
-              </h1>
             </div>
             
             <div className="flex items-center space-x-4">

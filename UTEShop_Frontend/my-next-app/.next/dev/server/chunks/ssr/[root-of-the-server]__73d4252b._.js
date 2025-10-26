@@ -257,6 +257,12 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
             href: '/products'
         },
         {
+            id: 'categories',
+            label: 'Loại sản phẩm',
+            icon: 'fas fa-list',
+            href: '/categories'
+        },
+        {
             id: 'users',
             label: 'Người dùng',
             icon: 'fas fa-users',
@@ -267,18 +273,6 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
             label: 'Đánh giá',
             icon: 'fas fa-star',
             href: '/reviews'
-        },
-        {
-            id: 'promotions',
-            label: 'Khuyến mãi',
-            icon: 'fas fa-tags',
-            href: '/promotions'
-        },
-        {
-            id: 'comments',
-            label: 'Bình luận',
-            icon: 'fas fa-comments',
-            href: '/comments'
         },
         {
             id: 'vouchers',
@@ -302,7 +296,7 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                     className: "fas fa-coffee text-white text-2xl mr-3"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 44,
+                                    lineNumber: 43,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -310,18 +304,18 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                     children: "UTEShop"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 45,
+                                    lineNumber: 44,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                            lineNumber: 43,
+                            lineNumber: 42,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 42,
+                        lineNumber: 41,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -334,65 +328,55 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                         className: `${item.icon} mr-3`
                                     }, void 0, false, {
                                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                        lineNumber: 58,
+                                        lineNumber: 57,
                                         columnNumber: 15
                                     }, this),
                                     item.label
                                 ]
                             }, item.id, true, {
                                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                lineNumber: 51,
+                                lineNumber: 50,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 49,
+                        lineNumber: 48,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 39,
+                lineNumber: 38,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "lg:ml-64",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-                        className: "bg-white shadow-sm border-b",
+                        className: "sticky top-0 z-40 bg-white shadow-sm border-b",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center justify-between px-6 py-4",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex items-center",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            onClick: ()=>setSidebarOpen(!sidebarOpen),
-                                            className: "lg:hidden text-gray-600 hover:text-gray-900 mr-4",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
-                                                className: "fas fa-bars text-xl"
-                                            }, void 0, false, {
-                                                fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                                lineNumber: 75,
-                                                columnNumber: 17
-                                            }, this)
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>setSidebarOpen(!sidebarOpen),
+                                        className: "lg:hidden text-gray-600 hover:text-gray-900 mr-4",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("i", {
+                                            className: "fas fa-bars text-xl"
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 71,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                            className: "text-2xl font-bold text-gray-900",
-                                            children: menuItems.find((item)=>item.id === currentPage)?.label || 'Dashboard'
-                                        }, void 0, false, {
-                                            fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 77,
-                                            columnNumber: 15
+                                            lineNumber: 74,
+                                            columnNumber: 17
                                         }, this)
-                                    ]
-                                }, void 0, true, {
+                                    }, void 0, false, {
+                                        fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
+                                        lineNumber: 70,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 70,
+                                    lineNumber: 69,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -406,29 +390,29 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 83,
+                                            lineNumber: 79,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$LogoutWithConfirmation$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                            lineNumber: 86,
+                                            lineNumber: 82,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 78,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                            lineNumber: 69,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 68,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -436,13 +420,13 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                         children: children
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 92,
+                        lineNumber: 88,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 66,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             sidebarOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -450,13 +434,13 @@ function AdminLayout({ children, currentPage = 'dashboard' }) {
                 onClick: ()=>setSidebarOpen(false)
             }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 99,
+                lineNumber: 95,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-        lineNumber: 37,
+        lineNumber: 36,
         columnNumber: 5
     }, this);
 }
@@ -547,16 +531,22 @@ __turbopack_context__.s([
     ()=>checkEmailAvailable,
     "checkUsernameAvailable",
     ()=>checkUsernameAvailable,
+    "createCategory",
+    ()=>createCategory,
     "createProduct",
     ()=>createProduct,
     "createReview",
     ()=>createReview,
+    "deleteCategory",
+    ()=>deleteCategory,
     "deleteReview",
     ()=>deleteReview,
     "deleteVoucher",
     ()=>deleteVoucher,
     "forgotPassword",
     ()=>forgotPassword,
+    "getCategories",
+    ()=>getCategories,
     "getDrinkRatingStats",
     ()=>getDrinkRatingStats,
     "getOrders",
@@ -593,6 +583,8 @@ __turbopack_context__.s([
     ()=>showProduct,
     "toggleReviewHidden",
     ()=>toggleReviewHidden,
+    "updateCategory",
+    ()=>updateCategory,
     "updateProduct",
     ()=>updateProduct,
     "updateReview",
@@ -654,9 +646,9 @@ const resetPassword = async (email, otp, newPassword, confirmPassword)=>{
     });
     return response.data;
 };
-const getProducts = async ()=>{
+const getProducts = async (page = 1, limit = 10)=>{
     try {
-        const response = await api.get('/products');
+        const response = await api.get(`/products?page=${page}&limit=${limit}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -791,6 +783,42 @@ const deleteVoucher = async (id)=>{
 const markVoucherAsUsed = async (id)=>{
     const response = await api.patch(`/vouchers/${id}/mark-used`);
     return response.data;
+};
+const getCategories = async ()=>{
+    try {
+        const response = await api.get('/categories');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        throw error;
+    }
+};
+const createCategory = async (categoryData)=>{
+    try {
+        const response = await api.post('/categories', categoryData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating category:', error);
+        throw error;
+    }
+};
+const updateCategory = async (id, categoryData)=>{
+    try {
+        const response = await api.put(`/categories/${id}`, categoryData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating category:', error);
+        throw error;
+    }
+};
+const deleteCategory = async (id)=>{
+    try {
+        const response = await api.delete(`/categories/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting category:', error);
+        throw error;
+    }
 };
 }),
 "[project]/my-next-app/src/components/UsersManagement.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
@@ -929,122 +957,10 @@ function UsersManagement() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-gray-600 mb-6",
-                children: "Tìm kiếm, chỉnh sửa và quản lý khách hàng"
+                className: "text-gray-600 mb-6"
             }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
                 lineNumber: 136,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "bg-white rounded-lg shadow p-6 mb-6",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium text-gray-700 mb-1",
-                                    children: "Tìm kiếm"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 142,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "text",
-                                    value: searchTerm,
-                                    onChange: (e)=>setSearchTerm(e.target.value),
-                                    placeholder: "Tên, email, số điện thoại...",
-                                    className: "w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 143,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 141,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium text-gray-700 mb-1",
-                                    children: "Từ ngày"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 152,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "date",
-                                    value: dateFrom,
-                                    onChange: (e)=>setDateFrom(e.target.value),
-                                    className: "w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 153,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 151,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium text-gray-700 mb-1",
-                                    children: "Đến ngày"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 161,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "date",
-                                    value: dateTo,
-                                    onChange: (e)=>setDateTo(e.target.value),
-                                    className: "w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600"
-                                }, void 0, false, {
-                                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 162,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 160,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-end",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: handleReset,
-                                className: "w-full px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600",
-                                children: "Làm mới"
-                            }, void 0, false, {
-                                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 170,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 169,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                    lineNumber: 140,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 139,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1061,7 +977,7 @@ function UsersManagement() {
                                         children: "Họ tên"
                                     }, void 0, false, {
                                         fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 185,
+                                        lineNumber: 144,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1069,7 +985,7 @@ function UsersManagement() {
                                         children: "Email"
                                     }, void 0, false, {
                                         fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 186,
+                                        lineNumber: 145,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1077,7 +993,7 @@ function UsersManagement() {
                                         children: "Số điện thoại"
                                     }, void 0, false, {
                                         fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 187,
+                                        lineNumber: 146,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1085,7 +1001,7 @@ function UsersManagement() {
                                         children: "Trạng thái"
                                     }, void 0, false, {
                                         fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 188,
+                                        lineNumber: 147,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1093,18 +1009,18 @@ function UsersManagement() {
                                         children: "Thao tác"
                                     }, void 0, false, {
                                         fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 189,
+                                        lineNumber: 148,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 184,
+                                lineNumber: 143,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 183,
+                            lineNumber: 142,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1120,7 +1036,7 @@ function UsersManagement() {
                                                 className: "animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                lineNumber: 197,
+                                                lineNumber: 156,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1128,23 +1044,23 @@ function UsersManagement() {
                                                 children: "Đang tải..."
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                lineNumber: 198,
+                                                lineNumber: 157,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                        lineNumber: 196,
+                                        lineNumber: 155,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 195,
+                                    lineNumber: 154,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 194,
+                                lineNumber: 153,
                                 columnNumber: 15
                             }, this) : error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1153,12 +1069,12 @@ function UsersManagement() {
                                     children: error
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 204,
+                                    lineNumber: 163,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 203,
+                                lineNumber: 162,
                                 columnNumber: 15
                             }, this) : !users || users.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1167,12 +1083,12 @@ function UsersManagement() {
                                     children: "Không có dữ liệu khách hàng"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 169,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                lineNumber: 209,
+                                lineNumber: 168,
                                 columnNumber: 15
                             }, this) : users.map((u)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                     className: "hover:bg-gray-50",
@@ -1182,7 +1098,7 @@ function UsersManagement() {
                                             children: u.fullName
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 217,
+                                            lineNumber: 176,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1190,7 +1106,7 @@ function UsersManagement() {
                                             children: u.email
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 177,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1198,7 +1114,7 @@ function UsersManagement() {
                                             children: u.phone
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 219,
+                                            lineNumber: 178,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1208,12 +1124,12 @@ function UsersManagement() {
                                                 children: u.status === 'active' ? 'Hoạt động' : 'Khóa'
                                             }, void 0, false, {
                                                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                lineNumber: 221,
+                                                lineNumber: 180,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 220,
+                                            lineNumber: 179,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1227,14 +1143,14 @@ function UsersManagement() {
                                                             className: "fas fa-edit mr-1"
                                                         }, void 0, false, {
                                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 232,
+                                                            lineNumber: 191,
                                                             columnNumber: 23
                                                         }, this),
                                                         "Sửa"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                    lineNumber: 228,
+                                                    lineNumber: 187,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1245,55 +1161,57 @@ function UsersManagement() {
                                                             className: `fas ${u.status === 'active' ? 'fa-lock' : 'fa-unlock'} mr-1`
                                                         }, void 0, false, {
                                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                            lineNumber: 240,
+                                                            lineNumber: 199,
                                                             columnNumber: 23
                                                         }, this),
                                                         u.status === 'active' ? 'Khóa' : 'Mở'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                                    lineNumber: 234,
+                                                    lineNumber: 193,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                            lineNumber: 227,
+                                            lineNumber: 186,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, u.id, true, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 216,
+                                    lineNumber: 175,
                                     columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 192,
+                            lineNumber: 151,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                    lineNumber: 182,
+                    lineNumber: 141,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 181,
+                lineNumber: 140,
                 columnNumber: 7
             }, this),
             showEditModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50",
+                className: "fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[9999]",
+                onClick: ()=>setShowEditModal(false),
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "bg-white rounded-lg shadow-lg w-full max-w-3xl p-6",
+                    onClick: (e)=>e.stopPropagation(),
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                             className: "text-xl font-bold mb-4",
                             children: "Chỉnh sửa người dùng"
                         }, void 0, false, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 255,
+                            lineNumber: 214,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1310,7 +1228,7 @@ function UsersManagement() {
                                     className: "border p-2 rounded"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 257,
+                                    lineNumber: 216,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1324,7 +1242,7 @@ function UsersManagement() {
                                     className: "border p-2 rounded"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 264,
+                                    lineNumber: 223,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1338,7 +1256,7 @@ function UsersManagement() {
                                     className: "border p-2 rounded"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 271,
+                                    lineNumber: 230,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1352,13 +1270,13 @@ function UsersManagement() {
                                     className: "border p-2 rounded"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 278,
+                                    lineNumber: 237,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 256,
+                            lineNumber: 215,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1370,7 +1288,7 @@ function UsersManagement() {
                                     children: "Hủy"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 287,
+                                    lineNumber: 246,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1379,24 +1297,24 @@ function UsersManagement() {
                                     children: "Lưu"
                                 }, void 0, false, {
                                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                                    lineNumber: 288,
+                                    lineNumber: 247,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                            lineNumber: 286,
+                            lineNumber: 245,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                    lineNumber: 254,
+                    lineNumber: 213,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/my-next-app/src/components/UsersManagement.tsx",
-                lineNumber: 253,
+                lineNumber: 212,
                 columnNumber: 9
             }, this)
         ]

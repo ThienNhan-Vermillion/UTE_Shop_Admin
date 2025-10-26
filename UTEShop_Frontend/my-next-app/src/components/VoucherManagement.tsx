@@ -299,8 +299,8 @@ export default function VoucherManagement() {
 
       {/* Edit Voucher Modal */}
       {showEditModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl mx-4">
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[9999]" onClick={handleCancel}>
+          <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl mx-4" onClick={(e) => e.stopPropagation()}>
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 border-b">
               <h2 className="text-xl font-bold text-gray-900">Sửa voucher</h2>
@@ -349,7 +349,7 @@ export default function VoucherManagement() {
                     </label>
                     <select
                       value={editForm.discount_type || ''}
-                      onChange={(e) => setEditForm({...editForm, discount_type: e.target.value as 'percent' | 'fixed'})}
+                      onChange={(e) => setEditForm({...editForm, discount_type: e.target.value as 'percentage' | 'fixed'})}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                     >
                       <option value="percent">Phần trăm</option>
@@ -379,8 +379,8 @@ export default function VoucherManagement() {
                     </label>
                     <input
                       type="number"
-                      value={editForm.min_order_total || ''}
-                      onChange={(e) => setEditForm({...editForm, min_order_total: parseFloat(e.target.value)})}
+                      value={editForm.min_order_amount ?? ''}
+                      onChange={(e) => setEditForm({...editForm, min_order_amount: parseFloat(e.target.value)})}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                       placeholder="Nhập đơn hàng tối thiểu"
                     />
@@ -392,8 +392,8 @@ export default function VoucherManagement() {
                     </label>
                     <input
                       type="date"
-                      value={editForm.expires_at || ''}
-                      onChange={(e) => setEditForm({...editForm, expires_at: e.target.value})}
+                      value={editForm.end_date ?? ''}
+                      onChange={(e) => setEditForm({...editForm, end_date: e.target.value})}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                     />
                   </div>

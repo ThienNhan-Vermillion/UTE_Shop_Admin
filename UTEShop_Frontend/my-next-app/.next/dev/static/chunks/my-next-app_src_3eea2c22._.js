@@ -7,16 +7,22 @@ __turbopack_context__.s([
     ()=>checkEmailAvailable,
     "checkUsernameAvailable",
     ()=>checkUsernameAvailable,
+    "createCategory",
+    ()=>createCategory,
     "createProduct",
     ()=>createProduct,
     "createReview",
     ()=>createReview,
+    "deleteCategory",
+    ()=>deleteCategory,
     "deleteReview",
     ()=>deleteReview,
     "deleteVoucher",
     ()=>deleteVoucher,
     "forgotPassword",
     ()=>forgotPassword,
+    "getCategories",
+    ()=>getCategories,
     "getDrinkRatingStats",
     ()=>getDrinkRatingStats,
     "getOrders",
@@ -53,6 +59,8 @@ __turbopack_context__.s([
     ()=>showProduct,
     "toggleReviewHidden",
     ()=>toggleReviewHidden,
+    "updateCategory",
+    ()=>updateCategory,
     "updateProduct",
     ()=>updateProduct,
     "updateReview",
@@ -252,6 +260,42 @@ const deleteVoucher = async (id)=>{
 const markVoucherAsUsed = async (id)=>{
     const response = await api.patch(`/vouchers/${id}/mark-used`);
     return response.data;
+};
+const getCategories = async ()=>{
+    try {
+        const response = await api.get('/categories');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        throw error;
+    }
+};
+const createCategory = async (categoryData)=>{
+    try {
+        const response = await api.post('/categories', categoryData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating category:', error);
+        throw error;
+    }
+};
+const updateCategory = async (id, categoryData)=>{
+    try {
+        const response = await api.put(`/categories/${id}`, categoryData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating category:', error);
+        throw error;
+    }
+};
+const deleteCategory = async (id)=>{
+    try {
+        const response = await api.delete(`/categories/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting category:', error);
+        throw error;
+    }
 };
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);

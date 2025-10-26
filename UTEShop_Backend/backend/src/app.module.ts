@@ -10,6 +10,7 @@ import {
   UTEShopActivity, 
   UTEShopVoucher 
 } from './models/uteshop.models';
+import { UTEShopCategory } from './models/category.model';
 
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
@@ -18,6 +19,7 @@ import { OrdersModule } from './orders/orders.module';
 import { ProductsModule } from './products/products.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import { VouchersModule } from './vouchers/vouchers.module';
+import { CategoriesModule } from './categories/categories.module';
 
 
 @Module({
@@ -32,9 +34,9 @@ import { VouchersModule } from './vouchers/vouchers.module';
       host: process.env.MYSQL_HOST || 'localhost',
       port: parseInt(process.env.MYSQL_PORT || '3306'),
       username: process.env.MYSQL_USER || 'root',
-      password: process.env.MYSQL_PASSWORD || 'kolothefourth4$',
-      database: process.env.MYSQL_DB || 'uteshop',
-      models: [UTEShopUser, UTEShopOrder, UTEShopOrderItem, UTEShopDrink, UTEShopReview, UTEShopActivity,UTEShopVoucher],
+      password: process.env.MYSQL_PASSWORD || '123456',
+      database: process.env.MYSQL_DB || 'uteshop3',
+      models: [UTEShopUser, UTEShopOrder, UTEShopOrderItem, UTEShopDrink, UTEShopReview, UTEShopActivity, UTEShopVoucher, UTEShopCategory],
       autoLoadModels: true,
       synchronize: false,
       logging: true,
@@ -47,6 +49,7 @@ import { VouchersModule } from './vouchers/vouchers.module';
     ProductsModule,
     ReviewsModule,
     VouchersModule,
+    CategoriesModule,
   ],
 })
 export class AppModule {}

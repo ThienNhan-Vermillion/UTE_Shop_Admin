@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import AdminLayout from './AdminLayout';
 import ImageUpload from './ImageUpload';
-import { getProducts, createProduct, updateProduct, hideProduct, showProduct } from '../services/api.services';
+import { getProducts, createProduct, updateProduct, hideProduct, showProduct, getCategories } from '../services/api.services';
 
 interface Product {
   id: number;
@@ -40,6 +40,9 @@ interface ProductFormData {
 const ProductsManagement = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [total, setTotal] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -60,28 +63,45 @@ const ProductsManagement = () => {
     category_id: 1,
   });
 
-  const categories = [
-    { id: 1, name: 'Cà phê' },
-    { id: 2, name: 'Trà sữa' },
-    { id: 3, name: 'Nước ép' },
-    { id: 4, name: 'Smoothie' },
-  ];
+  const [categories, setCategories] = useState<Array<{id: number, name: string}>>([]);
+  const limit = 10;
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+    fetchCategories();
+  }, [currentPage]);
 
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const data = await getProducts();
+      const data = await getProducts(currentPage, limit);
       if (data.success) {
         setProducts(data.data);
+        setTotal(data.total || 0);
+        setTotalPages(data.totalPages || 1);
       }
     } catch (error) {
       console.error('Lỗi khi tải danh sách sản phẩm:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const data = await getCategories();
+      if (data.success) {
+        setCategories(data.data);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh sách loại sản phẩm:', error);
+      // Fallback to default categories if API fails
+      setCategories([
+        { id: 1, name: 'Cà phê' },
+        { id: 2, name: 'Trà sữa' },
+        { id: 3, name: 'Nước ép' },
+        { id: 4, name: 'Sinh tố' },
+      ]);
     }
   };
 
@@ -91,10 +111,6 @@ const ProductsManagement = () => {
     // Validation
     if (!formData.name.trim()) {
       alert('Vui lòng nhập tên sản phẩm');
-      return;
-    }
-    if (!formData.slug.trim()) {
-      alert('Vui lòng nhập slug');
       return;
     }
     if (formData.price <= 0) {
@@ -107,10 +123,20 @@ const ProductsManagement = () => {
     }
 
     try {
+      // Tự động tạo slug từ tên sản phẩm
+      const autoSlug = formData.name
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+        .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+        .replace(/\s+/g, '-') // Replace spaces with hyphens
+        .replace(/-+/g, '-') // Replace multiple hyphens with single
+        .trim();
+
       // Chuẩn bị dữ liệu gửi đi
       const submitData = {
         name: formData.name.trim(),
-        slug: formData.slug.trim(),
+        slug: autoSlug,
         description: formData.description.trim(),
         price: Number(formData.price),
         salePrice: formData.salePrice > 0 ? Number(formData.salePrice) : undefined,
@@ -134,6 +160,7 @@ const ProductsManagement = () => {
         setShowSuccessModal(true);
         setShowModal(false);
         resetForm();
+        setCurrentPage(1); // Reset về trang 1
         fetchProducts();
       } else {
         alert('Có lỗi xảy ra: ' + data.message);
@@ -158,7 +185,7 @@ const ProductsManagement = () => {
       description: product.description || '',
       price: product.price || 0,
       salePrice: product.salePrice || 0,
-      size: product.size || '',
+      size: product.size || 'M',
       stock: product.stock || 0,
       views: product.views || 0,
       sold: product.sold || 0,
@@ -229,7 +256,7 @@ const ProductsManagement = () => {
       description: '',
       price: 0,
       salePrice: 0,
-      size: '',
+      size: 'M',
       stock: 0,
       views: 0,
       sold: 0,
@@ -272,6 +299,7 @@ const ProductsManagement = () => {
     const category = categories.find(cat => cat.id === categoryId);
     return category ? category.name : 'Không xác định';
   };
+
 
   return (
     <AdminLayout currentPage="products">
@@ -412,6 +440,89 @@ const ProductsManagement = () => {
               </tbody>
               </table>
             </div>
+            
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                <div className="flex-1 flex justify-between sm:hidden">
+                  <button
+                    onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                    disabled={currentPage === 1}
+                    className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Trước
+                  </button>
+                  <button
+                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                    disabled={currentPage === totalPages}
+                    className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Sau
+                  </button>
+                </div>
+                <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-sm text-gray-700">
+                      Hiển thị{' '}
+                      <span className="font-medium">{(currentPage - 1) * limit + 1}</span>
+                      {' '}đến{' '}
+                      <span className="font-medium">
+                        {Math.min(currentPage * limit, total)}
+                      </span>
+                      {' '}trong{' '}
+                      <span className="font-medium">{total}</span>
+                      {' '}kết quả
+                    </p>
+                  </div>
+                  <div>
+                    <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                      <button
+                        onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                        disabled={currentPage === 1}
+                        className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <i className="fas fa-chevron-left"></i>
+                      </button>
+                      
+                      {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                        let pageNum;
+                        if (totalPages <= 5) {
+                          pageNum = i + 1;
+                        } else if (currentPage <= 3) {
+                          pageNum = i + 1;
+                        } else if (currentPage >= totalPages - 2) {
+                          pageNum = totalPages - 4 + i;
+                        } else {
+                          pageNum = currentPage - 2 + i;
+                        }
+                        
+                        return (
+                          <button
+                            key={pageNum}
+                            onClick={() => setCurrentPage(pageNum)}
+                            className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
+                              currentPage === pageNum
+                                ? 'z-10 bg-green-50 border-green-500 text-green-600'
+                                : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
+                            }`}
+                          >
+                            {pageNum}
+                          </button>
+                        );
+                      })}
+                      
+                      <button
+                        onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                        disabled={currentPage === totalPages}
+                        className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <i className="fas fa-chevron-right"></i>
+                      </button>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -452,47 +563,52 @@ const ProductsManagement = () => {
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Slug</label>
-                      <input
-                        type="text"
-                        value={formData.slug}
-                        onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                        className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-                        required
-                      />
+                      <label className="block text-sm font-medium text-gray-700">Slug (Tự động tạo)</label>
+                      <div className="mt-1 px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-sm text-gray-600">
+                        {formData.name ? 
+                          formData.name
+                            .toLowerCase()
+                            .normalize('NFD')
+                            .replace(/[\u0300-\u036f]/g, '')
+                            .replace(/[^a-z0-9\s-]/g, '')
+                            .replace(/\s+/g, '-')
+                            .replace(/-+/g, '-')
+                            .trim() 
+                          : 'Sẽ tự động tạo từ tên sản phẩm'
+                        }
+                      </div>
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-sm font-medium text-gray-700">Loại sản phẩm</label>
-                      <select
-                        value={formData.category_id}
-                        onChange={(e) => setFormData({ ...formData, category_id: parseInt(e.target.value) })}
-                        className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-                        required
-                      >
-                        {categories.map((category) => (
-                          <option key={category.id} value={category.id}>
-                            {category.name}
-                          </option>
-                        ))}
-                      </select>
+                      <div className="flex gap-2">
+                        <select
+                          value={formData.category_id}
+                          onChange={(e) => setFormData({ ...formData, category_id: parseInt(e.target.value) })}
+                          className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                          required
+                        >
+                          {categories.map((category) => (
+                            <option key={category.id} value={category.id}>
+                              {category.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
                     
                     <div>
                       <label className="block text-sm font-medium text-gray-700">Kích cỡ</label>
-                      <select
-                        value={formData.size}
-                        onChange={(e) => setFormData({ ...formData, size: e.target.value })}
-                        className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-                      >
-                        <option value="">Chọn kích cỡ</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                      </select>
+                      <div className="mt-1 px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-sm text-gray-600">
+                        M (Mặc định)
+                      </div>
+                      <input
+                        type="hidden"
+                        value="M"
+                        onChange={(e) => setFormData({ ...formData, size: 'M' })}
+                      />
                     </div>
                   </div>
                   
@@ -607,6 +723,7 @@ const ProductsManagement = () => {
             </div>
           </div>
         )}
+
 
         {/* Modal thông báo thành công */}
         {showSuccessModal && (

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus, HttpException, UseInterceptors, UploadedFiles } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpStatus, HttpException, UseInterceptors, UploadedFiles, Query } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { ProductsService } from './products.service';
 import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
@@ -77,12 +77,16 @@ export class ProductsController {
   }
 
   @Get()
-  async findAll() {
+  async findAll(@Query('page') page: number = 1, @Query('limit') limit: number = 10) {
     try {
-      const products = await this.productsService.findAll();
+      const result = await this.productsService.findAll(page, limit);
       return {
         success: true,
-        data: products,
+        data: result.products,
+        total: result.total,
+        page: result.page,
+        limit: result.limit,
+        totalPages: result.totalPages,
       };
     } catch (error) {
       throw new HttpException(

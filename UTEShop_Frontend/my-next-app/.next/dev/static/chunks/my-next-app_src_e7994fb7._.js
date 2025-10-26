@@ -300,12 +300,12 @@ var _s = __turbopack_context__.k.signature();
 ;
 function AdminLayout(t0) {
     _s();
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(39);
-    if ($[0] !== "5216105276c980784612cee51d1217b295ab7d7fc5a9307a9f1e8a1ec66d9340") {
-        for(let $i = 0; $i < 39; $i += 1){
+    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(34);
+    if ($[0] !== "84d58b57fec79f7d8487ac68193d795fece8ca8a402db019c235b54218a32d51") {
+        for(let $i = 0; $i < 34; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "5216105276c980784612cee51d1217b295ab7d7fc5a9307a9f1e8a1ec66d9340";
+        $[0] = "84d58b57fec79f7d8487ac68193d795fece8ca8a402db019c235b54218a32d51";
     }
     const { children, currentPage: t1 } = t0;
     const currentPage = t1 === undefined ? "dashboard" : t1;
@@ -352,6 +352,12 @@ function AdminLayout(t0) {
                 href: "/products"
             },
             {
+                id: "categories",
+                label: "Lo\u1EA1i s\u1EA3n ph\u1EA9m",
+                icon: "fas fa-list",
+                href: "/categories"
+            },
+            {
                 id: "users",
                 label: "Ng\u01B0\u1EDDi d\xF9ng",
                 icon: "fas fa-users",
@@ -362,18 +368,6 @@ function AdminLayout(t0) {
                 label: "\u0110\xE1nh gi\xE1",
                 icon: "fas fa-star",
                 href: "/reviews"
-            },
-            {
-                id: "promotions",
-                label: "Khuy\u1EBFn m\xE3i",
-                icon: "fas fa-tags",
-                href: "/promotions"
-            },
-            {
-                id: "comments",
-                label: "B\xECnh lu\u1EADn",
-                icon: "fas fa-comments",
-                href: "/comments"
             },
             {
                 id: "vouchers",
@@ -399,7 +393,7 @@ function AdminLayout(t0) {
                         className: "fas fa-coffee text-white text-2xl mr-3"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 99,
+                        lineNumber: 94,
                         columnNumber: 118
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -407,18 +401,18 @@ function AdminLayout(t0) {
                         children: "UTEShop"
                     }, void 0, false, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 99,
+                        lineNumber: 94,
                         columnNumber: 174
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 99,
+                lineNumber: 94,
                 columnNumber: 83
             }, this)
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 99,
+            lineNumber: 94,
             columnNumber: 10
         }, this);
         $[4] = t6;
@@ -438,20 +432,20 @@ function AdminLayout(t0) {
                                 className: `${item.icon} mr-3`
                             }, void 0, false, {
                                 fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                                lineNumber: 107,
+                                lineNumber: 102,
                                 columnNumber: 249
                             }, this),
                             item.label
                         ]
                     }, item.id, true, {
                         fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                        lineNumber: 107,
+                        lineNumber: 102,
                         columnNumber: 49
                     }, this)
             }["AdminLayout[menuItems.map()]"])
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 106,
+            lineNumber: 101,
             columnNumber: 10
         }, this);
         $[5] = currentPage;
@@ -469,7 +463,7 @@ function AdminLayout(t0) {
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 116,
+            lineNumber: 111,
             columnNumber: 10
         }, this);
         $[7] = t5;
@@ -494,7 +488,7 @@ function AdminLayout(t0) {
             className: "fas fa-bars text-xl"
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 135,
+            lineNumber: 130,
             columnNumber: 11
         }, this);
         $[12] = t10;
@@ -503,13 +497,20 @@ function AdminLayout(t0) {
     }
     let t11;
     if ($[13] !== t9) {
-        t11 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-            onClick: t9,
-            className: "lg:hidden text-gray-600 hover:text-gray-900 mr-4",
-            children: t10
+        t11 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "flex items-center",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                onClick: t9,
+                className: "lg:hidden text-gray-600 hover:text-gray-900 mr-4",
+                children: t10
+            }, void 0, false, {
+                fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
+                lineNumber: 137,
+                columnNumber: 46
+            }, this)
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 142,
+            lineNumber: 137,
             columnNumber: 11
         }, this);
         $[13] = t9;
@@ -517,17 +518,18 @@ function AdminLayout(t0) {
     } else {
         t11 = $[14];
     }
-    const t12 = menuItems.find({
-        "AdminLayout[menuItems.find()]": (item_0)=>item_0.id === currentPage
-    }["AdminLayout[menuItems.find()]"])?.label || "Dashboard";
+    const t12 = user?.fullName || "Admin";
     let t13;
     if ($[15] !== t12) {
-        t13 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-            className: "text-2xl font-bold text-gray-900",
-            children: t12
-        }, void 0, false, {
+        t13 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+            className: "text-gray-700 font-medium",
+            children: [
+                "Hi, ",
+                t12
+            ]
+        }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 153,
+            lineNumber: 146,
             columnNumber: 11
         }, this);
         $[15] = t12;
@@ -536,58 +538,79 @@ function AdminLayout(t0) {
         t13 = $[16];
     }
     let t14;
-    if ($[17] !== t11 || $[18] !== t13) {
-        t14 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "flex items-center",
+    if ($[17] === Symbol.for("react.memo_cache_sentinel")) {
+        t14 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$LogoutWithConfirmation$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+            fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
+            lineNumber: 154,
+            columnNumber: 11
+        }, this);
+        $[17] = t14;
+    } else {
+        t14 = $[17];
+    }
+    let t15;
+    if ($[18] !== t13) {
+        t15 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "flex items-center space-x-4",
             children: [
-                t11,
-                t13
+                t13,
+                t14
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
             lineNumber: 161,
             columnNumber: 11
         }, this);
-        $[17] = t11;
         $[18] = t13;
-        $[19] = t14;
+        $[19] = t15;
     } else {
-        t14 = $[19];
+        t15 = $[19];
     }
-    const t15 = user?.fullName || "Admin";
     let t16;
-    if ($[20] !== t15) {
-        t16 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-            className: "text-gray-700 font-medium",
-            children: [
-                "Hi, ",
-                t15
-            ]
-        }, void 0, true, {
+    if ($[20] !== t11 || $[21] !== t15) {
+        t16 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
+            className: "sticky top-0 z-40 bg-white shadow-sm border-b",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex items-center justify-between px-6 py-4",
+                children: [
+                    t11,
+                    t15
+                ]
+            }, void 0, true, {
+                fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
+                lineNumber: 169,
+                columnNumber: 77
+            }, this)
+        }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 171,
+            lineNumber: 169,
             columnNumber: 11
         }, this);
-        $[20] = t15;
-        $[21] = t16;
+        $[20] = t11;
+        $[21] = t15;
+        $[22] = t16;
     } else {
-        t16 = $[21];
+        t16 = $[22];
     }
     let t17;
-    if ($[22] === Symbol.for("react.memo_cache_sentinel")) {
-        t17 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$src$2f$components$2f$LogoutWithConfirmation$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+    if ($[23] !== children) {
+        t17 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+            className: "min-h-screen",
+            children: children
+        }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 179,
+            lineNumber: 178,
             columnNumber: 11
         }, this);
-        $[22] = t17;
+        $[23] = children;
+        $[24] = t17;
     } else {
-        t17 = $[22];
+        t17 = $[24];
     }
     let t18;
-    if ($[23] !== t16) {
+    if ($[25] !== t16 || $[26] !== t17) {
         t18 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "flex items-center space-x-4",
+            className: "lg:ml-64",
             children: [
                 t16,
                 t17
@@ -597,110 +620,51 @@ function AdminLayout(t0) {
             lineNumber: 186,
             columnNumber: 11
         }, this);
-        $[23] = t16;
-        $[24] = t18;
+        $[25] = t16;
+        $[26] = t17;
+        $[27] = t18;
     } else {
-        t18 = $[24];
+        t18 = $[27];
     }
     let t19;
-    if ($[25] !== t14 || $[26] !== t18) {
-        t19 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-            className: "bg-white shadow-sm border-b",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center justify-between px-6 py-4",
-                children: [
-                    t14,
-                    t18
-                ]
-            }, void 0, true, {
-                fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-                lineNumber: 194,
-                columnNumber: 59
-            }, this)
-        }, void 0, false, {
-            fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 194,
-            columnNumber: 11
-        }, this);
-        $[25] = t14;
-        $[26] = t18;
-        $[27] = t19;
-    } else {
-        t19 = $[27];
-    }
-    let t20;
-    if ($[28] !== children) {
-        t20 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-            className: "min-h-screen",
-            children: children
-        }, void 0, false, {
-            fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 203,
-            columnNumber: 11
-        }, this);
-        $[28] = children;
-        $[29] = t20;
-    } else {
-        t20 = $[29];
-    }
-    let t21;
-    if ($[30] !== t19 || $[31] !== t20) {
-        t21 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "lg:ml-64",
-            children: [
-                t19,
-                t20
-            ]
-        }, void 0, true, {
-            fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 211,
-            columnNumber: 11
-        }, this);
-        $[30] = t19;
-        $[31] = t20;
-        $[32] = t21;
-    } else {
-        t21 = $[32];
-    }
-    let t22;
-    if ($[33] !== sidebarOpen) {
-        t22 = sidebarOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+    if ($[28] !== sidebarOpen) {
+        t19 = sidebarOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden",
             onClick: {
                 "AdminLayout[<div>.onClick]": ()=>setSidebarOpen(false)
             }["AdminLayout[<div>.onClick]"]
         }, void 0, false, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 220,
+            lineNumber: 195,
             columnNumber: 26
         }, this);
-        $[33] = sidebarOpen;
-        $[34] = t22;
+        $[28] = sidebarOpen;
+        $[29] = t19;
     } else {
-        t22 = $[34];
+        t19 = $[29];
     }
-    let t23;
-    if ($[35] !== t21 || $[36] !== t22 || $[37] !== t8) {
-        t23 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+    let t20;
+    if ($[30] !== t18 || $[31] !== t19 || $[32] !== t8) {
+        t20 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "h-full bg-gray-50",
             children: [
                 t8,
-                t21,
-                t22
+                t18,
+                t19
             ]
         }, void 0, true, {
             fileName: "[project]/my-next-app/src/components/AdminLayout.tsx",
-            lineNumber: 230,
+            lineNumber: 205,
             columnNumber: 11
         }, this);
-        $[35] = t21;
-        $[36] = t22;
-        $[37] = t8;
-        $[38] = t23;
+        $[30] = t18;
+        $[31] = t19;
+        $[32] = t8;
+        $[33] = t20;
     } else {
-        t23 = $[38];
+        t20 = $[33];
     }
-    return t23;
+    return t20;
 }
 _s(AdminLayout, "7gzpctHzispL4ti7+SvYj+fwIS4=");
 _c = AdminLayout;
@@ -718,16 +682,22 @@ __turbopack_context__.s([
     ()=>checkEmailAvailable,
     "checkUsernameAvailable",
     ()=>checkUsernameAvailable,
+    "createCategory",
+    ()=>createCategory,
     "createProduct",
     ()=>createProduct,
     "createReview",
     ()=>createReview,
+    "deleteCategory",
+    ()=>deleteCategory,
     "deleteReview",
     ()=>deleteReview,
     "deleteVoucher",
     ()=>deleteVoucher,
     "forgotPassword",
     ()=>forgotPassword,
+    "getCategories",
+    ()=>getCategories,
     "getDrinkRatingStats",
     ()=>getDrinkRatingStats,
     "getOrders",
@@ -764,6 +734,8 @@ __turbopack_context__.s([
     ()=>showProduct,
     "toggleReviewHidden",
     ()=>toggleReviewHidden,
+    "updateCategory",
+    ()=>updateCategory,
     "updateProduct",
     ()=>updateProduct,
     "updateReview",
@@ -826,9 +798,9 @@ const resetPassword = async (email, otp, newPassword, confirmPassword)=>{
     });
     return response.data;
 };
-const getProducts = async ()=>{
+const getProducts = async (page = 1, limit = 10)=>{
     try {
-        const response = await api.get('/products');
+        const response = await api.get(`/products?page=${page}&limit=${limit}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -963,6 +935,42 @@ const deleteVoucher = async (id)=>{
 const markVoucherAsUsed = async (id)=>{
     const response = await api.patch(`/vouchers/${id}/mark-used`);
     return response.data;
+};
+const getCategories = async ()=>{
+    try {
+        const response = await api.get('/categories');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        throw error;
+    }
+};
+const createCategory = async (categoryData)=>{
+    try {
+        const response = await api.post('/categories', categoryData);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating category:', error);
+        throw error;
+    }
+};
+const updateCategory = async (id, categoryData)=>{
+    try {
+        const response = await api.put(`/categories/${id}`, categoryData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating category:', error);
+        throw error;
+    }
+};
+const deleteCategory = async (id)=>{
+    try {
+        const response = await api.delete(`/categories/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting category:', error);
+        throw error;
+    }
 };
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
@@ -1550,9 +1558,11 @@ function VoucherManagement() {
                 columnNumber: 45
             }, this),
             showEditModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50",
+                className: "fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[9999]",
+                onClick: handleCancel,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "bg-white rounded-lg shadow-xl w-full max-w-4xl mx-4",
+                    onClick: (e)=>e.stopPropagation(),
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center justify-between p-6 border-b",
@@ -1607,9 +1617,9 @@ function VoucherManagement() {
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "text",
                                                         value: editForm.code || '',
-                                                        onChange: (e)=>setEditForm({
+                                                        onChange: (e_0)=>setEditForm({
                                                                 ...editForm,
-                                                                code: e.target.value
+                                                                code: e_0.target.value
                                                             }),
                                                         className: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500",
                                                         placeholder: "Nhập mã giảm giá"
@@ -1636,9 +1646,9 @@ function VoucherManagement() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                                                         value: editForm.description || '',
-                                                        onChange: (e_0)=>setEditForm({
+                                                        onChange: (e_1)=>setEditForm({
                                                                 ...editForm,
-                                                                description: e_0.target.value
+                                                                description: e_1.target.value
                                                             }),
                                                         rows: 3,
                                                         className: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500",
@@ -1666,9 +1676,9 @@ function VoucherManagement() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                         value: editForm.discount_type || '',
-                                                        onChange: (e_1)=>setEditForm({
+                                                        onChange: (e_2)=>setEditForm({
                                                                 ...editForm,
-                                                                discount_type: e_1.target.value
+                                                                discount_type: e_2.target.value
                                                             }),
                                                         className: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500",
                                                         children: [
@@ -1722,9 +1732,9 @@ function VoucherManagement() {
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "number",
                                                         value: editForm.discount_value || '',
-                                                        onChange: (e_2)=>setEditForm({
+                                                        onChange: (e_3)=>setEditForm({
                                                                 ...editForm,
-                                                                discount_value: parseFloat(e_2.target.value)
+                                                                discount_value: parseFloat(e_3.target.value)
                                                             }),
                                                         className: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500",
                                                         placeholder: "Nhập giá trị voucher"
@@ -1751,10 +1761,10 @@ function VoucherManagement() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "number",
-                                                        value: editForm.min_order_total || '',
-                                                        onChange: (e_3)=>setEditForm({
+                                                        value: editForm.min_order_amount ?? '',
+                                                        onChange: (e_4)=>setEditForm({
                                                                 ...editForm,
-                                                                min_order_total: parseFloat(e_3.target.value)
+                                                                min_order_amount: parseFloat(e_4.target.value)
                                                             }),
                                                         className: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500",
                                                         placeholder: "Nhập đơn hàng tối thiểu"
@@ -1781,10 +1791,10 @@ function VoucherManagement() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$my$2d$next$2d$app$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "date",
-                                                        value: editForm.expires_at || '',
-                                                        onChange: (e_4)=>setEditForm({
+                                                        value: editForm.end_date ?? '',
+                                                        onChange: (e_5)=>setEditForm({
                                                                 ...editForm,
-                                                                expires_at: e_4.target.value
+                                                                end_date: e_5.target.value
                                                             }),
                                                         className: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                                                     }, void 0, false, {

@@ -10,10 +10,24 @@ export class ProductsService {
     private drinkModel: typeof UTEShopDrink,
   ) {}
 
-  async findAll() {
-    return this.drinkModel.findAll({
+  async findAll(page: number = 1, limit: number = 10) {
+    const offset = (page - 1) * limit;
+    
+    const { count, rows } = await this.drinkModel.findAndCountAll({
       order: [['created_at', 'DESC']],
+      limit,
+      offset,
     });
+
+    const totalPages = Math.ceil(count / limit);
+
+    return {
+      products: rows,
+      total: count,
+      page: parseInt(page.toString()),
+      limit: parseInt(limit.toString()),
+      totalPages,
+    };
   }
 
   async findAllForCustomer() {

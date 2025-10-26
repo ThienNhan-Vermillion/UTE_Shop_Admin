@@ -59,9 +59,9 @@ export const resetPassword = async (
 };
 
 // ======================= PRODUCTS API =======================
-export const getProducts = async () => {
+export const getProducts = async (page: number = 1, limit: number = 10) => {
   try {
-    const response = await api.get('/products');
+    const response = await api.get(`/products?page=${page}&limit=${limit}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching products:', error);
@@ -238,4 +238,45 @@ export const deleteVoucher = async (id: number) => {
 export const markVoucherAsUsed = async (id: number) => {
   const response = await api.patch(`/vouchers/${id}/mark-used`);
   return response.data;
+};
+
+// ======================= CATEGORIES API =======================
+export const getCategories = async () => {
+  try {
+    const response = await api.get('/categories');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    throw error;
+  }
+};
+
+export const createCategory = async (categoryData: { name: string }) => {
+  try {
+    const response = await api.post('/categories', categoryData);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating category:', error);
+    throw error;
+  }
+};
+
+export const updateCategory = async (id: number, categoryData: { name: string }) => {
+  try {
+    const response = await api.put(`/categories/${id}`, categoryData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating category:', error);
+    throw error;
+  }
+};
+
+export const deleteCategory = async (id: number) => {
+  try {
+    const response = await api.delete(`/categories/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting category:', error);
+    throw error;
+  }
 };

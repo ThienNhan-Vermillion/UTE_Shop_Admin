@@ -1,15 +1,21 @@
-[00:00:01.494] Server  LOG      ✓ Ready in 1040ms
-[00:00:06.447] Server  LOG      ○ Compiling / ...
-[00:00:09.264] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:18.063] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:20.500] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:27.130] Browser LOG     API Base URL: http://localhost:3001
-[00:01:23.884] Server  LOG      ✓ Compiled in 151ms
-[00:01:38.256] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:40.717] Browser ERROR   Error fetching dashboard data: {}
-[00:01:44.789] Browser ERROR   Error fetching dashboard data: {}
-[00:01:45.493] Browser ERROR   Error fetching dashboard data: {}
-[00:01:46.792] Browser LOG     API Base URL: http://localhost:3001
-[00:02:11.463] Server  LOG     API Base URL: "http://localhost:3001"
-[00:02:11.650] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:11.775] Browser LOG     API Base URL: http://localhost:3001
+[00:00:01.273] Server  LOG      ✓ Ready in 889ms
+[00:00:04.312] Server  LOG      ○ Compiling /products ...
+[00:00:05.970] Server  LOG     API Base URL: "http://localhost:3001"
+[00:00:06.134] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.128] Browser LOG     API Base URL: http://localhost:3001
+[00:01:39.297] Browser LOG     Sending update data: {"code":"FREESHIP","description":"Miễn phí vận chuyển cho đơn hàng từ 100k.","discount_type":"fixed","discount_value":20000,"end_date":"2025-12-31T00:00:00.000Z","max_discount_amount":20000,"min_order_amount":100000,"name":"Miễn phí vận chuyển","start_date":"2025-01-01T00:00:00.000Z","status":"active","usage_limit":500}
+[00:01:45.536] Browser LOG     Sending update data: {"code":"FREESHIP","description":"Miễn phí vận chuyển cho đơn hàng từ 100k.","discount_type":"fixed","discount_value":20000,"end_date":"2025-12-31T00:00:00.000Z","max_discount_amount":20000,"min_order_amount":100000,"name":"Miễn phí vận chuyển","start_date":"2025-01-01T00:00:00.000Z","status":"active","usage_limit":500}
+[00:01:55.230] Browser LOG     Sending update data: {"code":"FREESHIP","description":"Miễn phí vận chuyển cho đơn hàng từ 100k.","discount_type":"fixed","discount_value":20000,"end_date":"2025-12-31T00:00:00.000Z","max_discount_amount":20000,"min_order_amount":100000,"name":"Miễn phí vận chuyển","start_date":"2025-01-01T00:00:00.000Z","status":"active","usage_limit":500}
+[00:02:21.567] Browser LOG     Sending update data: {"code":"FREESHIP","description":"Miễn phí vận chuyển cho đơn hàng từ 100k.","discount_type":"fixed","discount_value":20000,"end_date":"2025-12-31T00:00:00.000Z","max_discount_amount":20000,"min_order_amount":100000,"name":"Miễn phí vận chuyển","start_date":"2025-01-01T00:00:00.000Z","status":"active","usage_limit":500}
+[00:09:10.946] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:10.946] Browser LOG     API Base URL: http://localhost:3001
+[00:22:53.429] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:53.585] Browser LOG     API Base URL: http://localhost:3001
+[00:23:10.445] Browser LOG     Sending update data: {"code":"TEA10","description":"Giảm 10% cho các loại trà sữa","discount_type":"fixed","discount_value":10,"end_date":"2025-12-31T00:00:00.000Z","max_discount_amount":12000,"min_order_amount":40000,"name":"Giảm 10% trà sữa","start_date":"2025-01-01T00:00:00.000Z","status":"active","usage_limit":300}
+[00:25:03.208] Browser LOG     Sending update data: {"code":"FREESHIP","description":"Miễn phí vận chuyển cho đơn hàng từ 100k.","discount_type":"fixed","discount_value":40000,"end_date":"2025-12-31T00:00:00.000Z","max_discount_amount":20000,"min_order_amount":100000,"name":"Miễn phí vận chuyển","start_date":"2025-01-01T00:00:00.000Z","status":"active","usage_limit":500}
+[00:25:18.058] Browser LOG     Sending update data: {"code":"FREESHIP","description":"Miễn phí vận chuyển cho đơn hàng từ 100k.","discount_type":"fixed","discount_value":40000,"end_date":"2025-12-31T00:00:00.000Z","max_discount_amount":20000,"min_order_amount":100000,"name":"Miễn phí vận chuyển","start_date":"2025-01-01T00:00:00.000Z","status":"active","usage_limit":500}
+[00:30:49.617] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:30:49.778] Browser LOG     API Base URL: http://localhost:3001
+[00:32:54.384] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:54.514] Browser LOG     API Base URL: http://localhost:3001
+[00:42:57.411] Server  LOG      ✓ Compiled in 240ms
